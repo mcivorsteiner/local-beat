@@ -1,4 +1,5 @@
 LocalBeat::Application.routes.draw do
+  # Where should root direct to?
   get '/session/new', to: 'session#new', as: 'new_session'
   post '/session', to: 'session#create', as: 'create_session'
   delete '/session', to: 'session#destroy'
