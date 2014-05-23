@@ -12,6 +12,18 @@
  *= require_tree .
  */
 
- #map {
-  border: 1px solid black\;
+html, body {
+  height:100%;
+  width: 100%;
+
+}
+#map-canvas {
+  border: 1px solid black;
+  height:100%;
+  width:100%;
+  margin:0;
+  padding: 0;
+  position: absolute;
+
+
  }
