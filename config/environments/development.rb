@@ -1,5 +1,8 @@
 LocalBeat::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
+  # Settings specified here  will take precedence over those in config/application.rb
+
+  ######### added to access the files in lib folder
+  config.autoload_paths += Dir["#{config.root}/lib/"]
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -8,6 +11,7 @@ LocalBeat::Application.configure do
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
+
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
