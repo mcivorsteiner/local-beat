@@ -6,4 +6,14 @@
   <div class="hidden" id="login">
     <%= render partial: "shared/login" %>
   </div>
+
+  <div class="hidden" id="user_data_script">
+    <% if logged_in? %>
+      <%= render partial: "shared/user_data", locals: {user: current_user, user_location_data: @user_location_data} %>
+    <% end %>
+  </div>
+</div>
+
+<div id = "REMOVE">
+  <%= logged_in? %>
 </div>
