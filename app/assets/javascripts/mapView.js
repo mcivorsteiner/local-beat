@@ -6,7 +6,7 @@ mapView.prototype = {
   drawMap: function(){
     var mapOptions = {
     zoom: 5,
-    center: new google.maps.LatLng(41.850033, -87.6500523)
+    center: new google.maps.LatLng(40.689493, -98.578265)
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     }
