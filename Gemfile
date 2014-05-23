@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'httparty'
 
 
 # Gems used only for assets and not required
@@ -23,6 +24,7 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'jasmine-rails'
