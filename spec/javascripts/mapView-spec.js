@@ -9,7 +9,5 @@ describe("Google Maps View", function() {
   it("gets into the drawMap function", function() {
     expect(view.drawMap).toHaveBeenCalled()
   });
-  xit("centers on the middle of the US", function() {
-    // expect something
-  });
+
 })
