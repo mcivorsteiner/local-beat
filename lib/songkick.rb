@@ -4,8 +4,7 @@ module Songkick
   include HTTParty
   base_uri 'http://api.songkick.com/api/3.0'
 
-#get location ID- accepting user input and determing metro area and corresponding ID
-#create new Location if location doesn't already exist in DB
+
   def artist_search_url(artist_name)
     query = artist_name.gsub(/\s/, "+")
     return "/search/artists.json?query=#{query}&apikey=#{ENV['SONGKICK_KEY']}"
@@ -15,6 +14,7 @@ module Songkick
     query = location_name.gsub(/\s/, "+")
      "/search/locations.json?query=#{query}&apikey=#{ENV["SONGKICK_KEY"]}"
   end
+
 
   def request(url, query = {})
     response = get(url, query: query)
@@ -29,7 +29,6 @@ module Songkick
     end
     artists
   end
-
 
   def location_id_query(location_query)
     url = location_search_url(location_query)
@@ -46,6 +45,17 @@ module Songkick
     locations
   end
 
+  # ==== Query Parameters
+  # * +type+ - valid types: concert or festival
+  # * +artists+ - events by any of the artists, comma-separated
+  # * +artist_name+ - plain text name of artist ex. 'As I Lay Dying', 'Parkway Drive', 'Animals As Leaders'
+  # * +artist_id+ - Songkick unique ID for an artist
+  # * +venue_id+ - Songkick unique ID for a venue
+  # * +setlist_item_name+ - name of a song which was played at the event – use with artist_id or artist_name
+  # * +min_date+ - Oldest date for which you want to look for events
+  # * +max_date+ - Most recent date for which you want to look for events
+  # * +location+ - See the Songkick website for instructions on how to use the location parameter http://www.songkick.com/developer/location-search
+
   def event_search(query = {})
     url = "/events.json?apikey=#{ENV["SONGKICK_KEY"]}"
     response = request(url, query)
@@ -53,7 +63,6 @@ module Songkick
     events = response["resultsPage"]["results"]["event"]
     extract_event_data(events)
   end
-
 
   def extract_event_data(events)
       events_data = events.map do |event|
