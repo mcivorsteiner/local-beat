@@ -1,6 +1,7 @@
 LocalBeat::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  ######### added to access the files in lib folder
+  config.autoload_paths += Dir["#{config.root}/lib/**/"]
   # Code is not reloaded between requests
   config.cache_classes = true
 
