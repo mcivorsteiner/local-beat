@@ -31,6 +31,11 @@ html, body {
   margin-top:0;
  }
 
+ h4 {
+  margin-top: 0;
+  color: white;
+ }
+
  /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width : 480px) {
 /* Styles */
@@ -46,7 +51,9 @@ html, body {
     margin-top: 0.1%;
   }
 
-  #navbar {}
+  #navbar {
+    margin-top:0;
+  }
 
 }
 
@@ -61,8 +68,12 @@ html, body {
     border: 1px solid black;
     height:95%;
     width:98%;
-    margin-top: 0.1%;
+    margin-top: 0.4%;
 
+  }
+
+  #navbar {
+    margin-top:0;
   }
 
 }
