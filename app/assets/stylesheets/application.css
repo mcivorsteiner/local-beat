@@ -36,6 +36,24 @@ html, body {
   color: white;
  }
 
+ #magnify {
+  float: right;
+  height: 20px
+ }
+
+ #searchWindow {
+  color:white;
+  display: none;
+  position:absolute;
+  margin-top:-300px;
+  background-color:rgba(0,0,0,0.5);
+  /*opacity:0.4;*/
+ }
+
+ #advanced-options {
+  display: none;
+ }
+
  /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width : 480px) {
 /* Styles */
@@ -77,6 +95,12 @@ html, body {
     width:98.4%;
     margin-top:0;
   }
+
+  #magnify {
+    height: 40px;
+    margin-top: -44px;
+  }
+
 
 }
 
