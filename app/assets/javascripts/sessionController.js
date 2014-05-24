@@ -34,6 +34,8 @@ SessionController.prototype = {
 
   signIn: function(e, response) {
     this.view.updateUserData(response)
+    this.toggleSignIn()
+    this.renderSessionBox()
   },
 
   signUp: function(e, response) {
