@@ -37,6 +37,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rake'
 end
 
 # To use ActiveModel has_secure_password
@@ -53,3 +54,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'rails_12factor', group: :production

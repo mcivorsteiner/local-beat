@@ -1,9 +1,9 @@
-function searchController() {
+function SearchController() {
   this.searchIcon = document.getElementById('magnify')
   this.advancedOptions = document.getElementById('advanced-search')
 }
 
-searchController.prototype = {
+SearchController.prototype = {
   init: function() {
     this.setListeners()
   },

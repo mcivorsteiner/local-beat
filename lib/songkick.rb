@@ -56,6 +56,8 @@ module Songkick
   # * +location+ - See the Songkick website for instructions on how to use the location parameter http://www.songkick.com/developer/location-search
 
   def event_search(query = {})
+    query = query.reject { |key, value| value.nil? }
+    p "query is:#{query}"
     url = "/events.json?apikey=#{SONGKICK_KEY}"
     response = request(url, query)
     pp response
@@ -70,7 +72,6 @@ module Songkick
       date = event['start']['date'] rescue nil
       artists = event["performance"].map { |performance| performance["artist"]["displayName"]} rescue nil
       headliner = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["displayName"]} rescue nil
-      type = event["type"]
       metro_area = event["venue"]["metroArea"]["displayName"] rescue nil
       state = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
       venue_name = event["venue"]["displayName"] rescue nil
@@ -78,7 +79,7 @@ module Songkick
       location = [event["location"]["lat"].to_f, event["location"]["lng"].to_f] rescue nil
       event_type = event["type"] rescue nil
       uri = event["uri"] rescue nil
-      { sk_event_id: sk_event_id, display_name: display_name, date: date, artists: artists, headliner: headliner, type: type, metro_area: metro_area, state: state, venue_name: venue_name, popularity: popularity, location: location, event_type: event_type, uri: uri }
+      { sk_event_id: sk_event_id, display_name: display_name, date: date, artists: artists, headliner: headliner, metro_area: metro_area, state: state, venue_name: venue_name, popularity: popularity, location: location, event_type: event_type, uri: uri }
     end
     events_data.reject { |event| event[:location][0] == 0 }
   end
