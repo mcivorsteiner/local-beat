@@ -1,11 +1,12 @@
 <div id="map-canvas"></div>
 
+
 <div class = "container">
-  <div class="hidden" id="sign_up">
+  <div class="hidden" id="sign-up-form">
     <%= render partial: "shared/sign_up", locals: {user: @user} %>
   </div>
 
-  <div class="hidden" id="login">
+  <div class="hidden" id="sign-in-form">
     <%= render partial: "shared/login" %>
   </div>
 
@@ -16,6 +17,7 @@
   </div>
 </div>
 
-<div id = "REMOVE">
-  <%= logged_in? %>
-</div>
+
+<%= render partial: 'search' %>
+<%= render partial: 'userlog' %>
+
