@@ -1,7 +1,6 @@
 function searchController() {
   this.searchIcon = document.getElementById('magnify')
   this.advancedOptions = document.getElementById('advanced-search')
-  // this.advancedSearchOptions = document.getElementById('advanced-options')
 }
 
 searchController.prototype = {
@@ -12,6 +11,7 @@ searchController.prototype = {
   setListeners: function() {
     this.searchIcon.addEventListener('click', this.renderSearchBar)
     this.advancedOptions.addEventListener('click', this.renderAdvancedOptions)
+
   },
 
   renderSearchBar: function(event) {
@@ -28,12 +28,4 @@ searchController.prototype = {
     console.log('hey we are in advanced')
   }
 
-  // resetSearchWindow: function(){
-  //   this.searchIcon.addEventListener('click', this.closeSearchWindow())
-  // },
-
-  // closeSearchWindow: function(event) {
-  //   this.searchWindow.style.display = 'none'
-  //   this.setListeners()
-  // }
 }
