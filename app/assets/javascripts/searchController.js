@@ -18,14 +18,12 @@ searchController.prototype = {
     event.preventDefault();
     var searchWindow = document.getElementById('searchWindow')
     searchWindow.classList.toggle('hidden')
-    console.log('in render search bar')
   },
 
   renderAdvancedOptions:function(event){
     event.preventDefault();
     var advancedSearchOptions = document.getElementById('advanced-options')
     advancedSearchOptions.classList.toggle('hidden')
-    console.log('hey we are in advanced')
   }
 
 }
