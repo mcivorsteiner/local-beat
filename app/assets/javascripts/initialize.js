@@ -1,12 +1,12 @@
 $(document).ready(function(){
   var view = new mapView();
-  new mapController(view).init()
+  var mapController = new mapController(view)
 
-  var seshView = new sessionView()
-  var seshController = new sessionController(seshView)
-  seshController.init()
+  var sessionView = new sessionView()
+  var sessionController = new sessionController(seshView)
 
-  new searchController().init()
-  new userSessionController().init()
+//create application controller and pass in three controllers
+  var searchController = new searchController()
+  // var userController = new userSessionController()
 
 })
