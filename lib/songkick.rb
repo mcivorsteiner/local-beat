@@ -24,6 +24,7 @@ module Songkick
     response = request(url)
     artists = response["resultsPage"]["results"]["artist"].map do |artist|
       {display_name: artist["displayName"], sk_artist_id: artist["id"], uri: artist["uri"]}
+      Artist.new(name: artist["displayName"], sk_artist_id: artist["id"])
     end
     artists
   end
@@ -72,7 +73,6 @@ module Songkick
       type = event["type"]
       metro_area = event["venue"]["metroArea"]["displayName"] rescue nil
       state = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
-      # metro_area_loc = [event["venue"]["metroArea"]["lat"].to_f, event["venue"]["metroArea"]["lng"].to_f] rescue nil
       venue_name = event["venue"]["displayName"] rescue nil
       popularity = event["popularity"].to_f rescue nil
       location = [event["location"]["lat"].to_f, event["location"]["lng"].to_f] rescue nil
