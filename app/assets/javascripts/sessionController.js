@@ -3,13 +3,24 @@ sessionController = function(view) {
 }
 
 sessionController.prototype = {
-  setListeners: function() {
-    var signInToggleButton = this.view.getSignInToggleButton()
-    var signUpToggleButton = this.view.getSignUpToggleButton()
-    var singInForm = this.view.getSignInForm()
+  init: function() {
+    this.setListeners()
+  },
 
-    signInToggleButton.addEventListener('click', this.toggleSignIn, false)
-    signUpToggleButton.addEventListener('click', this.toggleSignUp, false)
+  setListeners: function() {
+    // var signInToggleButton = this.view.getSignInToggleButton()
+    // var signUpToggleButton = this.view.getSignUpToggleButton()
+    var signInForm = this.view.getSignInForm()
+    var signUpForm = this.view.getSignUpForm()
+
+
+    // signInToggleButton.addEventListener('click', this.toggleSignIn, false)
+    // signUpToggleButton.addEventListener('click', this.toggleSignUp, false)
+    $(signInForm).on('ajax:success', this.signIn)
+    $(signUpForm).on('ajax:success', this.signUp)
+
+    debugger
+
   },
 
   toggleSignIn: function() {
@@ -18,5 +29,13 @@ sessionController.prototype = {
 
   toggleSignUp: function() {
     this.view.toggleSignUpForm()
+  },
+
+  signIn: function(response) {
+    debugger
+  },
+
+  signUp: function(response) {
+    debugger
   },
 }

@@ -1,12 +1,11 @@
 sessionView = function() {
-  this.view = view
   this.signInToggleButtonSelector = '#sign-in'
   this.signUpToggleButtonSelector = '#sign-up'
-  this.signInFormSelector = "#sign-in-form form"
-  this.signUpFormSelector = "#sign-in-form form"
+  this.signInFormSelector = '#sign-in-form form'
+  this.signUpFormSelector = '#sign-up-form form'
 }
 
-sessionController.prototype = {
+sessionView.prototype = {
   getSignInToggleButton: function() {
     return document.getElementById(this.signInToggleButtonSelector)
   },
@@ -26,10 +25,15 @@ sessionController.prototype = {
   },
 
   getSignInForm: function() {
+    console.log(document.querySelector(this.signInFormSelector))
+
+
     return document.querySelector(this.signInFormSelector)
   },
 
   getSignUpForm: function() {
+    console.log(document.querySelector(this.signUpFormSelector))
+
     return document.querySelector(this.signUpFormSelector)
   },
 
