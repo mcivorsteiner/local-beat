@@ -1,4 +1,4 @@
-<div id="searchWindow" class="hidden">
+<!-- <div id="searchWindow" class="hidden">
   Location <input type="text" name="location"><br>
   <button id="advanced-search">More</button>
   <button class="search-location">Search</button>
@@ -10,4 +10,20 @@
       <button class="search">Search</button>
     </div>
 
+</div> -->
+
+
+<div id="searchWindow" class="hidden">
+  <%= form_tag '/events', remote: true do %>
+    <%= label_tag :location %>
+    <%= text_field_tag :location %>
+    <%= label_tag :artist_name, nil,  :class => "advanced-options hidden" %>
+    <%= text_field_tag :artist_name, nil, :class => "advanced-options hidden"%>
+    <%= label_tag :date_min,nil,  :class => "advanced-options hidden" %>
+    <%= text_field_tag :date_min,nil,  :class => "advanced-options hidden"%>
+    <%= label_tag :date_max,nil,  :class => "advanced-options hidden"%>
+    <%= text_field_tag :date_max,nil,  :class => "advanced-options hidden"%>
+    <%= submit_tag "Search" %>
+    <button class="advanced-search">More</button>
+  <% end %>
 </div>
