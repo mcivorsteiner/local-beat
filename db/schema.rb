@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140523045051) do
 
   create_table "artists", :force => true do |t|
@@ -33,5 +34,8 @@ ActiveRecord::Schema.define(:version => 20140523045051) do
     t.string  "email"
     t.string  "password_digest"
   end
+=======
+ActiveRecord::Schema.define(:version => 0) do
+>>>>>>> master
 
 end
