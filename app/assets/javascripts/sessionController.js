@@ -42,6 +42,7 @@ SessionController.prototype = {
 
   signInError: function(e, response, responseType, status) {
     var errorMessage = response.responseJSON.error
+  },
 
   renderSessionBox: function() {
     this.view.toggleSessionBox()
