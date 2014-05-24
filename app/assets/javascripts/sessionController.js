@@ -19,7 +19,7 @@ SessionController.prototype = {
     signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
     sessionBox.addEventListener('click', this.renderSessionBox.bind(this), false)
     $(signInForm).on('ajax:success', this.signIn.bind(this))
-    $(signUpForm).on('ajax:success', this.signUp)
+    $(signUpForm).on('ajax:success', this.signUp.bind(this))
     $(signInForm).on('ajax:error', this.signInError)
 
   },
@@ -33,13 +33,17 @@ SessionController.prototype = {
   },
 
   signIn: function(e, response) {
-    this.view.updateUserData(response)
-    this.toggleSignIn()
+    userData = JSON.parse(response.userData)
+    this.view.updateUserData(response.template)
+    this.toggleSignUp()
     this.renderSessionBox()
   },
 
   signUp: function(e, response) {
-    debugger
+    userData = JSON.parse(response.userData)
+    this.view.updateUserData(response.template)
+    this.toggleSignUp()
+    this.renderSessionBox()
   },
 
   signInError: function(e, response, responseType, status) {

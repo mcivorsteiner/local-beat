@@ -7,7 +7,9 @@ class SessionController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      render partial: "shared/user_data", locals: {user: @user}
+
+      html = render_to_string partial: "shared/user_data", locals: {user: @user}
+      render json: {userData: UserPresenter.create_json(@user), template: html}
     else
       render json: {error: "Invalid Email and/or password"},
       status: :unprocessable_entity
