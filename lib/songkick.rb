@@ -1,20 +1,18 @@
-require 'pp'
 module Songkick
   extend self
   include HTTParty
   base_uri 'http://api.songkick.com/api/3.0'
-
+  SONGKICK_KEY = ENV['SONGKICK_KEY']
 
   def artist_search_url(artist_name)
     query = artist_name.gsub(/\s/, "+")
-    return "/search/artists.json?query=#{query}&apikey=#{ENV['SONGKICK_KEY']}"
+    return "/search/artists.json?query=#{query}&apikey=#{SONGKICK_KEY}"
   end
 
   def location_search_url(location_name)
     query = location_name.gsub(/\s/, "+")
-     "/search/locations.json?query=#{query}&apikey=#{ENV["SONGKICK_KEY"]}"
+     "/search/locations.json?query=#{query}&apikey=#{SONGKICK_KEY}"
   end
-
 
   def request(url, query = {})
     response = get(url, query: query)
@@ -26,6 +24,7 @@ module Songkick
     response = request(url)
     artists = response["resultsPage"]["results"]["artist"].map do |artist|
       {display_name: artist["displayName"], sk_artist_id: artist["id"], uri: artist["uri"]}
+      Artist.new(name: artist["displayName"], sk_artist_id: artist["id"])
     end
     artists
   end
@@ -40,7 +39,7 @@ module Songkick
       country = location["metroArea"]["country"]["displayName"] rescue nil
       lat = location["metroArea"]["lat"].to_f rescue nil
       lng = location["metroArea"]["lng"].to_f rescue nil
-      {location_name: location_name, sk_location_id: sk_location_id, state: state, country: country, lat: lat, lng: lng}
+      Location.new(sk_location_id: sk_location_id, sk_location_name: location_name, user_input_location_name: location_query.downcase, state: state, country: country, lat: lat, lng: lng)
     end
     locations
   end
@@ -57,7 +56,7 @@ module Songkick
   # * +location+ - See the Songkick website for instructions on how to use the location parameter http://www.songkick.com/developer/location-search
 
   def event_search(query = {})
-    url = "/events.json?apikey=#{ENV["SONGKICK_KEY"]}"
+    url = "/events.json?apikey=#{SONGKICK_KEY}"
     response = request(url, query)
     pp response
     events = response["resultsPage"]["results"]["event"]
@@ -65,24 +64,22 @@ module Songkick
   end
 
   def extract_event_data(events)
-      events_data = events.map do |event|
-        sk_event_id = event["id"].to_i rescue nil
-        display_name = event["displayName"] rescue nil
-        date = event['start']['date'] rescue nil
-        artists = event["performance"].map { |performance| performance["artist"]["displayName"]} rescue nil
-        headliner = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["displayName"]} rescue nil
-        type = event["type"]
-        metro_area = event["venue"]["metroArea"]["displayName"] rescue nil
-        state = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
-        # metro_area_loc = [event["venue"]["metroArea"]["lat"].to_f, event["venue"]["metroArea"]["lng"].to_f] rescue nil
-        venue_name = event["venue"]["displayName"] rescue nil
-        popularity = event["popularity"].to_f rescue nil
-        location = [event["location"]["lat"].to_f, event["location"]["lng"].to_f] rescue nil
-        event_type = event["type"] rescue nil
-        uri = event["uri"] rescue nil
-        { sk_event_id: sk_event_id, display_name: display_name, date: date, artists: artists, headliner: headliner, type: type, metro_area: metro_area, state: state, venue_name: venue_name, popularity: popularity, location: location, event_type: event_type, uri: uri }
-      end
-      events_data.reject { |event| event[:location][0] == 0 }
+    events_data = events.map do |event|
+      sk_event_id = event["id"].to_i rescue nil
+      display_name = event["displayName"] rescue nil
+      date = event['start']['date'] rescue nil
+      artists = event["performance"].map { |performance| performance["artist"]["displayName"]} rescue nil
+      headliner = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["displayName"]} rescue nil
+      type = event["type"]
+      metro_area = event["venue"]["metroArea"]["displayName"] rescue nil
+      state = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
+      venue_name = event["venue"]["displayName"] rescue nil
+      popularity = event["popularity"].to_f rescue nil
+      location = [event["location"]["lat"].to_f, event["location"]["lng"].to_f] rescue nil
+      event_type = event["type"] rescue nil
+      uri = event["uri"] rescue nil
+      { sk_event_id: sk_event_id, display_name: display_name, date: date, artists: artists, headliner: headliner, type: type, metro_area: metro_area, state: state, venue_name: venue_name, popularity: popularity, location: location, event_type: event_type, uri: uri }
     end
-
+    events_data.reject { |event| event[:location][0] == 0 }
+  end
 end
