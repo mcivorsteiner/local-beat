@@ -12,8 +12,17 @@ ApplicationController.prototype= {
     this.setAjaxListeners()
   },
 
+  // setListener:function(){
+  //   $('.location-search').on('click', this.setAjaxListeners)
+  // },
+
   setAjaxListeners: function() {
-    $('.location-search').on('ajax:success', this.mapController.placeMarkers)
-    $('form#search').on('ajax:failure', this.mapController.appendErrors)
+    $('.search').on('ajax:success', this.placeMarkers.bind(this))
+    $('.search').on('ajax:error', function(){console.log("we are in the error")})
+    // $('form#search').on('ajax:failure', this.mapController.appendErrors)
+  },
+
+  placeMarkers:function(event, response){
+    this.mapController.placeMarkers(event, response)
   }
 }

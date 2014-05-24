@@ -14,7 +14,7 @@
 
 
 <div id="searchWindow" class="hidden">
-  <%= form_tag('/events', :method=> :get, remote: true) do %>
+  <%= form_tag('/events', :method=> :get, :class=>"search", remote: true) do %>
     <%= label_tag :user_input_location_name %>
     <%= text_field_tag :user_input_location_name %><br>
     <%= label_tag :artist_name, nil,  :class => "advanced-options hidden-adv" %>
