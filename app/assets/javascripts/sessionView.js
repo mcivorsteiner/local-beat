@@ -3,10 +3,12 @@ SessionView = function() {
   this.signUpToggleButtonSelector = '#sign-up'
   this.signInFormSelector = '#sign-in-form form'
   this.signUpFormSelector = '#sign-up-form form'
-  this.signUpFormDiv = '#sign-up-form'
-  this.signInFormDiv = '#sign-in-form'
+  this.signUpFormDivSelector = '#sign-up-form'
+  this.signInFormDivSelector = '#sign-in-form'
+  this.currentUserDataSelector = '#current-user-data'
   this.sessionBoxSelector = '#user-session'
   this.userLogWindowSelector = '#user-log-box'
+
 }
 
 SessionView.prototype = {
@@ -19,13 +21,14 @@ SessionView.prototype = {
   },
 
   toggleSignInForm: function() {
-    var signInForm = document.querySelector(this.signInFormDiv)
-    debugger
+    var signInForm = document.querySelector(this.signInFormDivSelector)
+
     signInForm.classList.toggle('hidden')
   },
 
   toggleSignUpForm: function() {
-    var signUpForm = document.querySelector(this.signUpFormDiv)
+    var signUpForm = document.querySelector(this.signUpFormDivSelector)
+
     signUpForm.classList.toggle('hidden')
   },
 
@@ -35,17 +38,18 @@ SessionView.prototype = {
   },
 
   getSignInForm: function() {
-    console.log(document.querySelector(this.signInFormSelector))
-
-
     return document.querySelector(this.signInFormSelector)
   },
 
   getSignUpForm: function() {
-    console.log(document.querySelector(this.signUpFormSelector))
-
     return document.querySelector(this.signUpFormSelector)
   },
+
+
+  getCurrentUserData: function() {
+    return document.querySelector(this.currentUserDataSelector)
+  },
+
 
   getSessionBox: function() {
     return document.querySelector(this.sessionBoxSelector)
@@ -53,6 +57,12 @@ SessionView.prototype = {
 
   getUserLogWindow: function() {
     return document.querySelector(this.userLogWindowSelector)
-  }
+  },
+
+  updateUserData: function(html) {
+    var currentUserData = this.getCurrentUserData()
+    currentUserData.innerHTML = html
+  },
+
 
 }
