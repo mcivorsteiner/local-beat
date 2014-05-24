@@ -41,12 +41,27 @@ html, body {
   height: 20px
  }
 
+ #user-session {
+  float: right;
+  height: 20px
+ }
+
  #searchWindow {
   color:white;
   position:absolute;
   margin-top:-300px;
   background-color:rgba(0,0,0,0.5);
-  /*opacity:0.4;*/
+  margin-left: 40%;
+ }
+
+ #user-log-box {
+  color:white;
+  position:absolute;
+  margin-top:-300px;
+  background-color:rgba(0,0,0,0.5);
+  margin-left: 40%;
+  width: 20%;
+  height: 20%;
  }
 
 /* #advanced-options {
@@ -102,8 +117,14 @@ html, body {
   #magnify {
     height: 40px;
     margin-top: -44px;
+
   }
 
+  #user-session {
+    height: 40px;
+    margin-top: -44px;
+    margin-right: 35px;
+  }
 
 }
 
