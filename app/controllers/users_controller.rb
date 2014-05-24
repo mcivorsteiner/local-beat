@@ -19,8 +19,10 @@ class UsersController < ApplicationController
 
 
     else
-      # Determine login failure action
-      # render :new
+      render json: {errors: @user.errors.full_messages},
+      status: :unprocessable_entity
+      # render json: {error: "Invalid Email and/or password"},
+      # status: :unprocessable_entity
     end
 
   end

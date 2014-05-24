@@ -21,6 +21,8 @@ SessionController.prototype = {
     $(signInForm).on('ajax:success', this.signIn.bind(this))
     $(signUpForm).on('ajax:success', this.signUp.bind(this))
     $(signInForm).on('ajax:error', this.signInError)
+    $(signUpForm).on('ajax:error', this.signUpError)
+
 
   },
 
@@ -47,10 +49,16 @@ SessionController.prototype = {
   },
 
   signInError: function(e, response, responseType, status) {
-    var errorMessage = response.responseJSON.error
+    var errorMessages = response.responseJSON.errors
+    debugger
+  },
+
+  signUpError: function(e, response, responseType, status) {
+    var errorMessages = response.responseJSON.errors
+    debugger
   },
 
   renderSessionBox: function() {
     this.view.toggleSessionBox()
-  }
+  },
 }
