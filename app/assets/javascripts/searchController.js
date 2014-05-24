@@ -11,6 +11,8 @@ searchController.prototype = {
   setListeners: function() {
     this.searchIcon.addEventListener('click', this.renderSearchBar)
     this.advancedOptions.addEventListener('click', this.renderAdvancedOptions)
+    $('form#search').on('ajax:success', this.returnMarker);
+    $('form#search').on('ajax:error', this.appendErrors);
 
   },
 
@@ -22,8 +24,16 @@ searchController.prototype = {
 
   renderAdvancedOptions:function(event){
     event.preventDefault();
-    var advancedSearchOptions = document.getElementById('advanced-options')
-    advancedSearchOptions.classList.toggle('hidden')
+    var advancedSearchOptions = document.querySelector('.advanced-options')
+    advancedSearchOptions.classList.toggle('hidden-adv')
+  },
+
+  returnMarker:function(){
+
+  },
+
+  appendErrors:function(){
+    
   }
 
 }
