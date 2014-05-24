@@ -19,8 +19,6 @@ sessionController.prototype = {
     $(signInForm).on('ajax:success', this.signIn)
     $(signUpForm).on('ajax:success', this.signUp)
 
-    debugger
-
   },
 
   toggleSignIn: function() {
@@ -31,11 +29,11 @@ sessionController.prototype = {
     this.view.toggleSignUpForm()
   },
 
-  signIn: function(response) {
+  signIn: function(e, response) {
     debugger
   },
 
-  signUp: function(response) {
+  signUp: function(e, response) {
     debugger
   },
 }

@@ -6,9 +6,9 @@ class SessionController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to :root
+      render json: UserPresenter.create_json(@user)
     else
-      redirect_to new_session_path
+      #bad login action
     end
   end
 
