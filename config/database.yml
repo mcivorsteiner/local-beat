@@ -15,7 +15,6 @@ development:
 test:
   adapter: postgresql
   database: travis_ci_test
-  username: postgres
   pool: 5
   timeout: 5000
 

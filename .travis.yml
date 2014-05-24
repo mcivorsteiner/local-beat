@@ -4,3 +4,10 @@ rvm:
   - 1.9.3
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+notifications:
+  email:
+    - mcivorsteiner@gmail.com
+    - f.g.garbagnati@gmail.com
+    - fatimakhalilova@gmail.com
+    - kaelinbu@gmail.com
+    - cyancey1@gmail.com
