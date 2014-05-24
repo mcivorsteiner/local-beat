@@ -1,6 +1,4 @@
 class SessionController < ApplicationController
-  def new
-  end
 
   def create
     @user = User.includes(:location).find_by_email(params[:email])
@@ -17,6 +15,6 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to :root
+    #Determine response to send
   end
 end
