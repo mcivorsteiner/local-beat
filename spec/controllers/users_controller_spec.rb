@@ -28,7 +28,6 @@ describe UsersController do
                 password: ""}
 
       post :create, params
-      p response
       expect(response).to_not be_success
     end
 
