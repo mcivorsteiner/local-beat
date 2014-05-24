@@ -50,12 +50,12 @@ SessionController.prototype = {
 
   signInError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    debugger
+    //Determine how to display error messages to user
   },
 
   signUpError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    debugger
+    //Determine how to display error messages to user
   },
 
   renderSessionBox: function() {

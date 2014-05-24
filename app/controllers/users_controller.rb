@@ -17,12 +17,9 @@ class UsersController < ApplicationController
 
       render json: {userData: UserPresenter.create_json(@user), template: html}
 
-
     else
       render json: {errors: @user.errors.full_messages},
       status: :unprocessable_entity
-      # render json: {error: "Invalid Email and/or password"},
-      # status: :unprocessable_entity
     end
 
   end

@@ -7,7 +7,6 @@ class SessionController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-
       html = render_to_string partial: "shared/user_data", locals: {user: @user}
       render json: {userData: UserPresenter.create_json(@user), template: html}
     else
