@@ -11,6 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20140523045051) do
+
+  create_table "artists", :force => true do |t|
+    t.integer "sk_artist_id"
+    t.string  "name"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.integer "sk_location_id"
+    t.float   "lat"
+    t.float   "lng"
+    t.string  "user_input_location_name"
+    t.string  "sk_location_name"
+    t.string  "state"
+    t.string  "country"
+  end
+
+  create_table "users", :force => true do |t|
+    t.integer "location_id"
+    t.string  "email"
+    t.string  "password_digest"
+  end
 
 end
