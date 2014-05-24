@@ -1,8 +1,8 @@
-sessionController = function(view) {
+SessionController = function(view) {
   this.view = view
 }
 
-sessionController.prototype = {
+SessionController.prototype = {
   init: function() {
     this.setListeners()
   },
@@ -12,10 +12,12 @@ sessionController.prototype = {
     var signUpToggleButton = this.view.getSignUpToggleButton()
     var signInForm = this.view.getSignInForm()
     var signUpForm = this.view.getSignUpForm()
-
+    var sessionBox = this.view.getSessionBox()
+    var userLogWindow = this.view.getUserLogWindow()
 
     signInToggleButton.addEventListener('click', this.toggleSignIn.bind(this), false)
     signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
+    sessionBox.addEventListener('click', this.renderSessionBox.bind(this), false)
     $(signInForm).on('ajax:success', this.signIn)
     $(signUpForm).on('ajax:success', this.signUp)
     $(signInForm).on('ajax:error', this.signInError)
@@ -40,6 +42,8 @@ sessionController.prototype = {
 
   signInError: function(e, response, responseType, status) {
     var errorMessage = response.responseJSON.error
-    debugger
+
+  renderSessionBox: function() {
+    this.view.toggleSessionBox()
   }
 }
