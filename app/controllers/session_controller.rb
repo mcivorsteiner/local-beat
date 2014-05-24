@@ -8,7 +8,7 @@ class SessionController < ApplicationController
       session[:user_id] = @user.id
       render json: UserPresenter.create_json(@user)
     else
-      #bad login action
+      render :text => "Invalid email or password", status: :unprocessable_entity
     end
   end
 

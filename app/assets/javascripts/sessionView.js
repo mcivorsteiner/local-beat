@@ -17,13 +17,13 @@ sessionView.prototype = {
   },
 
   toggleSignInForm: function() {
-    var signInForm = document.querySelector(this.signInForm)
+    var signInForm = document.querySelector(this.signInFormDiv)
     debugger
     signInForm.classList.toggle('hidden')
   },
 
   toggleSignUpForm: function() {
-    var signUpForm = document.querySelector(this.signUpForm)
+    var signUpForm = document.querySelector(this.signUpFormDiv)
     signUpForm.classList.toggle('hidden')
   },
 
