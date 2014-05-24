@@ -5,9 +5,9 @@
   <%= render partial: "shared/sign_up", locals: {user: @user} %>
 
 
-  <%= render partial: "shared/login" %>
+  <%= render partial: "shared/sign_in" %>
 
-  <div class="hidden" id="user_data_script">
+  <div class="hidden" id="current-user-data">
     <% if logged_in? %>
       <%= render partial: "shared/user_data", locals: {user: current_user, user_location_data: @user_location_data} %>
     <% end %>

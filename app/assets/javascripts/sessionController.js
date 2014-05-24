@@ -18,6 +18,8 @@ sessionController.prototype = {
     signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
     $(signInForm).on('ajax:success', this.signIn)
     $(signUpForm).on('ajax:success', this.signUp)
+    $(signInForm).on('ajax:error', this.signInError)
+
 
   },
 
@@ -36,4 +38,9 @@ sessionController.prototype = {
   signUp: function(e, response) {
     debugger
   },
+
+  signInError: function(e, response, responseType, status) {
+    var errorMessage = response.responseJSON.error
+    debugger
+  }
 }
