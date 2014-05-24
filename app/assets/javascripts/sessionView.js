@@ -55,7 +55,12 @@ SessionView.prototype = {
 
   getUserLogWindow: function() {
     return document.querySelector(this.userLogWindowSelector)
-  }
+  },
+
+  updateUserData: function(html) {
+    var currentUserData = this.getCurrentUserData()
+    currentUserData.innerHTML = html
+  },
 
 
 }

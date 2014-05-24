@@ -2,8 +2,9 @@
   userData = {
     "id": "<%= user.id %>",
     "email": "<%= user.email %>",
-    "lat": "<%= user_location_data.lat %>",
-    "lng": "<%= user_location_data.lng %>",
-    "songkickLocationName": "<%= user_location_data.sk_location_name %>"
+    "lat": "<%= user.location.lat %>",
+
+    "lng": "<%= user.location.lng %>",
+    "songkickLocationName": "<%= user.location.sk_location_name %>"
   }
 </script>
