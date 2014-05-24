@@ -16,9 +16,9 @@
 <div id="searchWindow" class="hidden">
   <%= form_tag '/events', remote: true do %>
     <%= label_tag :location %>
-    <%= text_field_tag :location %>
+    <%= text_field_tag :location %><br>
     <%= label_tag :artist_name, nil,  :class => "advanced-options hidden-adv" %>
-    <%= text_field_tag :artist_name, nil, :class => "advanced-options hidden-adv"%>
+    <%= text_field_tag :artist_name, nil, :class => "advanced-options hidden-adv"%><br>
     <%= label_tag :date_min,nil,  :class => "advanced-options hidden-adv" %>
     <%= date_select :date_min,nil,  :class => "advanced-options hidden-adv"%>
     <%= label_tag :date_max,nil,  :class => "advanced-options hidden-adv"%>

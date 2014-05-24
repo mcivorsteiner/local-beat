@@ -27,6 +27,8 @@ searchController.prototype = {
     event.preventDefault();
     var advancedSearchOptions = document.querySelector('.advanced-options')
     advancedSearchOptions.classList.toggle('hidden-adv')
-  }
+  },
+
+
 
 }
