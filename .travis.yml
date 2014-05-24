@@ -17,3 +17,5 @@ deploy:
   provider: heroku
   api_key:
     secure: YpO5UGPqHVSQ8p01rRAsO+eNnzYa5GOSUPrYODMjs4aSSVPlk5qeeMkcSVuRpayBGlQxbNoimQ0yPtSI/MZIzaFhUIOLQoLII9maA89umyJzSYTu2ztXoiJeu7zlegniT+CeEfZJBZ4QeEvFWd/NwtMm/T2mn97s5SLu96aNHRY=
+  app: fathomless-mesa-2368
+  strategy: git
