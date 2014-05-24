@@ -2,17 +2,14 @@
 
 
 <div class = "container">
-  <div class="hidden" id="sign-up-form">
-    <%= render partial: "shared/sign_up", locals: {user: @user} %>
-  </div>
 
-  <div class="hidden" id="sign-in-form">
-    <%= render partial: "shared/login" %>
-  </div>
+  <%= render partial: "shared/sign_up", locals: {user: @user} %>
 
-  <div class="hidden" id="user_data_script">
+  <%= render partial: "shared/sign_in" %>
+
+  <div class="hidden" id="current-user-data">
     <% if logged_in? %>
-      <%= render partial: "shared/user_data", locals: {user: current_user, user_location_data: @user_location_data} %>
+      <%= render partial: "shared/user_data", locals: {user: current_user} %>
     <% end %>
   </div>
 </div>
