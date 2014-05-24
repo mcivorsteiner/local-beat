@@ -5,9 +5,9 @@ module UserPresenter
     user_data = {
       id: user_object.id,
       email: user_object.email,
-      lat: user_location.latitude,
-      lng: user_location.longitude,
-      songkickLocationName: user_location.songkick_location_name
+      lat: user_location.lat,
+      lng: user_location.lng,
+      songkickLocationName: user_location.sk_location_name
     }.to_json
   end
 end
