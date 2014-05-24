@@ -4,7 +4,6 @@ describe("Search controller", function(){
       searchController = new SearchController()
     });
 
-
     it("should always have a setListeners method", function() {
       expect(searchController.setListeners).toBeDefined()
     });
