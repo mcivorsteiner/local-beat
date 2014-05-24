@@ -10,6 +10,7 @@ MapController.prototype = {
 
 //set a listener for this after a search is completed
   placeMarkers: function(eventData) {
+    debugger
     var markers = this.eventpresenter.createMarkers(eventData)
     this.view.placeMarkers(markers)
   }

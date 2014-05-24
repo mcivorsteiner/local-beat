@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  debugger
   var view = new MapView();
   var mapController = new MapController(view)
   var sessionView = new SessionView()

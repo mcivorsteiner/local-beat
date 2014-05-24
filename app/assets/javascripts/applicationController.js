@@ -9,5 +9,11 @@ ApplicationController.prototype= {
     this.mapController.init()
     this.sessionController.init()
     this.searchController.init()
+    this.setAjaxListeners()
+  },
+
+  setAjaxListeners: function() {
+    $('.location-search').on('ajax:success', this.mapController.placeMarkers)
+    $('form#search').on('ajax:failure', this.mapController.appendErrors)
   }
 }

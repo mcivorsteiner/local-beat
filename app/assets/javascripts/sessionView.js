@@ -20,7 +20,6 @@ SessionView.prototype = {
 
   toggleSignInForm: function() {
     var signInForm = document.querySelector(this.signInForm)
-    debugger
     signInForm.classList.toggle('hidden')
   },
 
@@ -35,15 +34,10 @@ SessionView.prototype = {
   },
 
   getSignInForm: function() {
-    console.log(document.querySelector(this.signInFormSelector))
-
-
     return document.querySelector(this.signInFormSelector)
   },
 
   getSignUpForm: function() {
-    console.log(document.querySelector(this.signUpFormSelector))
-
     return document.querySelector(this.signUpFormSelector)
   },
 
