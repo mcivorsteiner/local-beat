@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.password = params[:password]
-    user_input_location_name = "#{params[:city]}, #{params[:state]}"
+    user_input_location_name = "#{params[:city]}, #{params[:state]}".downcase
     if @location = Location.find_by_user_input_location_name(user_input_location_name)
       @user.location = @location
     else
