@@ -20,7 +20,6 @@ sessionController.prototype = {
     $(signUpForm).on('ajax:success', this.signUp)
     $(signInForm).on('ajax:error', this.signInError)
 
-
   },
 
   toggleSignIn: function() {

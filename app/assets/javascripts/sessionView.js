@@ -37,6 +37,6 @@ sessionView.prototype = {
 
   getCurrentUserData: function() {
     return document.querySelector(this.currentUserDataSelector)
-  }
+  },
 
 }
