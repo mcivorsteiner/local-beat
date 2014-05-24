@@ -22,7 +22,6 @@ sessionController.prototype = {
   },
 
   toggleSignIn: function() {
-    debugger
     this.view.toggleSignInForm()
   },
 

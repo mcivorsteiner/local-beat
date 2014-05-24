@@ -17,26 +17,20 @@ sessionView.prototype = {
   },
 
   toggleSignInForm: function() {
-    var signInForm = document.querySelector(this.signInForm)
-    debugger
+    var signInForm = document.querySelector(this.signInFormDiv)
     signInForm.classList.toggle('hidden')
   },
 
   toggleSignUpForm: function() {
-    var signUpForm = document.querySelector(this.signUpForm)
+    var signUpForm = document.querySelector(this.signUpFormDiv)
     signUpForm.classList.toggle('hidden')
   },
 
   getSignInForm: function() {
-    console.log(document.querySelector(this.signInFormSelector))
-
-
     return document.querySelector(this.signInFormSelector)
   },
 
   getSignUpForm: function() {
-    console.log(document.querySelector(this.signUpFormSelector))
-
     return document.querySelector(this.signUpFormSelector)
   },
 
