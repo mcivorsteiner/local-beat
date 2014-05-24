@@ -1,15 +1,13 @@
 $(document).ready(function(){
-  var display = new mapView();
-  new mapController(display).init()
+  debugger
+  var view = new MapView();
+  var mapController = new MapController(view)
+  var sessionView = new SessionView()
+  var sessionController = new SessionController(sessionView)
+  var searchController = new SearchController()
+  // var userController = new userSessionController()
+  var applicationController = new ApplicationController(mapController, sessionController, searchController)
 
-
-
-  var seshView = new sessionView()
-  var seshController = new sessionController(seshView)
-
-  seshController.init()
-
-  new searchController().init()
-  new userSessionController().init()
+  applicationController.init()
 
 })

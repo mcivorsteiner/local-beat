@@ -1,13 +1,15 @@
-sessionView = function() {
+SessionView = function() {
   this.signInToggleButtonSelector = '#sign-in'
   this.signUpToggleButtonSelector = '#sign-up'
   this.signInFormSelector = '#sign-in-form form'
   this.signUpFormSelector = '#sign-up-form form'
   this.signUpFormDiv = '#sign-up-form'
   this.signInFormDiv = '#sign-in-form'
+  this.sessionBoxSelector = '#user-session'
+  this.userLogWindowSelector = '#user-log-box'
 }
 
-sessionView.prototype = {
+SessionView.prototype = {
   getSignInToggleButton: function() {
     return document.querySelector(this.signInToggleButtonSelector)
   },
@@ -27,6 +29,11 @@ sessionView.prototype = {
     signUpForm.classList.toggle('hidden')
   },
 
+  toggleSessionBox: function() {
+    var userWindow = document.querySelector(this.userLogWindowSelector)
+    userWindow.classList.toggle('hidden')
+  },
+
   getSignInForm: function() {
     console.log(document.querySelector(this.signInFormSelector))
 
@@ -39,5 +46,13 @@ sessionView.prototype = {
 
     return document.querySelector(this.signUpFormSelector)
   },
+
+  getSessionBox: function() {
+    return document.querySelector(this.sessionBoxSelector)
+  },
+
+  getUserLogWindow: function() {
+    return document.querySelector(this.userLogWindowSelector)
+  }
 
 }
