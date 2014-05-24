@@ -16,7 +16,7 @@ describe EventsController do
       Songkick.stub(:location_id_query) { [FactoryGirl.create(:location)] }
       Songkick.stub(:event_search) { create_event_data }
       expect{ 
-      get :search
+        get :search
       }.to change { Location.count }.by(1)
     end
 
