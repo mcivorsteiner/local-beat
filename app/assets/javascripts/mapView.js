@@ -1,7 +1,7 @@
-function mapView(){
+function MapView(){
 }
 
-mapView.prototype = {
+MapView.prototype = {
   defaults: {
     lng: 40.689493,
     lat: -98.578265,

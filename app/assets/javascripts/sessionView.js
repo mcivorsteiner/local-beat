@@ -1,4 +1,4 @@
-sessionView = function() {
+SessionView = function() {
   this.signInToggleButtonSelector = '#sign-in'
   this.signUpToggleButtonSelector = '#sign-up'
   this.signInFormSelector = '#sign-in-form form'
@@ -9,7 +9,7 @@ sessionView = function() {
   this.userLogWindowSelector = '#user-log-box'
 }
 
-sessionView.prototype = {
+SessionView.prototype = {
   getSignInToggleButton: function() {
     return document.querySelector(this.signInToggleButtonSelector)
   },

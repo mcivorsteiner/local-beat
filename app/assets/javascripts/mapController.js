@@ -1,9 +1,9 @@
-function mapController(view){
+function MapController(view){
   this.view = view
-  this.eventpresenter = new eventPresenter
+  this.eventpresenter = new EventPresenter()
 }
 
-mapController.prototype = {
+MapController.prototype = {
   init: function(){
     this.view.drawMap()
   },

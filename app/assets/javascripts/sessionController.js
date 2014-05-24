@@ -1,8 +1,8 @@
-sessionController = function(view) {
+SessionController = function(view) {
   this.view = view
 }
 
-sessionController.prototype = {
+SessionController.prototype = {
   init: function() {
     this.setListeners()
   },
