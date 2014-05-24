@@ -9,5 +9,11 @@ FactoryGirl.define do
     sk_artist_id { Faker::Number.digit }
     name { Faker::Name.name }
   end
+
+  factory :user do
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+    association :location
+  end
 end
 
