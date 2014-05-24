@@ -9,10 +9,16 @@ mapView.prototype = {
 
   drawMap: function(){
     var mapOptions = {
-    zoom: 5,
-    center: new google.maps.LatLng(this.defaults.lng, this.defaults.lat)
+      zoom: 5,
+      center: new google.maps.LatLng(this.defaults.lng, this.defaults.lat)
     };
-    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    this.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  },
+
+  placeMarkers: function(markers) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(this.map);
     }
   }
+}
 

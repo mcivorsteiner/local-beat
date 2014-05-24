@@ -1,4 +1,4 @@
 $(document).ready(function(){
-  var display = new mapView();
-  new mapController(display).init()
+  var view = new mapView();
+  new mapController(view).init()
 })
