@@ -11,7 +11,7 @@ class SessionController < ApplicationController
       # render json: UserPresenter.create_json(@user)
       render partial: "shared/user_data", locals: {user: @user}
     else
-      render json: {error: "Bad Email and/or password"},
+      render json: {error: "Invalid Email and/or password"},
       status: :unprocessable_entity
     end
   end

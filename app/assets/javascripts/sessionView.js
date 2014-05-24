@@ -22,11 +22,13 @@ SessionView.prototype = {
 
   toggleSignInForm: function() {
     var signInForm = document.querySelector(this.signInFormDivSelector)
+
     signInForm.classList.toggle('hidden')
   },
 
   toggleSignUpForm: function() {
     var signUpForm = document.querySelector(this.signUpFormDivSelector)
+
     signUpForm.classList.toggle('hidden')
   },
 
