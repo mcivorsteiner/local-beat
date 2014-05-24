@@ -8,7 +8,6 @@ MapController.prototype = {
     this.view.drawMap()
   },
 
-//set a listener for this after a search is completed
   placeMarkers: function(event, eventData) {
     var markers = this.eventpresenter.createMarkers(eventData.events)
     console.log(markers)
