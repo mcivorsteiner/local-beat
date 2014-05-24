@@ -9,6 +9,7 @@ userSessionController.prototype = {
   },
 
   setListeners: function() {
+    // add listeners for sign in/sign up pop-up window?
     this.userSessionBox.addEventListener('click', this.renderSessionBox)
   },
 

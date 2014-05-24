@@ -7,14 +7,8 @@ class UsersController < ApplicationController
       @user.location = @location
     else
       location_query_results = Songkick.location_id_query(user_input_location_name)
-      top_location_match = location_query_results.first
-      @location = Location.new(user_input_location_name: user_input_location_name,
-                               sk_location_name: top_location_match[:location_name],
-                               state: top_location_match[:state],
-                               country: top_location_match[:country],
-                               sk_location_id: top_location_match[:sk_location_id],
-                               lat: top_location_match[:lat],
-                               lng: top_location_match[:lng])
+      @location = location_query_results.first
+
 
       @user.location = @location
 
