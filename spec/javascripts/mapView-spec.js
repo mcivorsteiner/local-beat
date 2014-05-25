@@ -1,13 +1,16 @@
-describe("Google Maps View", function() {
+describe("Map View", function() {
   var view, controller;
   beforeEach(function() {
-    view = new mapView()
+    view = new MapView()
     spyOn(view, 'drawMap')
-    controller = new mapController(view).init()
+    controller = new MapController(view).init()
   });
 
   it("gets into the drawMap function", function() {
     expect(view.drawMap).toHaveBeenCalled()
   });
 
+  it("has a placeMarkers function", function(){
+    expect(view.placeMarkers).toBeDefined()
+  });
 })
