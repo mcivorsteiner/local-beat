@@ -8,7 +8,7 @@ describe EventsController do
     it "reponds to GET request to search action" do
       Songkick.stub(:location_id_query) { [location] } 
       Songkick.stub(:event_search) { create_event_data }
-      get :search
+      get :search, event_search_params
       expect(response).to be_success
     end
 
@@ -16,17 +16,20 @@ describe EventsController do
       Songkick.stub(:location_id_query) { [FactoryGirl.create(:location)] }
       Songkick.stub(:event_search) { create_event_data }
       expect{ 
-        get :search
+        get :search, event_search_params
       }.to change { Location.count }.by(1)
     end
 
     it "does not create a new location if it is already in the database" do
-      
       Songkick.stub(:event_search) {create_event_data}
       expect{
-        get :search, user_input_location_name: location.user_input_location_name
+        get :search, event_search_params(location.user_input_location_name)
       }.to change { Location.count }.by(0)
     end
   end
+
+  # context "format_date private helper method" do
+  #   it "correctly formats select"
+  # end
 
 end

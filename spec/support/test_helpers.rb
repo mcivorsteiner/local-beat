@@ -1,5 +1,23 @@
 module TestHelpers
   # extend self
+
+  def event_search_params(location_name = nil, options = {})
+    location = location_name || "San Fransisco"
+    artist_name = options[:artist_name] || ""
+    if options[:dates]
+      min_date = {"(1i)"=>"2014", "(2i)"=>"6", "(3i)"=>"1"}
+      max_date = {"(1i)"=>"2014", "(2i)"=>"6", "(3i)"=>"30"}
+    else
+      min_date = ""
+      max_date = ""
+    end
+    return { "user_input_location_name" => location,
+             "artist_name" => artist_name,
+             "min_date" => min_date,
+             "max_date" => max_date
+           }
+  end
+
   def create_event_data
     events_data = []
     5.times do
