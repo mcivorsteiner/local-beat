@@ -19,6 +19,11 @@ MapView.prototype = {
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(this.map);
     }
+  },
+
+   hideSearchBox: function(){
+    var searchWindow = document.getElementById('searchWindow')
+    searchWindow.classList.toggle('hidden')
   }
 }
 

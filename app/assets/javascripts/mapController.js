@@ -9,8 +9,8 @@ MapController.prototype = {
   },
 
   placeMarkers: function(event, eventData) {
+    this.view.hideSearchBox()
     var markers = this.eventPresenter.createMarkers(eventData.events)
-    console.log(markers)
     this.view.placeMarkers(markers)
 
     for(var i=0; i < markers.length; i++) {
@@ -19,13 +19,16 @@ MapController.prototype = {
   },
 
   showInfoWindow: function() {
-
     if (typeof infoWindow != "undefined") {
       infoWindow.close()
     }
     var eventDetails = this.eventInfo
     infoWindow = new google.maps.InfoWindow()
-    infoWindow.setContent("yoyo")
+    // var source = document.querySelector('div .small-info-box').html()
+    // var template = Handlebars.compile(source)
+    // infoWindow.setContent($(".small-info-box-container").html(template(eventDetails)) )
+    eventContent = (document.querySelector(".small-info-box-container").textContent = eventDetails.venueName)
+    infoWindow.setContent(eventContent)
 
     infoWindow.open(this.map, this)
   }
