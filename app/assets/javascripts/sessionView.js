@@ -22,7 +22,6 @@ SessionView.prototype = {
 
   toggleSignInForm: function() {
     var signInForm = document.querySelector(this.signInFormDivSelector)
-
     signInForm.classList.toggle('hidden')
   },
 

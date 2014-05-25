@@ -11,7 +11,6 @@ SearchController.prototype = {
   setListeners: function() {
     this.searchIcon.addEventListener('click', this.renderSearchBar)
     this.advancedOptions.addEventListener('click', this.renderAdvancedOptions)
-
   },
 
   renderSearchBar: function(event) {
@@ -22,8 +21,7 @@ SearchController.prototype = {
 
   renderAdvancedOptions:function(event){
     event.preventDefault();
-    var advancedSearchOptions = document.getElementById('advanced-options')
-    advancedSearchOptions.classList.toggle('hidden')
+    var advancedSearchOptions = document.querySelector('.advanced-options')
+    advancedSearchOptions.classList.toggle('hidden-adv')
   }
-
 }

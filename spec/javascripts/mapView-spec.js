@@ -1,9 +1,9 @@
 describe("Google Maps View", function() {
   var view, controller;
   beforeEach(function() {
-    view = new mapView()
+    view = new MapView()
     spyOn(view, 'drawMap')
-    controller = new mapController(view).init()
+    controller = new MapController(view).init()
   });
 
   it("gets into the drawMap function", function() {

@@ -56,11 +56,10 @@ module Songkick
   # * +location+ - See the Songkick website for instructions on how to use the location parameter http://www.songkick.com/developer/location-search
 
   def event_search(query = {})
-    query = query.reject { |key, value| value.nil? }
-    p "query is:#{query}"
+    query = query.reject { |key, value| value.empty? }
+    puts "QUERY #{query}"
     url = "/events.json?apikey=#{SONGKICK_KEY}"
     response = request(url, query)
-    pp response
     events = response["resultsPage"]["results"]["event"]
     extract_event_data(events)
   end
