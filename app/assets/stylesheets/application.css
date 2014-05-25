@@ -17,10 +17,6 @@ html, body {
   width: 100%;
 }
 
-/*body {
-  background:url('/assets/images/logo-option-5.png');
-}*/
-
 #map-canvas {
   border: 1px solid black;
   height:100%;
