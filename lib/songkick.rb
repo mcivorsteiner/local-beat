@@ -57,7 +57,6 @@ module Songkick
 
   def event_search(query = {})
     query = query.reject { |key, value| value.empty? }
-    puts "QUERY #{query}"
     url = "/events.json?apikey=#{SONGKICK_KEY}"
     response = request(url, query)
     events = response["resultsPage"]["results"]["event"]

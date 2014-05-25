@@ -72,9 +72,16 @@ html, body {
     display: none;
  }
 
- .hidden-adv {
-    display: none;
- }
+
+ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+label {
+  display: inline-block;
+  width: 75px;
+}
 
  /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width : 480px) {
