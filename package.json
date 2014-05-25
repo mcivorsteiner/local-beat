@@ -1,0 +1,21 @@
+{
+  "name": "localbeat",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "*",
+    "grunt-cssc": "*",
+    "grunt-htmlhint": "*",
+    "matchdep": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pocket-gophers-2014/local-beat"
+  }
+  "scripts": {
+    "test": "grunt travis --verbose"
+  }
+}
