@@ -2,11 +2,6 @@ function MapView(){
 }
 
 MapView.prototype = {
-  defaults: {
-    lat: 40.689493,
-    lng: -98.578265,
-  },
-
   drawMap: function(){
     this.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   },
@@ -34,7 +29,6 @@ MapView.prototype = {
     var center = new google.maps.LatLng(lat, lng)
     this.map.panTo(center)
     this.map.setZoom(12)
-
   }
 }
 
