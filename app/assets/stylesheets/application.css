@@ -18,17 +18,20 @@ html, body {
 }
 
 #map-canvas {
-  border: 1px solid black;
   height:100%;
   width:100%;
-  margin-top:0.1%;
+  position: absolute;
+  top: 0;
+
  }
 
  #navbar {
-  width:100%;
+  width:95%;
   height: 7%;
   background-color: black;
-  margin-top:0;
+  margin:10px auto 0;
+  position: absolute;
+  z-index: 1;
  }
 
  h4 {
@@ -43,25 +46,28 @@ html, body {
 
  #user-session {
   float: right;
-  height: 20px
+  height: 20px;
+  position: absolute;
  }
 
  #searchWindow {
   color:white;
   position:absolute;
-  margin-top:-300px;
   background-color:rgba(0,0,0,0.5);
   margin-left: 40%;
+  margin-top: 90px;
+  z-index: 1;
  }
 
  #user-log-box {
   color:white;
-  position:absolute;
-  margin-top:-300px;
+  margin-top:90px;
   background-color:rgba(0,0,0,0.5);
   margin-left: 40%;
   width: 20%;
   height: 20%;
+  position: absolute;
+  z-index: 1;
  }
 
  .hidden {
@@ -77,61 +83,5 @@ ul {
 label {
   display: inline-block;
   width: 75px;
-}
-
- /* Smartphones (portrait and landscape) ----------- */
-@media screen and (max-width : 480px) {
-/* Styles */
-  html, body {
-    height:100%;
-    width: 100%;
-  }
-
-  #map-canvas {
-    border: 1px solid black;
-    height:95%;
-    width:95%;
-    margin-top: 0.1%;
-  }
-
-  #navbar {
-    width:95%;
-    margin-top:0;
-  }
-
-}
-
-@media screen and (max-width : 640px) {
-/* Styles */
-  html, body {
-    height:100%;
-    width: 100%;
-  }
-
-  #map-canvas {
-    border: 1px solid black;
-    height:95%;
-    width:98%;
-    margin-top: 0.4%;
-
-  }
-
-  #navbar {
-    width:98.4%;
-    margin-top:0;
-  }
-
-  #magnify {
-    height: 40px;
-    margin-top: -44px;
-
-  }
-
-  #user-session {
-    height: 40px;
-    margin-top: -44px;
-    margin-right: 35px;
-  }
-
 }
 
