@@ -18,6 +18,7 @@ MapController.prototype = {
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
     }
+
     this.view.setMap(eventData.location_coords)
 
   },
@@ -34,6 +35,7 @@ MapController.prototype = {
     var html = template(context)
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
+    debugger
   }
 }
 
