@@ -1,4 +1,4 @@
-describe("Google Maps View", function() {
+describe("Map View", function() {
   var view, controller;
   beforeEach(function() {
     view = new MapView()
@@ -10,4 +10,7 @@ describe("Google Maps View", function() {
     expect(view.drawMap).toHaveBeenCalled()
   });
 
+  it("has a placeMarkers function", function(){
+    expect(view.placeMarkers).toBeDefined()
+  });
 })
