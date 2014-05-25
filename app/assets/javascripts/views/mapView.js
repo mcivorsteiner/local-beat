@@ -82,6 +82,16 @@ MapView.prototype = {
     }
   },
 
+   hideSearchBox: function(){
+    var searchWindow = document.getElementById('searchWindow')
+    searchWindow.classList.toggle('hidden')
+  },
+
+  clearMarkers: function(markers){
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    },
+
   setMap: function(locationCoords){
     var lng = parseFloat(locationCoords.lng)
     var lat = parseFloat(locationCoords.lat)
