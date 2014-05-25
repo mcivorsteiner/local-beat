@@ -8,19 +8,18 @@ class UsersController < ApplicationController
     else
       location_query_results = Songkick.location_id_query(user_input_location_name)
       @location = location_query_results.first
-
-
       @user.location = @location
-
     end
-
 
     if @user && @user.save
       session[:user_id] = @user.id
-      render json: UserPresenter.create_json(@user)
+      html = render_to_string partial: "shared/user_data", locals: {user: @user}
+
+      render json: {userData: UserPresenter.create_json(@user), template: html}
+
     else
-      # Determine login failure action
-      # render :new
+      render json: {errors: @user.errors.full_messages},
+      status: :unprocessable_entity
     end
 
   end
