@@ -28,26 +28,22 @@ html, body {
  #navbar {
   width:95%;
   height: 7%;
-  background-color: black;
   margin:10px auto 0;
   position: absolute;
   z-index: 1;
  }
 
- h4 {
-  margin-top: 0;
-  color: white;
- }
 
  #magnify {
   float: right;
-  height: 20px
+  height: 20px;
+  background-color: black;
  }
 
  #user-session {
   float: right;
   height: 20px;
-  position: absolute;
+  background-color: black;
  }
 
  #searchWindow {
