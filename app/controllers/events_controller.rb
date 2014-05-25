@@ -6,7 +6,6 @@ class EventsController < ApplicationController
     end
     event_query = format_event_query(params, @location)
     @events = Songkick.event_search(event_query)
-    puts @events.map { |event| [event[:date], event[:headliner]]}
     render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events }
   end
 
@@ -14,8 +13,8 @@ class EventsController < ApplicationController
 
   def format_event_query(params, location)
     location = "sk:#{location.sk_location_id}"
-    min_date = format_date(params[:min_date])
-    max_date = format_date(params[:max_date])
+    min_date = params[:min_date]
+    max_date = params[:max_date]
     return {location: location, artist_name: params[:artist_name], min_date: min_date, max_date: max_date}
   end
 

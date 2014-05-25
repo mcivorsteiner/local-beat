@@ -21,7 +21,6 @@ SearchController.prototype = {
 
   renderAdvancedOptions:function(event){
     event.preventDefault();
-    var advancedSearchOptions = document.querySelector('.advanced-options')
-    advancedSearchOptions.classList.toggle('hidden-adv')
+    $('.advanced-options').toggleClass('hidden')
   }
 }
