@@ -90,7 +90,8 @@ MapView.prototype = {
   clearMarkers: function(markers){
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
-    },
+    }
+  },
 
   setMap: function(locationCoords){
     var lng = parseFloat(locationCoords.lng)

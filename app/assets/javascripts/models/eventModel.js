@@ -11,6 +11,7 @@ function Event(eventData){
   this.popularity = eventData.popularity
   this.eventType = eventData.event_type
   this.uri = eventData.uri
+  this.headliner = eventData.headliner
 }
 
 Event.prototype = {

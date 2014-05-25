@@ -28,12 +28,11 @@ MapController.prototype = {
     }
     var eventDetails = this.eventInfo
     infoWindow = new google.maps.InfoWindow()
-    // var source = document.querySelector('div .small-info-box').html()
-    // var template = Handlebars.compile(source)
-    // infoWindow.setContent($(".small-info-box-container").html(template(eventDetails)) )
-    eventContent = (document.querySelector(".small-info-box-container").textContent = eventDetails.venueName)
-    infoWindow.setContent(eventContent)
-    // infoWindow.maxWidth(100px)
+    var source = document.querySelector('.small-info-box').innerHTML
+    var template = Handlebars.compile(source)
+    var context = {eventObject: eventDetails }
+    var html = template(context)
+    infoWindow.setContent(html)
     infoWindow.open(this.map, this)
   }
 }
