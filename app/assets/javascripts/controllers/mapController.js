@@ -7,6 +7,11 @@ function MapController(view){
 MapController.prototype = {
   init: function(){
     this.view.drawMap()
+
+    if (typeof userData != 'undefined') {
+      var locationCoords = {lat: userData.lat, lng: userData.lng}
+      this.view.setMap(locationCoords)
+    }
   },
 
   placeMarkers: function(event, eventData) {
