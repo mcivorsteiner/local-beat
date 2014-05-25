@@ -12,7 +12,6 @@ EventPresenter.prototype = {
         var eventObject = new Event(eventData[i])
         marker.eventInfo = eventObject
         this.markers.push(marker)
-        // google.maps.event.addListener(marker, 'click', this.showInfoWindow)
       }
       return this.markers
     }
