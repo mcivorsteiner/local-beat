@@ -27,11 +27,20 @@ MapController.prototype = {
       infoWindow.close()
     }
     var eventDetails = this.eventInfo
+    if (eventDetails.isFestival) {
+
+    }
     infoWindow = new google.maps.InfoWindow()
-    var source = document.querySelector('.small-info-box').innerHTML
-    var template = Handlebars.compile(source)
-    var context = {eventObject: eventDetails }
-    var html = template(context)
+    // var source = document.querySelector('.small-info-box').innerHTML
+    // var template = Handlebars.compile(source)
+    // var context = {eventObject: eventDetails }
+
+
+    // var html = template(context)
+    var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
+
+    debugger
+
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
   }
