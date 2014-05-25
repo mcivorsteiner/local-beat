@@ -1,6 +1,7 @@
 function MapController(view){
   this.view = view
   this.eventPresenter = new EventPresenter()
+  this.markers = []
 }
 
 MapController.prototype = {
@@ -9,9 +10,10 @@ MapController.prototype = {
   },
 
   placeMarkers: function(event, eventData) {
+    this.view.clearMarkers(this.markers)
     this.view.hideSearchBox()
-    var markers = this.eventPresenter.createMarkers(eventData.events)
-    this.view.placeMarkers(markers)
+    this.markers = this.eventPresenter.createMarkers(eventData.events)
+    this.view.placeMarkers(this.markers)
 
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
@@ -29,7 +31,7 @@ MapController.prototype = {
     // infoWindow.setContent($(".small-info-box-container").html(template(eventDetails)) )
     eventContent = (document.querySelector(".small-info-box-container").textContent = eventDetails.venueName)
     infoWindow.setContent(eventContent)
-
+    // infoWindow.maxWidth(100px)
     infoWindow.open(this.map, this)
   }
 }
