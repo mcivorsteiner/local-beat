@@ -10,8 +10,8 @@ MapController.prototype = {
 
   placeMarkers: function(event, eventData) {
     var markers = this.eventpresenter.createMarkers(eventData.events)
-    console.log(markers)
     this.view.placeMarkers(markers)
+    this.view.setMap(eventData.location_coords)
   }
 }
 
