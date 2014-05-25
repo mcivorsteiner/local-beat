@@ -86,16 +86,9 @@ MapView.prototype = {
     var lng = parseFloat(locationCoords.lng)
     var lat = parseFloat(locationCoords.lat)
     var center = new google.maps.LatLng(lat, lng)
-<<<<<<< HEAD:app/assets/javascripts/mapView.js
-
     this.map.panTo(center)
     this.map.setZoom(12)
 
-
-=======
-    this.map.panTo(center)
-    this.map.setZoom(12)
->>>>>>> master:app/assets/javascripts/views/mapView.js
   }
 }
 
