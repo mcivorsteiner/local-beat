@@ -22,14 +22,9 @@ MapView.prototype = {
   },
 
   setMap: function(locationCoords){
-    console.log(locationCoords)
     var lng = parseFloat(locationCoords.lng)
     var lat = parseFloat(locationCoords.lat)
-
-    // var center = new google.maps.LatLng(45, 44)
     var center = new google.maps.LatLng(lat, lng)
-
-    console.log(center)
     this.map.panTo(center)
     this.map.setZoom(12)
   }
