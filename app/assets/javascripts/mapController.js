@@ -20,13 +20,14 @@ MapController.prototype = {
 
   showInfoWindow: function() {
 
+    if (typeof infoWindow != "undefined") {
+      infoWindow.close()
+    }
     var eventDetails = this.eventInfo
-    var infoWindow = new google.maps.InfoWindow({
-      content: "Hello"
-    })
+    infoWindow = new google.maps.InfoWindow()
+    infoWindow.setContent("yoyo")
 
     infoWindow.open(this.map, this)
-    debugger
   }
 }
 
