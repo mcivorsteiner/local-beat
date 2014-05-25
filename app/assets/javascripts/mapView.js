@@ -8,11 +8,10 @@ MapView.prototype = {
   },
 
   drawMap: function(){
-    var image = '/images/marker-icon.png'
+
     var mapOptions = {
       zoom: 5,
       center: new google.maps.LatLng(this.defaults.lat, this.defaults.lng),
-      marker: new google.maps.Marker({icon: image}),
       styles: [
       {
         "featureType":"water",
@@ -74,6 +73,8 @@ MapView.prototype = {
       ]
     };
     this.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    // I HATE GOOGLE MAPS MARKERS.
+
   },
 
   placeMarkers: function(markers) {
@@ -86,10 +87,10 @@ MapView.prototype = {
     var lng = parseFloat(locationCoords.lng)
     var lat = parseFloat(locationCoords.lat)
     var center = new google.maps.LatLng(lat, lng)
+
     this.map.panTo(center)
     this.map.setZoom(12)
-    // var image = '/images/marker-icon.png'
-    // var marker = new google.maps.Marker({icon: image})
+
 
   }
 }
