@@ -24,6 +24,13 @@ label {
   display: none;
 }
 
+button {
+  padding: 5px;
+  width: 95px;
+  font-size: 1.15em;
+  background-color:#e3edd3;
+}
+
 /*##########################################
 MAP/LOGO
 ##########################################*/
@@ -77,6 +84,7 @@ LOGIN/SIGNUP
   right: 10px;
   top: 55px;
   z-index: 1;
+  padding: 5px;
   border-radius:5px;
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
@@ -94,8 +102,20 @@ LOGIN/SIGNUP
   color:white;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
-  margin-top: 22%;
+  padding-right: 10px;
+  border-radius: 5px;
+  top: 160px;
+  right: 10px;
   z-index: 1;
+}
+
+form input[type='submit'] {
+  padding: 5px;
+  width: 95px;
+  font-size: 1.15em;
+  background-color:#e3edd3;
+  padding: 5px;
+  
 }
 
 /*##########################################
