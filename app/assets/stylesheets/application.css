@@ -56,11 +56,9 @@ html, body {
 
  #user-log-box {
   color:white;
-  margin-top:90px;
+  margin-top:11%;
   background-color:rgba(0,0,0,0.5);
-  margin-left: 40%;
-  width: 20%;
-  height: 20%;
+  margin-left: 80%;
   position: absolute;
   z-index: 1;
  }
