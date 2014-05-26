@@ -18,6 +18,18 @@ module Songkick
      "/search/locations.json?location=geo:#{coordsObj[:lat]},#{coordsObj[:lng]}&apikey=#{SONGKICK_KEY}"
   end
 
+  def event_search_by_lat_lng(coordsObj)
+    url = "/events.json?location=geo:#{coordsObj[:lat]},#{coordsObj[:lng]}&apikey=#{SONGKICK_KEY}"
+    response = request(url)
+
+    events = response["resultsPage"]["results"]["event"]
+    metro_area_id = response["resultsPage"]["results"]["event"].first["venue"]["metroArea"]["id"]
+
+    results = {metro_area_id: metro_area_id, events: extract_event_data(events)}
+  end
+
+
+
   def request(url, query = {})
     response = get(url, query: query)
     JSON.parse(response.body)

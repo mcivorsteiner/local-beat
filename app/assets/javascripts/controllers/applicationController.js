@@ -60,6 +60,7 @@ ApplicationController.prototype= {
   },
 
   setCurrentLocation: function(response) {
+    debugger
     if (this.userLoggedIn()) {
     } else {
       var locationCoords = {lat: response.lat, lng: response.lng}
