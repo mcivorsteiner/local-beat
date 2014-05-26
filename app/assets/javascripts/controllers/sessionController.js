@@ -69,6 +69,18 @@ SessionController.prototype = {
   },
 
   logOut: function() {
+    var ajaxRequest = $.ajax({
+      url: '/session',
+      type: 'DELETE'
+    })
+
+    ajaxRequest.done(this.logOutSuccess.bind(this))
+  },
+
+  logOutSuccess: function() {
     debugger
+    logOutButton = this.view.getLogOutButton()
+
+    logOutButton.src = '/assets/sign-in-icon.png'
   }
 }

@@ -14,7 +14,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    #Determine response to send
+    session.clear
+    render text: "Session Cleared"
   end
 end
