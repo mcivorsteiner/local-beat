@@ -1,9 +1,11 @@
 function MapView(){
+  this.mapSelector = "map-canvas"
+  this.searchWindowSelector = "search-window"
 }
 
 MapView.prototype = {
   drawMap: function(){
-    this.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    this.map = new google.maps.Map(document.getElementById(this.mapSelector), mapOptions);
   },
 
   placeMarkers: function(markers) {
@@ -12,10 +14,9 @@ MapView.prototype = {
     }
   },
 
-  hideSearchBox: function(){
-    var searchWindow = document.getElementById('searchWindow')
+  hideSearchBox: function(){ //WIP this should not be in mapview
+    var searchWindow = document.getElementById(this.searchWindowSelector)
     searchWindow.classList.toggle('hidden')
-    // $('searchWindow').hide()
   },
 
   clearMarkers: function(markers){

@@ -7,7 +7,7 @@ describe "Users", :js => true do
     before(:each) { visit root_path }
 
     it "allow user user to sign up" do
-      find('#log-in-menu-button').click
+      find('#login-menu-button').click
       find('#sign-up').click
       fill_in "Email", :with => "mia@mia.com"
       fill_in "Password", :with => "mia"
@@ -19,8 +19,8 @@ describe "Users", :js => true do
     end
 
     it "allows user to sign in" do
-      find('#log-in-menu-button').click
-      find('#sign-in').click
+      find('#login-menu-button').click
+      find('#login').click
       fill_in "Email", :with => user.email
       fill_in "Password", :with => user.password
       find("form input[type='submit']").click

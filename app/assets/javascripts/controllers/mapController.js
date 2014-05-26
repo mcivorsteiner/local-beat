@@ -16,7 +16,7 @@ MapController.prototype = {
 
   placeMarkers: function(event, eventData) {
     this.view.clearMarkers(this.markers)
-    this.view.hideSearchBox()
+    this.view.hideSearchBox() //WIP this should be calling search view method
     this.markers = this.eventPresenter.createMarkers(eventData.events)
     this.view.placeMarkers(this.markers)
 
@@ -41,7 +41,6 @@ MapController.prototype = {
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
-    debugger
   }
 }
 

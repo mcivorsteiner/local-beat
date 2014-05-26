@@ -6,21 +6,21 @@ describe "Homepage", :js => true do
 
     it "should not display sign up/login/search/adv-search buttons onload" do
       expect(page).to_not have_content("Sign Up")
-      expect(page).to_not have_content("Sign In")
+      expect(page).to_not have_content("Login")
       expect(page).to_not have_content("Search")
       expect(page).to_not have_content("Search")
     end
 
     it "should display sign up and sign in buttons after click" do
-      find('#log-in-menu-button').click
+      find('#login-menu-button').click
       expect(page).to have_content("Sign Up")
-      expect(page).to have_content("Sign In")
+      expect(page).to have_content("Login")
     end
 
     it "should display search and more options buttons after click" do
       find('#magnify').click
-      expect(page).to have_content("Search")
-      expect(page).to have_content("More Search Options")
+      expect(page).to have_selector(".location-search")
+      expect(page).to have_selector("#advanced-search")
     end
 
     it "should display more input options after click" do
@@ -29,10 +29,5 @@ describe "Homepage", :js => true do
       expect(page).to have_content("Artist name")
       expect(page).to have_content("Min date")
     end
-
-    # it "allow user user to sign up" do
-    #   visit root_path
-    #   fill_in "Email", :with => "mia@mia.com"
-    # end
   end
 end

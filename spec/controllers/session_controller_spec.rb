@@ -25,8 +25,6 @@ describe SessionController do
     it "responds with success" do
       delete :destroy
       expect(response).to be_success
-
-      p response.body
     end
 
     it "responds with Session Cleared" do

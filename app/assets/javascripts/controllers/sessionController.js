@@ -8,42 +8,28 @@ SessionController.prototype = {
   },
 
   setListeners: function() {
-    var signInToggleButton = this.view.getSignInToggleButton()
-    var signUpToggleButton = this.view.getSignUpToggleButton()
-    var signInForm = this.view.getSignInForm()
-    var signUpForm = this.view.getSignUpForm()
-    var userLogWindow = this.view.getUserLogWindow()
-    var sessionMenu = this.view.getSessionMenu()
+    this.view.getLoginToggleButton().addEventListener('click', this.toggleLogin.bind(this), false)
+    this.view.getSignUpToggleButton().addEventListener('click', this.toggleSignUp.bind(this), false)
 
+    $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
+    $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
-    signInToggleButton.addEventListener('click', this.toggleSignIn.bind(this), false)
-    signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
-
-    $(sessionMenu).on('click', '#log-in-menu-button', this.toggleSessionBox.bind(this))
-    $(sessionMenu).on('click', '#logout-button', this.logOut.bind(this))
-
-
-    // loggedOutButton.addEventListener('click', this.toggleSessionBox.bind(this), false)
-    // $(signInForm).on('ajax:success', this.signIn.bind(this))
-    // $(signUpForm).on('ajax:success', this.signUp.bind(this))
-    $(signInForm).on('ajax:error', this.signInError)
-    $(signUpForm).on('ajax:error', this.signUpError)
-
-
+    $(this.view.getLoginForm()).on('ajax:error', this.loginError)
+    $(this.view.getSignUpForm()).on('ajax:error', this.signUpError)
   },
 
-  toggleSignIn: function() {
-    this.view.toggleSignInForm()
+  toggleLogin: function() {
+    this.view.toggleLoginForm()
   },
 
   toggleSignUp: function() {
     this.view.toggleSignUpForm()
   },
 
-  signIn: function(e, response) {
+  login: function(e, response) {
     userData = JSON.parse(response.userData)
     this.view.updateUserData(response.template)
-    this.toggleSignIn()
+    this.toggleLogin()
     this.toggleSessionBox()
 
     var loginMenuButton = this.view.getLoginMenuButton()
@@ -62,14 +48,14 @@ SessionController.prototype = {
     loginMenuButton.id = 'logout-button'
   },
 
-  signInError: function(e, response, responseType, status) {
+  loginError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //Determine how to display error messages to user
+    //WIP Determine how to display error messages to user
   },
 
   signUpError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //Determine how to display error messages to user
+    //WIP Determine how to display error messages to user
   },
 
   toggleSessionBox: function() {
@@ -87,8 +73,8 @@ SessionController.prototype = {
 
   logOutSuccess: function() {
     logOutButton = this.view.getLogOutButton()
-    logOutButton.src = '/assets/sign-in-icon.png'
-    logOutButton.id = 'log-in-menu-button'
+    logOutButton.src = '/assets/login-icon.png'
+    logOutButton.id = 'login-menu-button'
     userData = undefined
     this.view.getCurrentUserData().innerText = ""
   }
