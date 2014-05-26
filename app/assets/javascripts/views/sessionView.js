@@ -6,8 +6,10 @@ SessionView = function() {
   this.signUpFormDivSelector = '#sign-up-form'
   this.signInFormDivSelector = '#sign-in-form'
   this.currentUserDataSelector = '#current-user-data'
-  this.sessionBoxSelector = '#user-session'
+  this.logInMenuSelector = '#log-in-menu-button'
   this.userLogWindowSelector = '#user-log-box'
+  this.sessionMenuSelector = '#session-menu'
+  this.logOutButtonSelector = '#logout-button'
 
 }
 
@@ -28,7 +30,7 @@ SessionView.prototype = {
     } else {
       $(this.signInFormDivSelector).hide(800)
     }
-    
+
   },
 
   toggleSignUpForm: function() {
@@ -66,8 +68,8 @@ SessionView.prototype = {
   },
 
 
-  getSessionBox: function() {
-    return document.querySelector(this.sessionBoxSelector)
+  getLoginMenuButton: function() {
+    return document.querySelector(this.logInMenuSelector)
   },
 
   getUserLogWindow: function() {
@@ -78,6 +80,14 @@ SessionView.prototype = {
     var currentUserData = this.getCurrentUserData()
     currentUserData.innerHTML = html
   },
+
+  getSessionMenu: function() {
+    return document.querySelector(this.sessionMenuSelector)
+  },
+
+  getLogOutButton: function() {
+    return document.querySelector(this.logOutButtonSelector)
+  }
 
 
 }
