@@ -20,7 +20,7 @@ SearchView.prototype = {
     if ($(this.advOptionsSelector).is(':hidden')){
       $(this.advOptionsSelector).slideDown("slow");
     } else {
-      $(this.advOptionsSelector).hide()
+      $(this.advOptionsSelector).hide(500)
     }
   }
 }

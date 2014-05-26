@@ -64,6 +64,10 @@ html, body {
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
+#more-options-icon {
+  height: 40px;
+ }
+
 #searchWindow {
   color:white;
   position:absolute;
