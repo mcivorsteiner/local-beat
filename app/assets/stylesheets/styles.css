@@ -1,0 +1,119 @@
+/*##########################################
+GENERAL
+##########################################*/
+
+html, body {
+  margin: 0;
+  height:100%;
+  width: 100%;
+  font-family: Avenir;
+}
+
+ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+label {
+  display: inline-block;
+  width: 75px;
+}
+
+.hidden {
+  display: none;
+}
+
+/*##########################################
+MAP/LOGO
+##########################################*/
+
+#map-canvas {
+  height:100%;
+  width:100%;
+  position: absolute;
+  top: 0;
+}
+
+#logo img{
+  width:60%;
+  opacity:0.4;
+}
+
+#logo {
+  position:fixed;
+  left:15px;
+  bottom:2%;
+  z-index: 5;
+}
+
+/*##########################################
+LOGIN/SIGNUP
+##########################################*/
+
+#session-menu {
+  width: 95%;
+  height: 7%;
+  margin: 1% auto 0;
+  position: absolute;
+  z-index: 1;
+}
+
+#log-in-menu-button, #logout-button {
+  float: right;
+  margin-right: -2%;
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#user-log-box {
+  color:white;
+  background-color:rgba(0,0,0,0.5);
+  position: absolute;
+  right: 10px;
+  top: 55px;
+  z-index: 1;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#sign-up-form {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 22%;
+  z-index: 1;
+}
+
+#sign-in-form {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 22%;
+  z-index: 1;
+}
+
+/*##########################################
+SEARCH
+##########################################*/
+
+#magnify {
+  float: left;
+  margin-left: 1%;
+  height: 40px;
+  background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#searchWindow {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 12%;
+  z-index: 1;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
