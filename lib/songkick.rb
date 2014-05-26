@@ -45,19 +45,68 @@ module Songkick
     }
   end
 
+  # def location_id_query(location_query)
+  #   url      = location_search_url(location_query)
+  #   response = request(url)
+
+  #   results = response["resultsPage"]["results"]
+
+  #   if results && results["location"].map do |location|
+  #     if metro_area = location["metroArea"]
+  #       sk_location_name = metro_area["displayName"] ? metro_area["displayName"] : nil
+  #       sk_location_id   = metro_area["id"]          ? metro_area["id"].to_i     : nil
+  #       lat              = metro_area["lat"]         ? metro_area["lat"].to_f    : nil
+  #       lng              = metro_area["lng"]         ? metro_area["lng"].to_f    : nil
+
+  #       if state = metro_area["state"]
+  #         state = state["displayName"]
+  #       else
+  #         state = nil
+  #       end
+
+  #       if country = metro_area["country"]
+  #         country = country["displayName"]
+  #       else
+  #         country = nil
+  #       end
+
+  #       Location.new({
+  #         user_input_location_name: location_query.downcase, 
+  #         sk_location_id:           sk_location_id, 
+  #         sk_location_name:         sk_location_name, 
+  #         state:                    state, 
+  #         country:                  country, 
+  #         lat:                      lat, 
+  #         lng:                      lng
+  #       })
+  #     else
+  #       []
+  #     end
+  #   else
+  #     []
+  #   end
+  # end
+
   def location_id_query(location_query)
     url = location_search_url(location_query)
     response = request(url)
-    locations = response["resultsPage"]["results"]["location"].map do |location|
-      location_name = location["metroArea"]["displayName"] rescue nil
-      sk_location_id = location["metroArea"]["id"].to_i rescue nil
-      state = location["metroArea"]["state"]["displayName"] rescue nil
-      country = location["metroArea"]["country"]["displayName"] rescue nil
-      lat = location["metroArea"]["lat"].to_f rescue nil
-      lng = location["metroArea"]["lng"].to_f rescue nil
-      Location.new(sk_location_id: sk_location_id, sk_location_name: location_name, user_input_location_name: location_query.downcase, state: state, country: country, lat: lat, lng: lng)
+
+    results = response["resultsPage"]["results"]
+
+    if results && results["location"]
+      locations = results["location"].map do |location|
+        location_name    = location["metroArea"]["displayName"] rescue nil
+        sk_location_id   = location["metroArea"]["id"].to_i rescue nil
+        state            = location["metroArea"]["state"]["displayName"] rescue nil
+        country          = location["metroArea"]["country"]["displayName"] rescue nil
+        lat              = location["metroArea"]["lat"].to_f rescue nil
+        lng              = location["metroArea"]["lng"].to_f rescue nil
+        Location.new(sk_location_id: sk_location_id, sk_location_name: location_name, user_input_location_name: location_query.downcase, state: state, country: country, lat: lat, lng: lng)
+      end
+      locations
+    else
+      []
     end
-    locations
   end
 
   # ==== Query Parameters
