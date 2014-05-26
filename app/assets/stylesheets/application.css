@@ -31,6 +31,18 @@ html, body {
   margin-top:0;
  }
 
+ #logo img{
+  width:60%;
+  opacity:0.4;
+ }
+
+ #logo {
+  position:fixed;
+  left:15px;
+  bottom:0px;
+  z-index: 5;
+ }
+
  h4 {
   margin-top: 0;
   color: white;
