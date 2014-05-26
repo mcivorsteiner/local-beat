@@ -42,7 +42,7 @@ form input[type='submit'] {
 }
 
 input[type='text'], input[type='password']{
-  width: 95%;
+  width: 90%;
   font-size: 1.25em;
 }
 
@@ -171,4 +171,9 @@ SEARCH
   margin-top: 3px;
   margin-bottom: 3px;
 
+}
+
+.hide-submit {
+  position: absolute;
+  visibility: hidden;
 }

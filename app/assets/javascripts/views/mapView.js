@@ -1,6 +1,6 @@
 function MapView(){
   this.mapSelector = "map-canvas"
-  this.searchWindowSelector = "search-window"
+  this.searchWindowSelector = "#search-window"
 }
 
 MapView.prototype = {
@@ -15,8 +15,11 @@ MapView.prototype = {
   },
 
   hideSearchBox: function(){ //WIP this should not be in mapview
-    var searchWindow = document.getElementById(this.searchWindowSelector)
-    searchWindow.classList.toggle('hidden')
+    // var searchWindow = document.getElementById(this.searchWindowSelector)
+    // searchWindow.classList.toggle('hidden')
+    $(this.searchWindowSelector).hide(500)
+    // $('.advanced-options').hide()
+    $('.pop-up').hide()
   },
 
   clearMarkers: function(markers){
