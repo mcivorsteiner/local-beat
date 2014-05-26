@@ -22,27 +22,27 @@ html, body {
   width:100%;
   position: absolute;
   top: 0;
-
  }
 
  #navbar {
-  width:95%;
+  width: 95%;
   height: 7%;
-  margin:10px auto 0;
+  margin: 1% auto 0;
   position: absolute;
   z-index: 1;
  }
 
 
  #magnify {
-  float: right;
-  height: 20px;
+  float: left;
+  height: 40px;
   background-color: black;
  }
 
  #user-session {
   float: right;
-  height: 20px;
+  height: 40px;
+  width: 40px;
   background-color: black;
  }
 
