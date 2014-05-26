@@ -6,15 +6,15 @@ describe "Homepage", :js => true do
 
     it "should not display sign up/login/search/adv-search buttons onload" do
       expect(page).to_not have_content("Sign Up")
-      expect(page).to_not have_content("Sign In")
+      expect(page).to_not have_content("Login")
       expect(page).to_not have_content("Search")
       expect(page).to_not have_content("Search")
     end
 
     it "should display sign up and sign in buttons after click" do
-      find('#log-in-menu-button').click
+      find('#login-menu-button').click
       expect(page).to have_content("Sign Up")
-      expect(page).to have_content("Sign In")
+      expect(page).to have_content("Login")
     end
 
     it "should display search and more options buttons after click" do
