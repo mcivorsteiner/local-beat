@@ -24,7 +24,7 @@ html, body {
   top: 0;
  }
 
- #navbar {
+#navbar {
   width: 95%;
   height: 7%;
   margin: 1% auto 0;
@@ -33,20 +33,20 @@ html, body {
  }
 
 
- #magnify {
+#magnify {
   float: left;
   height: 40px;
   background-color: black;
  }
 
- #user-session {
+#user-session {
   float: right;
   height: 40px;
   width: 40px;
   background-color: black;
  }
 
- #searchWindow {
+#searchWindow {
   color:white;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
@@ -54,19 +54,34 @@ html, body {
   z-index: 1;
  }
 
- #user-log-box {
+#user-log-box {
   color:white;
   margin-top:11%;
   background-color:rgba(0,0,0,0.5);
-  margin-left: 80%;
+  margin-left: 79%;
   position: absolute;
   z-index: 1;
  }
 
- .hidden {
+.hidden {
     display: none;
  }
 
+#sign-up-form {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 22%;
+  z-index: 1;
+}
+
+#sign-in-form {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 22%;
+  z-index: 1;
+}
 
 ul {
   list-style: none;

@@ -21,14 +21,25 @@ SessionView.prototype = {
   },
 
   toggleSignInForm: function() {
-    var signInForm = document.querySelector(this.signInFormDivSelector)
-    signInForm.classList.toggle('hidden')
+    // var signInForm = document.querySelector(this.signInFormDivSelector)
+    // signInForm.classList.toggle('hidden')
+    if ($(this.signInFormDivSelector).is(':hidden')){
+      $(this.signInFormDivSelector).show("slow");
+    } else {
+      $(this.signInFormDivSelector).hide(800)
+    }
+    
   },
 
   toggleSignUpForm: function() {
-    var signUpForm = document.querySelector(this.signUpFormDivSelector)
+    // var signUpForm = document.querySelector(this.signUpFormDivSelector)
 
-    signUpForm.classList.toggle('hidden')
+    // signUpForm.classList.toggle('hidden')
+      if ($(this.signUpFormDivSelector).is(':hidden')){
+        $(this.signUpFormDivSelector).show("slow");
+      } else {
+        $(this.signUpFormDivSelector).hide(800)
+      }
   },
 
   toggleSessionBox: function() {
