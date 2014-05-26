@@ -47,6 +47,7 @@ html, body {
 
 #magnify {
   float: left;
+  margin-left: 1%;
   height: 40px;
   background-color: black;
   border-radius:5px;
