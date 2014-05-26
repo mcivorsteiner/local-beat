@@ -84,7 +84,6 @@ html, body {
 #user-log-box {
   color:white;
   margin-top:12%;
-  background-color:rgba(0,0,0,0.5);
   margin-left: 81%;
   position: absolute;
   z-index: 1;
