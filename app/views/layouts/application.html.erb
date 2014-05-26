@@ -13,9 +13,13 @@
 </head>
 
 <body>
-  <div id="navbar">
+  <div id="session-menu">
     <img id="magnify" src="/assets/search-icon.png">
-    <img id="user-session" src="/assets/sign-in-icon.png">
+    <% unless logged_in? %>
+    <img id="log-in-menu-button" src="/assets/sign-in-icon.png">
+    <% else %>
+    <img id="logout-button" src="/assets/sign-out-icon.png">
+    <% end %>
   </div>
   <div id='logo'>
     <img src='/assets/logo-option-5.png'>
