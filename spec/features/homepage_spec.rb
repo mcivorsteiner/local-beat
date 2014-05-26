@@ -12,7 +12,7 @@ describe "Homepage", :js => true do
     end
 
     it "should display sign up and sign in buttons after click" do
-      find('#user-session').click
+      find('#log-in-menu-button').click
       expect(page).to have_content("Sign Up")
       expect(page).to have_content("Sign In")
     end
