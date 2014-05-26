@@ -43,9 +43,6 @@ module Songkick
       lat: metro_area["lat"],
       lng: metro_area["lng"]
     }
-
-
-
   end
 
   def location_id_query(location_query)

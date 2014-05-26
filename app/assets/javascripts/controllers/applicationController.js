@@ -53,8 +53,6 @@ ApplicationController.prototype= {
     var positionCoords = position.coords
     var coordsObj = {lat: positionCoords.latitude, lng: positionCoords.longitude}
 
-    console.log(this)
-
     var ajaxRequest = $.ajax({
       url: '/locations',
       type: 'GET',
@@ -62,7 +60,6 @@ ApplicationController.prototype= {
     })
 
     ajaxRequest.done(this.setCurrentLocation.bind(this))
-
   },
 
   userLoggedIn: function() {
