@@ -32,8 +32,13 @@ SessionView.prototype = {
   },
 
   toggleSessionBox: function() {
-    var userWindow = document.querySelector(this.userLogWindowSelector)
-    userWindow.classList.toggle('hidden')
+    // var userWindow = document.querySelector(this.userLogWindowSelector)
+    if ($(this.userLogWindowSelector).is(':hidden')){
+      $(this.userLogWindowSelector).slideDown("slow");
+    } else {
+      $(this.userLogWindowSelector).slideUp()
+    }
+    // userWindow.classList.toggle('hidden')
   },
 
   getSignInForm: function() {
