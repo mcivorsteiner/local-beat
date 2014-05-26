@@ -18,27 +18,27 @@ describe("Session Controller", function() {
     expect(controller.setListeners).toBeDefined()
   });
 
-  it("has a toggle sign in function", function(){
-    expect(controller.toggleSignIn).toBeDefined()
+  it("has a toggle login function", function(){
+    expect(controller.toggleLogin).toBeDefined()
   });
 
   it("has a toggle sign up function", function(){
     expect(controller.toggleSignUp).toBeDefined()
   });
 
-  it("has a sign in function", function(){
-    expect(controller.signIn).toBeDefined()
+  it("has a login function", function(){
+    expect(controller.login).toBeDefined()
   });
 
   it("has a sign up function", function(){
     expect(controller.signUp).toBeDefined()
   });
 
-  it("has a sign in error function", function(){
-    expect(controller.signInError).toBeDefined()
+  it("has a login error function", function(){
+    expect(controller.loginError).toBeDefined()
   });
 
-  // would be good to have a test for "returns an error message json object if there is a sign in error"
+  // would be good to have a test for "returns an error message json object if there is a login error"
 
   it("has a toggle session box function", function(){
     expect(controller.toggleSessionBox).toBeDefined()

@@ -16,7 +16,7 @@ ApplicationController.prototype= {
   setAjaxListeners: function() {
     $('.search').on('ajax:success', this.placeMarkers.bind(this))
     $('.search').on('ajax:error', function(){console.log("we are in the error")})
-    $(this.sessionController.view.getSignInForm()).on('ajax:success', this.signIn.bind(this))
+    $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
   },
 
@@ -24,8 +24,8 @@ ApplicationController.prototype= {
     this.mapController.placeMarkers(event, response)
   },
 
-  signIn: function(e, response) {
-    this.sessionController.signIn(e, response)
+  login: function(e, response) {
+    this.sessionController.login(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
     this.mapController.view.setMap(locationCoords)
   },

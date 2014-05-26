@@ -1,12 +1,12 @@
 SessionView = function() {
-  this.signInToggleButtonSelector = '#sign-in'
+  this.loginToggleButtonSelector = '#login'
   this.signUpToggleButtonSelector = '#sign-up'
-  this.signInFormSelector = '#sign-in-form form'
+  this.loginFormSelector = '#login-form form'
   this.signUpFormSelector = '#sign-up-form form'
   this.signUpFormDivSelector = '#sign-up-form'
-  this.signInFormDivSelector = '#sign-in-form'
+  this.loginFormDivSelector = '#login-form'
   this.currentUserDataSelector = '#current-user-data'
-  this.logInMenuSelector = '#log-in-menu-button'
+  this.logInMenuSelector = '#login-menu-button'
   this.userLogWindowSelector = '#user-log-box'
   this.sessionMenuSelector = '#session-menu'
   this.logOutButtonSelector = '#logout-button'
@@ -14,21 +14,21 @@ SessionView = function() {
 }
 
 SessionView.prototype = {
-  getSignInToggleButton: function() {
-    return document.querySelector(this.signInToggleButtonSelector)
+  getLoginToggleButton: function() {
+    return document.querySelector(this.loginToggleButtonSelector)
   },
 
   getSignUpToggleButton: function() {
     return document.querySelector(this.signUpToggleButtonSelector)
   },
 
-  toggleSignInForm: function() {
-    // var signInForm = document.querySelector(this.signInFormDivSelector)
-    // signInForm.classList.toggle('hidden')
-    if ($(this.signInFormDivSelector).is(':hidden')){
-      $(this.signInFormDivSelector).show("slow");
+  toggleLoginForm: function() {
+    // var loginForm = document.querySelector(this.loginFormDivSelector)
+    // loginForm.classList.toggle('hidden')
+    if ($(this.loginFormDivSelector).is(':hidden')){
+      $(this.loginFormDivSelector).show("slow");
     } else {
-      $(this.signInFormDivSelector).hide(800)
+      $(this.loginFormDivSelector).hide(800)
     }
 
   },
@@ -54,8 +54,8 @@ SessionView.prototype = {
     // userWindow.classList.toggle('hidden')
   },
 
-  getSignInForm: function() {
-    return document.querySelector(this.signInFormSelector)
+  getLoginForm: function() {
+    return document.querySelector(this.loginFormSelector)
   },
 
   getSignUpForm: function() {

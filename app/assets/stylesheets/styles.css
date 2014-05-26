@@ -58,7 +58,7 @@ LOGIN/SIGNUP
   z-index: 1;
 }
 
-#log-in-menu-button, #logout-button {
+#login-menu-button, #logout-button {
   float: right;
   margin-right: -2%;
   height: 40px;
@@ -79,6 +79,8 @@ LOGIN/SIGNUP
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
 
+
+
 #sign-up-form {
   color:white;
   position:absolute;
@@ -87,7 +89,7 @@ LOGIN/SIGNUP
   z-index: 1;
 }
 
-#sign-in-form {
+#login-form {
   color:white;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
