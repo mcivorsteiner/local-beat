@@ -10,6 +10,8 @@ SearchView.prototype = {
     // $(".loc-submit").addClass("hide-submit")
     // $('.pop-up').hide()
     // $(this.advOptionsIconSelector).show()
+    $('#user_input_location_name').val('')
+    $('#artist_name').val('')
    if ($(this.searchWindowSelector).is(':hidden')){
     $('.pop-up').hide()
     $(this.searchWindowSelector).slideDown("slow")
