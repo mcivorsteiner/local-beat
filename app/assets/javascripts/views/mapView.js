@@ -13,9 +13,9 @@ MapView.prototype = {
   },
 
   hideSearchBox: function(){
-    var searchWindow = document.getElementById('searchWindow')
+    var searchWindow = document.getElementById('search-window')
     searchWindow.classList.toggle('hidden')
-    // $('searchWindow').hide()
+    // $('search-window').hide()
   },
 
   clearMarkers: function(markers){

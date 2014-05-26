@@ -1,5 +1,5 @@
 function SearchView(){
-  this.searchWindowSelector = '#searchWindow'
+  this.searchWindowSelector = '#search-window'
   this.advOptionsSelector = '.advanced-options'
 }
 
