@@ -9,4 +9,7 @@ LocalBeat::Application.routes.draw do
 
   get '/events', to: 'events#search'
   resources :users, only: [:new, :create, :edit, :destroy, :update]
+
+  get '/locations', to: 'locations#search'
+
 end
