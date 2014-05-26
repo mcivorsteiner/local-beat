@@ -35,6 +35,7 @@ SessionController.prototype = {
     this.toggleLogin()
     this.toggleSessionBox()
     this.view.clearForms()
+    
     var loginMenuButton = this.view.getLoginMenuButton()
     loginMenuButton.src = '/assets/sign-out-icon.png'
     loginMenuButton.id = 'logout-button'
@@ -46,6 +47,7 @@ SessionController.prototype = {
     this.toggleSignUp()
     this.toggleSessionBox()
     this.view.clearForms()
+
     var loginMenuButton = this.view.getLoginMenuButton()
     loginMenuButton.src = '/assets/sign-out-icon.png'
     loginMenuButton.id = 'logout-button'
