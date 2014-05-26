@@ -50,9 +50,11 @@ SessionView.prototype = {
   toggleSessionBox: function() {
     // var userWindow = document.querySelector(this.userLogWindowSelector)
     if ($(this.userLogWindowSelector).is(':hidden')){
-      $(this.userLogWindowSelector).slideDown("slow");
+      $('.pop-up').hide()
+      $(this.userLogWindowSelector).slideDown("fast")
     } else {
-      $(this.userLogWindowSelector).slideUp()
+      $(this.userLogWindowSelector).hide()
+      
     }
     // userWindow.classList.toggle('hidden')
   },
