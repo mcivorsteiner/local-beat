@@ -6,7 +6,7 @@ describe EventsController do
 
   context "search" do
     it "reponds to GET request to search action" do
-      Songkick.stub(:location_id_query) { [location] } 
+      Songkick.stub(:location_id_query) { [location] }
       Songkick.stub(:event_search) { create_event_data }
       get :search, event_search_params
       expect(response).to be_success
@@ -15,7 +15,7 @@ describe EventsController do
     it "creates a location if it is not found in the database" do
       Songkick.stub(:location_id_query) { [FactoryGirl.create(:location)] }
       Songkick.stub(:event_search) { create_event_data }
-      expect{ 
+      expect{
         get :search, event_search_params
       }.to change { Location.count }.by(1)
     end

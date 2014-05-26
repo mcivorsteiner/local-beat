@@ -49,6 +49,7 @@ module Songkick
     url = location_search_url(location_query)
     response = request(url)
     locations = response["resultsPage"]["results"]["location"].map do |location|
+      # Uh....what's with all the rescue..
       location_name = location["metroArea"]["displayName"] rescue nil
       sk_location_id = location["metroArea"]["id"].to_i rescue nil
       state = location["metroArea"]["state"]["displayName"] rescue nil
@@ -80,6 +81,10 @@ module Songkick
   end
 
   def extract_event_data(events)
+    # why are we rescuing nil everywhere.  that merits a comment at least. Or
+    # we could coerce all results to be something e.g. String(x['notARealKey'])
+    #
+    # There are better ways of dealing with this
     events_data = events.map do |event|
       sk_event_id = event["id"].to_i rescue nil
       display_name = event["displayName"] rescue nil

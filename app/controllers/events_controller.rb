@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   def search
     unless @location = Location.find_by_user_input_location_name(params[:user_input_location_name])
+      # This is kinda brittle, what if you get nothing back?  You're going to
+      # blow up the JS app.
       @location = Songkick.location_id_query(params[:user_input_location_name]).first
       @location.save
     end

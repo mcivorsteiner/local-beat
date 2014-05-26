@@ -1,3 +1,4 @@
+# This certainly fairly goes in app/models. You have a UsersController
 module UserPresenter
   extend self
   def create_json(user_object)
