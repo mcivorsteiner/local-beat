@@ -1,4 +1,4 @@
-<div class="hidden" id="sign-up-form">
+<div class="hidden pop-up" id="sign-up-form">
   <%= form_for user, remote: true do |f| %>
     <%= f.text_field :email, placeholder: "Email" %><br>
     <%= password_field_tag :password, nil, placeholder: "Password" %><br>

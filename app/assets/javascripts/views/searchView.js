@@ -7,7 +7,8 @@ function SearchView(){
 
 SearchView.prototype = {
   renderSearchBar: function(event) {
-    $(this.advOptionsIconSelector).toggleClass('hidden')
+    $('.pop-up').hide()
+    $(this.advOptionsIconSelector).show()
    if ($(this.searchWindowSelector).is(':hidden')){
     $(this.searchWindowSelector).slideDown("slow");
    } else {
