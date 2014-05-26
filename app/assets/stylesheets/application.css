@@ -40,7 +40,7 @@ html, body {
  #logo {
   position:fixed;
   left:15px;
-  bottom:0px;
+  bottom:2%;
   z-index: 5;
  }
 
@@ -48,30 +48,39 @@ html, body {
   float: left;
   height: 40px;
   background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
 #user-session {
   float: right;
+  margin-right: -2%;
   height: 40px;
   width: 40px;
   background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
 #searchWindow {
   color:white;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
-  margin-top: 11%;
+  margin-top: 12%;
   z-index: 1;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
 #user-log-box {
   color:white;
-  margin-top:11%;
+  margin-top:12%;
   background-color:rgba(0,0,0,0.5);
-  margin-left: 79%;
+  margin-left: 81%;
   position: absolute;
   z-index: 1;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
 .hidden {
