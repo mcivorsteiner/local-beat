@@ -42,7 +42,7 @@ form input[type='submit'] {
 }
 
 input[type='text'], input[type='password']{
-  width: 100px;
+  width: 95%;
   font-size: 1.25em;
 }
 
@@ -155,6 +155,8 @@ SEARCH
 
 #search-window {
   color:white;
+  width: 60%;
+  max-width: 300px;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
   top: 10px;
@@ -166,5 +168,7 @@ SEARCH
 }
 
 #search-window ul {
-  margin-top: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+
 }

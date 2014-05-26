@@ -5,8 +5,7 @@
       <%= text_field_tag :user_input_location_name, nil, placeholder: "Location" %>
     </li>
     <li class="advanced-options hidden">
-      <%= label_tag :artist_name %>
-      <%= text_field_tag :artist_name %>
+      <%= text_field_tag :artist_name, nil, placeholder: "Artist Name" %>
     </li>
     <li class="advanced-options hidden">
       <%= label_tag :min_date %>
@@ -19,7 +18,7 @@
       <%= submit_tag("Search", :class=>"location-search") %>
     </li>
   <% end %>
-  <button id="advanced-search">More Options</button>
+  <!-- <button id="advanced-search">More Options</button> -->
 </ul>
 </div>
 
