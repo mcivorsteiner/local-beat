@@ -8,10 +8,20 @@ MapController.prototype = {
   init: function(){
     this.view.drawMap()
 
-    if (typeof userData != 'undefined') {
-      var locationCoords = {lat: userData.lat, lng: userData.lng}
-      this.view.setMap(locationCoords)
-    }
+    /* Hm, is this a global?  :-/
+     *
+     *
+     * I'd also collapse down some of this logic
+     *
+     * Wait...
+     * Isn't not undefined === truthy?  make simlpler;
+     *
+     * Ah, so if you simply do a truthiness test you get a red error message in
+     * Chrome.  Maybe this should only fire once we *DO*
+     * have userData.....this wrangling
+     * is the code telling you that you're somewhat off in your design.
+    */
+    if (typeof userData != 'undefined') this.view.setMap({lat: userData.lat, lng: userData.lng})
   },
 
   placeMarkers: function(event, eventData) {
@@ -29,6 +39,9 @@ MapController.prototype = {
   },
 
   showInfoWindow: function() {
+    /* Really dislike your use of globals: couldn't you wrap it, or set it on
+    *  something?
+    */
     if (typeof infoWindow != "undefined") {
       infoWindow.close()
     }

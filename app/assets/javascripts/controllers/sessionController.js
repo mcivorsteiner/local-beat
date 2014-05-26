@@ -14,6 +14,8 @@ SessionController.prototype = {
     $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
     $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
+    /* Don't you need to bind() these too? */
+
     $(this.view.getLoginForm()).on('ajax:error', this.loginError)
     $(this.view.getSignUpForm()).on('ajax:error', this.signUpError)
   },
@@ -29,6 +31,9 @@ SessionController.prototype = {
   },
 
   login: function(e, response) {
+    /* This is such an important thing can we set it on applicationController
+     * and wrap it in methods....setUserData(response.userData) ?
+     */
     userData = JSON.parse(response.userData)
     this.view.updateUserData(response.template)
     this.toggleLogin()
@@ -65,6 +70,7 @@ SessionController.prototype = {
     this.view.toggleSessionBox()
   },
 
+  /* Feels like this should be set on the applicationController global */
   logOut: function() {
     var ajaxRequest = $.ajax({
       url: '/session',
@@ -73,6 +79,10 @@ SessionController.prototype = {
 
     ajaxRequest.done(this.logOutSuccess.bind(this))
   },
+
+  /* Feels like this behavior should be passed to
+  * applicationController.logout(callback)
+  * */
 
   logOutSuccess: function() {
     logOutButton = this.view.getLogOutButton()

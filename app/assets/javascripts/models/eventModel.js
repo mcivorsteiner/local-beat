@@ -1,5 +1,14 @@
+/* YIKES NO NO NO NO NO NO!
+ *
+ * Event is a native JavaScript class -- you're breaking core JS
+ * functionality!  I'm astounded everything still works!
+ *
+ */
+
 function Event(eventData){
   this.constructor.count++
+
+  // Consider for() for enumerating hasOwnProperty keys
   this.skEventId = eventData.sk_event_id
   this.displayName = eventData.display_name
   this.date = eventData.date
@@ -16,10 +25,13 @@ function Event(eventData){
 
 Event.prototype = {
   isFestival: function() {
-    if (this.eventType === "Festival") {
-      return true
-    } else {
-      return false
-    }
+    // simpler:
+    //
+    return (this.eventType === "Festival");
+    //if (this.eventType === "Festival") {
+      //return true
+    //} else {
+      //return false
+    //}
   }
 }

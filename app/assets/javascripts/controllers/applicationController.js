@@ -9,6 +9,7 @@ ApplicationController.prototype= {
     this.mapController.init()
     this.sessionController.init()
     this.searchController.init()
+
     this.setAjaxListeners()
     this.getCurrentLocation()
   },
@@ -26,17 +27,20 @@ ApplicationController.prototype= {
 
   login: function(e, response) {
     this.sessionController.login(e, response)
+    // This userData global feels kinda dangerous to me....
     var locationCoords = {lat: userData.lat, lng: userData.lng}
     this.mapController.view.setMap(locationCoords)
   },
 
   signUp: function(e, response) {
     this.sessionController.signUp(e, response)
+    // This userData global feels kinda dangerous to me....
     var locationCoords = {lat: userData.lat, lng: userData.lng}
     this.mapController.view.setMap(locationCoords)
   },
 
   getCurrentLocation: function() {
+    /* Look into a library claled Modernizr for testing geolocation support */
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.locationReceived.bind(this))
     }
@@ -46,22 +50,25 @@ ApplicationController.prototype= {
     var positionCoords = position.coords
     var coordsObj = {lat: positionCoords.latitude, lng: positionCoords.longitude}
 
-    var ajaxRequest = $.ajax({
+    $.ajax({
       url: '/locations',
       type: 'GET',
       data: coordsObj
     })
+    .done(this.setCurrentLocation.bind(this));
 
-    ajaxRequest.done(this.setCurrentLocation.bind(this))
+    /* or, more simply...^^^^^^^^^*/
+
   },
 
   userLoggedIn: function() {
+    // This userData global feels kinda dangerous to me....
     return typeof userData != 'undefined'
   },
 
   setCurrentLocation: function(response) {
-    if (this.userLoggedIn()) {
-    } else {
+    // simpler...
+    if (!this.userLoggedIn()) {
       var locationCoords = {lat: response.lat, lng: response.lng}
       this.mapController.view.setMap(locationCoords)
     }
