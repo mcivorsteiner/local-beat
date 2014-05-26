@@ -49,8 +49,6 @@ SessionView.prototype = {
 
   toggleSessionBox: function() {
     // var userWindow = document.querySelector(this.userLogWindowSelector)
-  
-    console.log($(this.userLogWindowSelector).is(':hidden'))
     if ($(this.userLogWindowSelector).is(':hidden')){
       $('.pop-up').hide()
       $(this.userLogWindowSelector).slideDown("fast")
