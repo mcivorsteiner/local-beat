@@ -18,8 +18,8 @@ SessionController.prototype = {
     signInToggleButton.addEventListener('click', this.toggleSignIn.bind(this), false)
     signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
     sessionBox.addEventListener('click', this.renderSessionBox.bind(this), false)
-    $(signInForm).on('ajax:success', this.signIn.bind(this))
-    $(signUpForm).on('ajax:success', this.signUp.bind(this))
+    // $(signInForm).on('ajax:success', this.signIn.bind(this))
+    // $(signUpForm).on('ajax:success', this.signUp.bind(this))
     $(signInForm).on('ajax:error', this.signInError)
     $(signUpForm).on('ajax:error', this.signUpError)
 

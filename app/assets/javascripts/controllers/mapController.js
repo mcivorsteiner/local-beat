@@ -7,6 +7,11 @@ function MapController(view){
 MapController.prototype = {
   init: function(){
     this.view.drawMap()
+
+    if (typeof userData != 'undefined') {
+      var locationCoords = {lat: userData.lat, lng: userData.lng}
+      this.view.setMap(locationCoords)
+    }
   },
 
   placeMarkers: function(event, eventData) {
@@ -18,6 +23,7 @@ MapController.prototype = {
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
     }
+
     this.view.setMap(eventData.location_coords)
 
   },
@@ -35,6 +41,7 @@ MapController.prototype = {
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
+    debugger
   }
 }
 
