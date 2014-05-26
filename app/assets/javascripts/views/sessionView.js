@@ -10,7 +10,7 @@ SessionView = function() {
   this.userLogWindowSelector = '#user-log-box'
   this.sessionMenuSelector = '#session-menu'
   this.logOutButtonSelector = '#logout-button'
-
+  this.errorDivSelector = '.errors h4'
 }
 
 SessionView.prototype = {
@@ -58,6 +58,11 @@ SessionView.prototype = {
     }
     // userWindow.classList.toggle('hidden')
   },
+
+  renderErrorMessages: function(errors){
+    document.querySelector(this.errorDivSelector).innerText = errors
+  },
+
 
   getLoginForm: function() {
     return document.querySelector(this.loginFormSelector)
