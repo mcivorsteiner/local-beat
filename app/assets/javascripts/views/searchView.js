@@ -7,6 +7,7 @@ function SearchView(){
 
 SearchView.prototype = {
   renderSearchBar: function(event) {
+    $(".loc-submit").addClass("hide-submit")
     $('.pop-up').hide()
     $(this.advOptionsIconSelector).show()
    if ($(this.searchWindowSelector).is(':hidden')){
@@ -17,6 +18,7 @@ SearchView.prototype = {
   },
 
   renderAdvancedOptions:function(event){
+    $(".loc-submit").removeClass("hide-submit")
     if ($(this.advOptionsSelector).is(':hidden')){
       $(this.advOptionsSelector).slideDown("slow");
     } else {
