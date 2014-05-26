@@ -7,6 +7,8 @@ function SearchView(){
 
 SearchView.prototype = {
   renderSearchBar: function(event) {
+    $('#user_input_location_name').val('')
+    $('#artist_name').val('')
     $(".loc-submit").addClass("hide-submit")
     $('.pop-up').hide()
     $(this.advOptionsIconSelector).show()
