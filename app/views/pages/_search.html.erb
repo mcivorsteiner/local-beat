@@ -1,13 +1,11 @@
-<div id="search-window" class="hidden">
+<div id="search-window" class="hidden pop-up">
   <ul>
   <%= form_tag('/events', :method=> :get, :class=>"search", remote: true) do %>
     <li>
-      <%= label_tag :user_input_location_name, "Location" %>
-      <%= text_field_tag :user_input_location_name %>
+      <%= text_field_tag :user_input_location_name, nil, placeholder: "Location" %>
     </li>
     <li class="advanced-options hidden">
-      <%= label_tag :artist_name %>
-      <%= text_field_tag :artist_name %>
+      <%= text_field_tag :artist_name, nil, placeholder: "Artist Name" %>
     </li>
     <li class="advanced-options hidden">
       <%= label_tag :min_date %>
@@ -16,11 +14,11 @@
     <li class="advanced-options hidden">
       <%= label_tag :max_date %>
       <input type="date" name="max_date">
-    <li>
+    <li class="advanced-options hidden">
       <%= submit_tag("Search", :class=>"location-search") %>
     </li>
   <% end %>
-  <button id="advanced-search">More Options</button>
+  <!-- <button id="advanced-search">More Options</button> -->
 </ul>
 </div>
 

@@ -19,10 +19,12 @@ SessionController.prototype = {
   },
 
   toggleLogin: function() {
+    this.view.clearForms()
     this.view.toggleLoginForm()
   },
 
   toggleSignUp: function() {
+    this.view.clearForms()
     this.view.toggleSignUpForm()
   },
 
@@ -59,6 +61,7 @@ SessionController.prototype = {
   },
 
   toggleSessionBox: function() {
+    this.view.clearForms()
     this.view.toggleSessionBox()
   },
 

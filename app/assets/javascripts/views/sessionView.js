@@ -22,6 +22,10 @@ SessionView.prototype = {
     return document.querySelector(this.signUpToggleButtonSelector)
   },
 
+  clearForms: function(){
+    $('.pop-up').hide()
+  },
+
   toggleLoginForm: function() {
     // var loginForm = document.querySelector(this.loginFormDivSelector)
     // loginForm.classList.toggle('hidden')
