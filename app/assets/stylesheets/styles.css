@@ -43,6 +43,7 @@ form input[type='submit'] {
 
 input[type='text'], input[type='password']{
   width: 100px;
+  font-size: 1.25em;
 }
 
 /*##########################################
@@ -141,14 +142,29 @@ SEARCH
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
 
+#more-options-icon {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  /*display: hidden;*/
+  height: 40px;
+  background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
 #search-window {
   color:white;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
-  top: 55px;
-  left: 10px;
+  top: 10px;
+  left: 55px;
   z-index: 1;
   padding-right: 10px;
   border-radius:5px;
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#search-window ul {
+  margin-top: 5px;
 }

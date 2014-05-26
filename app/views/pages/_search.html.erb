@@ -2,8 +2,7 @@
   <ul>
   <%= form_tag('/events', :method=> :get, :class=>"search", remote: true) do %>
     <li>
-      <%= label_tag :user_input_location_name, "Location" %>
-      <%= text_field_tag :user_input_location_name %>
+      <%= text_field_tag :user_input_location_name, nil, placeholder: "Location" %>
     </li>
     <li class="advanced-options hidden">
       <%= label_tag :artist_name %>
@@ -16,7 +15,7 @@
     <li class="advanced-options hidden">
       <%= label_tag :max_date %>
       <input type="date" name="max_date">
-    <li>
+    <li class="advanced-options hidden">
       <%= submit_tag("Search", :class=>"location-search") %>
     </li>
   <% end %>
