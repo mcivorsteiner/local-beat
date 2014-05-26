@@ -78,9 +78,12 @@ SessionController.prototype = {
   },
 
   logOutSuccess: function() {
-    debugger
-    logOutButton = this.view.getLogOutButton()
 
+    logOutButton = this.view.getLogOutButton()
     logOutButton.src = '/assets/sign-in-icon.png'
+    logOutButton.id = 'log-in-menu-button'
+    userData = undefined
+    this.view.getCurrentUserData().innerText = ""
+
   }
 }
