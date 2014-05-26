@@ -181,13 +181,8 @@ button:active, .submit-button:active {
 @media screen and (max-width:800px){
 
   #user-log-box {
-  color:white;
   margin-top:50px;
   margin-left: 87%;
-  position: absolute;
-  z-index: 1;
-  border-radius:5px;
-  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
  #searchWindow {
@@ -198,6 +193,25 @@ button:active, .submit-button:active {
  #sign-in-form, #sign-up-form {
   margin-top: 115px;
   margin-left: 81%;
+  }
+
+}
+
+@media screen and (min-width : 1024px){
+
+  #user-log-box {
+  margin-top:56px;
+  margin-left:91.5% ;
+ }
+
+ #searchWindow {
+  margin-top: 56px;
+  margin-left: 1%;
+ }
+
+ #sign-in-form, #sign-up-form {
+  margin-top: 120px;
+  margin-left: 88.5%;
 }
 
 
