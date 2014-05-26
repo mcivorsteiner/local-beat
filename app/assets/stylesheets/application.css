@@ -103,7 +103,7 @@ html, body {
   z-index: 1;
 }
 
-#sign-in-form {
+#sign-in-form, #sign-up-form {
   color:white;
   position:absolute;
   background-color:rgba(0,0,0,0.5);
@@ -113,6 +113,7 @@ html, body {
   border-radius:5px;
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
+
 
 ul {
   list-style: none;

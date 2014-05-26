@@ -1,9 +1,9 @@
 <div class="hidden" id="sign-up-form">
   <%= form_for user, remote: true do |f| %>
     <%= f.text_field :email, placeholder: "Email" %>
-    <%= password_field_tag :password, nil, placeholder: "Password" %>
-    <%= text_field_tag :city, nil, placeholder: "City" %>
+    <%= password_field_tag :password, nil, placeholder: "Password" %><br>
+    <%= text_field_tag :city, nil, placeholder: "City" %><br>
     <%= text_field_tag :state, nil, placeholder: "State" %>
-    <%= f.submit "Sign Up" %>
+    <%= f.submit("Sign Up", :class=> "submit-button") %>
   <% end %>
 </div>
