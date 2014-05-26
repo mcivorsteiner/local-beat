@@ -32,6 +32,17 @@ html, body {
   z-index: 1;
  }
 
+ #logo img{
+  width:60%;
+  opacity:0.4;
+ }
+
+ #logo {
+  position:fixed;
+  left:15px;
+  bottom:0px;
+  z-index: 5;
+ }
 
 #magnify {
   float: left;
