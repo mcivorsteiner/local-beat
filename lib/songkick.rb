@@ -14,6 +14,10 @@ module Songkick
      "/search/locations.json?query=#{query}&apikey=#{SONGKICK_KEY}"
   end
 
+  def location_search_coords_url(coordsObj)
+     "/search/locations.json?location=geo:#{coordsObj[:lat]},#{coordsObj[:lng]}&apikey=#{SONGKICK_KEY}"
+  end
+
   def request(url, query = {})
     response = get(url, query: query)
     JSON.parse(response.body)
@@ -27,6 +31,21 @@ module Songkick
       Artist.new(name: artist["displayName"], sk_artist_id: artist["id"])
     end
     artists
+  end
+
+  def location_coords_query(coordsObj)
+    url = location_search_coords_url(coordsObj)
+    response = request(url)
+    metro_area = response["resultsPage"]["results"]["location"].first["metroArea"]
+
+    current_location = {
+      display_name: metro_area["displayName"],
+      lat: metro_area["lat"],
+      lng: metro_area["lng"]
+    }
+
+
+
   end
 
   def location_id_query(location_query)

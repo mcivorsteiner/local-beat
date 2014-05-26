@@ -10,6 +10,7 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
+    this.getCurrentLocation()
   },
 
   // setListener:function(){
@@ -41,4 +42,39 @@ ApplicationController.prototype= {
     var locationCoords = {lat: userData.lat, lng: userData.lng}
     this.mapController.view.setMap(locationCoords)
   },
+
+  getCurrentLocation: function() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.locationReceived.bind(this))
+    }
+  },
+
+  locationReceived: function(position) {
+    var positionCoords = position.coords
+    var coordsObj = {lat: positionCoords.latitude, lng: positionCoords.longitude}
+
+    console.log(this)
+
+    var ajaxRequest = $.ajax({
+      url: '/locations',
+      type: 'GET',
+      data: coordsObj
+    })
+
+    ajaxRequest.done(this.setCurrentLocation.bind(this))
+
+  },
+
+  userLoggedIn: function() {
+    return typeof userData != 'undefined'
+  },
+
+  setCurrentLocation: function(response) {
+    if (this.userLoggedIn()) {
+    } else {
+      var locationCoords = {lat: response.lat, lng: response.lng}
+      this.mapController.view.setMap(locationCoords)
+    }
+  }
+
 }
