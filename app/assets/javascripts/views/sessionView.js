@@ -35,7 +35,6 @@ SessionView.prototype = {
 
   toggleSignUpForm: function() {
     // var signUpForm = document.querySelector(this.signUpFormDivSelector)
-
     // signUpForm.classList.toggle('hidden')
       if ($(this.signUpFormDivSelector).is(':hidden')){
         $(this.signUpFormDivSelector).show("slow");

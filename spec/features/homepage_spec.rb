@@ -19,8 +19,8 @@ describe "Homepage", :js => true do
 
     it "should display search and more options buttons after click" do
       find('#magnify').click
-      expect(page).to have_content("Search")
-      expect(page).to have_content("More Search Options")
+      expect(page).to have_selector(".location-search")
+      expect(page).to have_selector("#advanced-search")
     end
 
     it "should display more input options after click" do
@@ -29,10 +29,5 @@ describe "Homepage", :js => true do
       expect(page).to have_content("Artist name")
       expect(page).to have_content("Min date")
     end
-
-    # it "allow user user to sign up" do
-    #   visit root_path
-    #   fill_in "Email", :with => "mia@mia.com"
-    # end
   end
 end

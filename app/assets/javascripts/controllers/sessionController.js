@@ -8,24 +8,14 @@ SessionController.prototype = {
   },
 
   setListeners: function() {
-    var loginToggleButton = this.view.getLoginToggleButton()
-    var signUpToggleButton = this.view.getSignUpToggleButton()
-    var loginForm = this.view.getLoginForm()
-    var signUpForm = this.view.getSignUpForm()
-    var userLogWindow = this.view.getUserLogWindow()
-    var sessionMenu = this.view.getSessionMenu()
+    this.view.getLoginToggleButton().addEventListener('click', this.toggleLogin.bind(this), false)
+    this.view.getSignUpToggleButton().addEventListener('click', this.toggleSignUp.bind(this), false)
 
+    $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
+    $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
-    loginToggleButton.addEventListener('click', this.toggleLogin.bind(this), false)
-    signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
-
-    $(sessionMenu).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
-    $(sessionMenu).on('click', '#logout-button', this.logOut.bind(this))
-
-    $(loginForm).on('ajax:error', this.loginError)
-    $(signUpForm).on('ajax:error', this.signUpError)
-
-
+    $(this.view.getLoginForm()).on('ajax:error', this.loginError)
+    $(this.view.getSignUpForm()).on('ajax:error', this.signUpError)
   },
 
   toggleLogin: function() {
@@ -60,12 +50,12 @@ SessionController.prototype = {
 
   loginError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //Determine how to display error messages to user
+    //WIP Determine how to display error messages to user
   },
 
   signUpError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //Determine how to display error messages to user
+    //WIP Determine how to display error messages to user
   },
 
   toggleSessionBox: function() {

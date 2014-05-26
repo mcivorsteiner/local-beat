@@ -15,9 +15,6 @@ function Event(eventData){
 }
 
 Event.prototype = {
-  // setInfoWindowListener: function(){
-
-  // }
   isFestival: function() {
     if (this.eventType === "Festival") {
       return true
