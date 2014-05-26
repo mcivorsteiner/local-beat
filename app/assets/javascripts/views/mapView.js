@@ -15,7 +15,7 @@ MapView.prototype = {
   hideSearchBox: function(){
     // var searchWindow = document.getElementById('searchWindow')
     // searchWindow.classList.toggle('hidden')
-    $('#searchWindow').hide()
+    $('#searchWindow').hide(500)
   },
 
   clearMarkers: function(markers){

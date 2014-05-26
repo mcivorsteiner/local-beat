@@ -6,12 +6,12 @@ function SearchView(){
 SearchView.prototype = {
   renderSearchBar: function(event) {
    // $(this.searchWindowSelector).toggleClass('hidden')
-   $(this.searchWindowSelector).slideDown("slow")
-   // if ($(this.searchWindowSelector).is(':hidden')){
-   //  $(this.searchWindowSelector).slideDown("slow");
-   // } else {
-   //  $(this.searchWindowSelector).hide()
-   // }
+   // $(this.searchWindowSelector).slideDown("slow")
+   if ($(this.searchWindowSelector).is(':hidden')){
+    $(this.searchWindowSelector).slideDown("slow");
+   } else {
+    $(this.searchWindowSelector).hide(500)
+   }
 
   },
 
