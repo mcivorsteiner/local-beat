@@ -83,8 +83,8 @@ html, body {
 
 #user-log-box {
   color:white;
-  margin-top:12%;
-  margin-left: 81%;
+  margin-top:45px;
+  margin-left: 74%;
   position: absolute;
   z-index: 1;
   border-radius:5px;
