@@ -40,8 +40,8 @@ describe("Session Controller", function() {
 
   // would be good to have a test for "returns an error message json object if there is a sign in error"
 
-  it("has a render session box function", function(){
-    expect(controller.renderSessionBox).toBeDefined()
+  it("has a toggle session box function", function(){
+    expect(controller.toggleSessionBox).toBeDefined()
   });
 
 })

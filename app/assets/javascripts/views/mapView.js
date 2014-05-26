@@ -12,9 +12,10 @@ MapView.prototype = {
     }
   },
 
-   hideSearchBox: function(){
+  hideSearchBox: function(){
     var searchWindow = document.getElementById('searchWindow')
     searchWindow.classList.toggle('hidden')
+    // $('searchWindow').hide()
   },
 
   clearMarkers: function(markers){
