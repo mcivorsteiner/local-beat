@@ -17,17 +17,16 @@ describe "Homepage", :js => true do
       expect(page).to have_content("Login")
     end
 
-    it "should display search and more options buttons after click" do
+    it "should display more options icon after click" do
       find('#magnify').click
-      expect(page).to have_selector(".location-search")
-      expect(page).to have_selector("#advanced-search")
+      expect(page).to have_selector("#more-options-icon")
     end
 
     it "should display more input options after click" do
       find('#magnify').click
-      find('#advanced-search').click
-      expect(page).to have_content("Artist name")
-      expect(page).to have_content("Min date")
+      find('#more-options-icon').click
+      expect(page).to have_selector('#artist_name')
+      expect(page).to have_selector("input[name='min_date']")
     end
   end
 end
