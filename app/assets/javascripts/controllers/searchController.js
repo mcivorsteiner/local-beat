@@ -1,4 +1,5 @@
-function SearchController() {
+function SearchController(view) {
+  this.view = view
   this.searchIcon = document.getElementById('magnify')
   this.advancedOptions = document.getElementById('advanced-search')
 }
@@ -9,18 +10,8 @@ SearchController.prototype = {
   },
 
   setListeners: function() {
-    this.searchIcon.addEventListener('click', this.renderSearchBar)
-    this.advancedOptions.addEventListener('click', this.renderAdvancedOptions)
-  },
-
-  renderSearchBar: function(event) {
-    event.preventDefault();
-    var searchWindow = document.getElementById('searchWindow')
-    searchWindow.classList.toggle('hidden')
-  },
-
-  renderAdvancedOptions:function(event){
-    event.preventDefault();
-    $('.advanced-options').toggleClass('hidden')
+    this.searchIcon.addEventListener('click', this.view.renderSearchBar.bind(this.view))
+    this.advancedOptions.addEventListener('click', this.view.renderAdvancedOptions.bind(this.view))
   }
+
 }

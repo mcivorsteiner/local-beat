@@ -13,22 +13,24 @@
  */
 
 html, body {
+  margin: 0;
   height:100%;
   width: 100%;
 }
 
 #map-canvas {
-  border: 1px solid black;
   height:100%;
   width:100%;
-  margin-top:0.1%;
+  position: absolute;
+  top: 0;
  }
 
- #navbar {
-  width:100%;
+#navbar {
+  width: 95%;
   height: 7%;
-  background-color: black;
-  margin-top:0;
+  margin: 1% auto 0;
+  position: absolute;
+  z-index: 1;
  }
 
  #logo img{
@@ -39,51 +41,69 @@ html, body {
  #logo {
   position:fixed;
   left:15px;
-  bottom:0px;
+  bottom:2%;
   z-index: 5;
  }
 
- h4 {
-  margin-top: 0;
-  color: white;
+#magnify {
+  float: left;
+  margin-left: 1%;
+  height: 40px;
+  background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
- #magnify {
+#user-session {
   float: right;
-  height: 20px
+  margin-right: -2%;
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
- #user-session {
-  float: right;
-  height: 20px
- }
-
- #searchWindow {
+#searchWindow {
   color:white;
   position:absolute;
-  margin-top:-300px;
   background-color:rgba(0,0,0,0.5);
-  margin-left: 40%;
+  margin-top: 12%;
+  z-index: 1;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
- #user-log-box {
+#user-log-box {
   color:white;
-  position:absolute;
-  margin-top:-300px;
+  margin-top:12%;
   background-color:rgba(0,0,0,0.5);
-  margin-left: 40%;
-  width: 20%;
-  height: 20%;
+  margin-left: 81%;
+  position: absolute;
+  z-index: 1;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
-/* #advanced-options {
-  display: none;
- }*/
-
- .hidden {
+.hidden {
     display: none;
  }
 
+#sign-up-form {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 22%;
+  z-index: 1;
+}
+
+#sign-in-form {
+  color:white;
+  position:absolute;
+  background-color:rgba(0,0,0,0.5);
+  margin-top: 22%;
+  z-index: 1;
+}
 
 ul {
   list-style: none;
@@ -93,61 +113,5 @@ ul {
 label {
   display: inline-block;
   width: 75px;
-}
-
- /* Smartphones (portrait and landscape) ----------- */
-@media screen and (max-width : 480px) {
-/* Styles */
-  html, body {
-    height:100%;
-    width: 100%;
-  }
-
-  #map-canvas {
-    border: 1px solid black;
-    height:95%;
-    width:95%;
-    margin-top: 0.1%;
-  }
-
-  #navbar {
-    width:95%;
-    margin-top:0;
-  }
-
-}
-
-@media screen and (max-width : 640px) {
-/* Styles */
-  html, body {
-    height:100%;
-    width: 100%;
-  }
-
-  #map-canvas {
-    border: 1px solid black;
-    height:95%;
-    width:98%;
-    margin-top: 0.4%;
-
-  }
-
-  #navbar {
-    width:98.4%;
-    margin-top:0;
-  }
-
-  #magnify {
-    height: 40px;
-    margin-top: -44px;
-
-  }
-
-  #user-session {
-    height: 40px;
-    margin-top: -44px;
-    margin-right: 35px;
-  }
-
 }
 
