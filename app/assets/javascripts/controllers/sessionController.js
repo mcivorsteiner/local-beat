@@ -56,12 +56,12 @@ SessionController.prototype = {
 
   loginError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //WIP Determine how to display error messages to user
+    this.view.renderLoginErrorMessages(errorMessages[0])
   },
 
   signUpError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    this.view.renderErrorMessages(errorMessages[0])
+    this.view.renderSignUpErrorMessages(errorMessages[0])
   },
 
   toggleSessionBox: function() {
