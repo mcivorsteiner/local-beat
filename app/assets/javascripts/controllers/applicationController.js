@@ -10,7 +10,10 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
-    this.getCurrentLocation()
+
+    if (!this.userLoggedIn()) {
+      this.getCurrentLocation()
+    }
   },
 
   setAjaxListeners: function() {
@@ -60,11 +63,9 @@ ApplicationController.prototype= {
   },
 
   setCurrentLocation: function(response) {
-    debugger
     if (this.userLoggedIn()) {
     } else {
-      var locationCoords = {lat: response.lat, lng: response.lng}
-      this.mapController.view.setMap(locationCoords)
+      this.mapController.placeMarkers(null,response)
     }
   }
 
