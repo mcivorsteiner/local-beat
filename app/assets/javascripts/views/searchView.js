@@ -9,11 +9,16 @@ SearchView.prototype = {
    if ($(this.searchWindowSelector).is(':hidden')){
     $(this.searchWindowSelector).slideDown("slow");
    } else {
-    $(this.searchWindowSelector).hide()
+    $(this.searchWindowSelector).slideUp()
    }
   },
 
   renderAdvancedOptions:function(event){
-    $(this.advOptionsSelector).toggleClass('hidden')
+    // $(this.advOptionsSelector).toggleClass('hidden')
+    if ($(this.advOptionsSelector).is(':hidden')){
+      $(this.advOptionsSelector).slideDown("slow");
+    } else {
+      $(this.advOptionsSelector).slideUp()
+    }
   }
 }
