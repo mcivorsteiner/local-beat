@@ -12,7 +12,6 @@ SessionController.prototype = {
     var signUpToggleButton = this.view.getSignUpToggleButton()
     var signInForm = this.view.getSignInForm()
     var signUpForm = this.view.getSignUpForm()
-    var loggedOutButton = this.view.getLoggedOutButton()
     var userLogWindow = this.view.getUserLogWindow()
     var sessionMenu = this.view.getSessionMenu()
 
@@ -21,6 +20,9 @@ SessionController.prototype = {
     signUpToggleButton.addEventListener('click', this.toggleSignUp.bind(this), false)
 
     $(sessionMenu).on('click', '#log-in-menu-button', this.toggleSessionBox.bind(this))
+    $(sessionMenu).on('click', '#logout-button', this.logOut.bind(this))
+
+
     // loggedOutButton.addEventListener('click', this.toggleSessionBox.bind(this), false)
     // $(signInForm).on('ajax:success', this.signIn.bind(this))
     // $(signUpForm).on('ajax:success', this.signUp.bind(this))
@@ -65,4 +67,8 @@ SessionController.prototype = {
   toggleSessionBox: function() {
     this.view.toggleSessionBox()
   },
+
+  logOut: function() {
+    debugger
+  }
 }

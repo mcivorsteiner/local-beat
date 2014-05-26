@@ -54,7 +54,7 @@ html, body {
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
  }
 
-#log-in-menu-button {
+#log-in-menu-button, #logout-button {
   float: right;
   margin-right: -2%;
   height: 40px;
