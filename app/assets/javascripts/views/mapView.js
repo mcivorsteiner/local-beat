@@ -37,14 +37,8 @@ MapView.prototype = {
   },
 
   enlargeInfoWindow: function(e) {
-    e.preventDefault();
-    // $(".loc-submit").removeClass("hide-submit")
-    if ($('.more-event-info').is(':hidden')){
-      $('.more-event-info').slideDown("slow");
-    } else {
-      $('.more-event-info').hide()
-    }
-
+    e.preventDefault()
+    $('.more-event-info').toggleClass('hidden')
   }
 
 }
