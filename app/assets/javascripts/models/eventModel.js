@@ -12,6 +12,7 @@ function Event(eventData){
   this.eventType = eventData.event_type
   this.uri = eventData.uri
   this.headliner = eventData.headliner
+  this.time = eventData.time
 }
 
 Event.prototype = {
