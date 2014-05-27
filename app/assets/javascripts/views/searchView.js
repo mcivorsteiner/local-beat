@@ -52,21 +52,28 @@ SearchView.prototype = {
   //   })
   // },
 
+
+
+  // delay=(function(){
+  //   searchSuggest(textInput)
+  // })
+
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
     if (textInput.length >= 3) {
+      //we can call the delay function inside of here that will take as a function the searchSuggest(textinput)
       this.searchSuggest(textInput)
     }
   },
 
   searchSuggest: function(textInput) {
-    console.log(textInput)
-
-    // $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderSearchSuggestionBox)
-    // $.ajax({url:"http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderSearchSuggestionBox)
+    $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderSearchSuggestionBox)
   },
 
   renderSearchSuggestionBox: function(json) {
-    console.log(json)
+    var artists = json.resultsPage.results.artist
+    for (var i = 0; i < 5; i ++){
+      $("#search-suggest ul").append("<li>"+ artists[i].displayName + "</li>")
+    }
   }
 }

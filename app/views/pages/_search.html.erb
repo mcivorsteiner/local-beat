@@ -7,7 +7,9 @@
     <li class="advanced-options hidden">
       <%= text_field_tag :artist_name, nil, placeholder: "Artist Name" %>
     </li>
-    <div id='search-suggest'></div>
+    <div id='search-suggest'>
+      <ul></ul>
+    </div>
     <li class="advanced-options hidden">
       <%= label_tag :min_date %>
       <input type="date" name="min_date">
