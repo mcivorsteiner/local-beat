@@ -4,9 +4,9 @@ describe("EventPresenter exists", function(){
 
   beforeEach(function(){
     eventPresenter = new EventPresenter()
-    eventObject = new Event({skEventId: 1, displayName: "Reggae Fest", date: 2104-07-10, artists: ["Bob Marley"]} )
+    eventObject = new Event({skEventId: 1, displayName: "Reggae Fest", date: '2104-07-10', artists: ["Bob Marley"]} )
     spyOn(eventPresenter, 'createMarkers')
-    eventPresenter.createMarkers(eventOject)
+    eventPresenter.createMarkers(eventObject)
   });
 
   it("should have a createMarkers method", function() {

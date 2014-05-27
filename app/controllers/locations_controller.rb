@@ -1,7 +1,14 @@
 class LocationsController < ApplicationController
   def search
-    current_location = Songkick.location_coords_query(params)
+    response = Songkick.event_search_by_lat_lng(params)
 
-    render json: current_location
+    if location = Location.find_by_sk_location_id(response[:metro_area_id])
+      location_info = {lat: location.lat, lng: location.lng}
+
+    else
+      location_info = Songkick.location_coords_query(params)
+    end
+
+    render json: {events: response[:events], location_coords: {lat: location_info[:lat], lng: location_info[:lng]}}
   end
 end
