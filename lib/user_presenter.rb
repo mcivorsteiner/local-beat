@@ -7,7 +7,8 @@ module UserPresenter
       email: user_object.email,
       lat: user_location.lat,
       lng: user_location.lng,
-      songkickLocationName: user_location.sk_location_name
+      songkickLocationName: user_location.sk_location_name,
+      songkickLocationId: user_location.sk_location_id
     }.to_json
   end
 end

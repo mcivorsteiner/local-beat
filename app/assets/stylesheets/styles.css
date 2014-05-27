@@ -128,6 +128,12 @@ LOGIN/SIGNUP
   z-index: 1;
 }
 
+.search-status h4, .sign-up-errors h4, .login-errors h4 {
+  color: red;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
 
 /*##########################################
 SEARCH
@@ -177,4 +183,16 @@ SEARCH
 .hide-submit {
   position: absolute;
   visibility: hidden;
+}
+
+/*##########################################
+SMALL INFO BOX
+##########################################*/
+
+.small-info-box {
+  font-family: Avenir;
+  font-size: 1.2em;
+  padding: 4px;
+  background-color: #AAAAAD;
+  border-radius: 10px;
 }

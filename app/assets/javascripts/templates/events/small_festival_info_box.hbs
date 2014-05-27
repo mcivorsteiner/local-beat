@@ -1,5 +1,8 @@
-<div class = "small-info-box">
+<div class = "small-info-box" class="infobox-1">
   <p>Festival: {{displayName}}</p>
   <p>Venue: {{venueName}} </p>
   <p>Date: {{date}}</p>
+  {{#if time}}
+  <p>Start time: {{time}}</p>
+  {{/if}}
 </div>

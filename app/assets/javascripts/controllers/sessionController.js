@@ -14,9 +14,9 @@ SessionController.prototype = {
     $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
     $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
-
     $(this.view.getLoginForm()).on('ajax:error', this.loginError)
     $(this.view.getSignUpForm()).on('ajax:error', this.signUpError)
+
   },
 
   toggleLogin: function() {
@@ -56,12 +56,12 @@ SessionController.prototype = {
 
   loginError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //WIP Determine how to display error messages to user
+    this.view.renderLoginErrorMessages(errorMessages[0])
   },
 
   signUpError: function(e, response, responseType, status) {
     var errorMessages = response.responseJSON.errors
-    //WIP Determine how to display error messages to user
+    this.view.renderSignUpErrorMessages(errorMessages[0])
   },
 
   toggleSessionBox: function() {
