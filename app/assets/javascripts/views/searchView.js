@@ -36,8 +36,8 @@ SearchView.prototype = {
   },
 
   renderSearchErrorMessages: function(errors){
-    document.querySelector(this.searchStatusDiv).classList.remove("hidden")
-    document.querySelector(this.searchStatusHeader).innerText = errors
+    this.getSearchStatusDiv().classList.remove("hidden")
+    this.getSearchStatusHeader().innerText = errors
   },
 
   getSearchIcon: function(){
@@ -50,5 +50,9 @@ SearchView.prototype = {
 
   getSearchStatusHeader: function(){
     return document.querySelector(this.searchStatusHeader)
+  },
+
+  getSearchStatusDiv: function(){
+    return document.querySelector(this.searchStatusDiv)
   }
 }
