@@ -57,12 +57,22 @@ SearchView.prototype = {
   // delay=(function(){
   //   searchSuggest(textInput)
   // })
+  delay: function() {
+    var timer = 0
+    return function(callback, ms) {
+      clearTimeout (timer)
+      timer = setTimeout(callback, ms);
+    }()
+  },
 
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
     if (textInput.length >= 3) {
       //we can call the delay function inside of here that will take as a function the searchSuggest(textinput)
-      this.searchSuggest(textInput)
+
+        this.searchSuggest(textInput)
+
+      // this.searchSuggest(textInput)
     }
   },
 
@@ -72,8 +82,23 @@ SearchView.prototype = {
 
   renderSearchSuggestionBox: function(json) {
     var artists = json.resultsPage.results.artist
-    for (var i = 0; i < 5; i ++){
-      $("#search-suggest ul").append("<li>"+ artists[i].displayName + "</li>")
+    var resultsLength = json.resultsPage.results.length
+    var artistArray = []
+    // console.log(artists.displayName)
+      $("#search-suggest ul").html("")
+      for (var i = 0; i < 5; i ++){
+        if(artists[i] !== undefined){
+      //   // debugger
+        // artistArray.push(artists[i].displayName)
+
+      // console.log(artistArray)
+      //   console.log(artists)
+      //   $(this.artistSearchTextField).autocomplete({ source: artists[i].displayName })
+
+        $("#search-suggest ul").append("<li>"+ artists[i].displayName + "</li>")
+      }
     }
+      // console.log(artistArray)
+      // $(this.artistSearchTextField).autocomplete({ source: artistArray })
   }
 }
