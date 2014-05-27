@@ -14,6 +14,7 @@ SessionController.prototype = {
     $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
     $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
+
     $(this.view.getLoginForm()).on('ajax:error', this.loginError)
     $(this.view.getSignUpForm()).on('ajax:error', this.signUpError)
   },
@@ -33,7 +34,8 @@ SessionController.prototype = {
     this.view.updateUserData(response.template)
     this.toggleLogin()
     this.toggleSessionBox()
-
+    this.view.clearForms()
+    
     var loginMenuButton = this.view.getLoginMenuButton()
     loginMenuButton.src = '/assets/sign-out-icon.png'
     loginMenuButton.id = 'logout-button'
@@ -44,10 +46,12 @@ SessionController.prototype = {
     this.view.updateUserData(response.template)
     this.toggleSignUp()
     this.toggleSessionBox()
+    this.view.clearForms()
 
     var loginMenuButton = this.view.getLoginMenuButton()
     loginMenuButton.src = '/assets/sign-out-icon.png'
     loginMenuButton.id = 'logout-button'
+    this.view.clearForms()
   },
 
   loginError: function(e, response, responseType, status) {
@@ -61,7 +65,7 @@ SessionController.prototype = {
   },
 
   toggleSessionBox: function() {
-    this.view.clearForms()
+    // this.view.clearForms()
     this.view.toggleSessionBox()
   },
 

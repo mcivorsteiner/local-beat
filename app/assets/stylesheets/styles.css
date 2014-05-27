@@ -58,11 +58,12 @@ MAP/LOGO
 }
 
 #logo img{
-  width:60%;
+  width:100%;
   opacity:0.4;
 }
 
 #logo {
+  width: 60%;
   position:fixed;
   left:15px;
   bottom:2%;
