@@ -5,8 +5,8 @@ module TestHelpers
     location = location_name || "San Fransisco"
     artist_name = options[:artist_name] || ""
     if options[:dates]
-      min_date = {"(1i)"=>"2014", "(2i)"=>"6", "(3i)"=>"1"}
-      max_date = {"(1i)"=>"2014", "(2i)"=>"6", "(3i)"=>"30"}
+      min_date = "2014-06-01"
+      max_date = "2014-06-30"
     else
       min_date = ""
       max_date = ""

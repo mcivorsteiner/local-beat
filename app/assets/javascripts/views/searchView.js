@@ -16,16 +16,14 @@ SearchView.prototype = {
     $('#user_input_location_name').val('')
     $('#artist_name').val('')
     this.getSearchStatusHeader().innerText = ""
-   if ($(this.searchWindowSelector).is(':hidden')){
-    $('.pop-up').hide()
-    $(this.searchWindowSelector).slideDown("slow")
-    $(this.advOptionsIconSelector).show() 
-   }
-   else {
-    $(this.searchWindowSelector).hide(500)
-    $(this.advOptionsIconSelector).hide(500)
-   }
-
+    if ($(this.searchWindowSelector).is(':hidden')){
+      $('.pop-up').hide()
+      $(this.searchWindowSelector).slideDown("slow")
+      $(this.advOptionsIconSelector).show() 
+    } else {
+      $(this.searchWindowSelector).hide(500)
+      $(this.advOptionsIconSelector).hide(500)
+    }
   },
 
   renderAdvancedOptions:function(event){
