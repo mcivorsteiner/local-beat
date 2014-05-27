@@ -29,10 +29,11 @@ MapController.prototype = {
   },
 
   showInfoWindow: function() {
-    if (typeof infoBox != "undefined") {
+
+    if (typeof infoBox == "object") {
       infoBox.close()
     }
-    var infoBox;
+    // var infoBox = null
     var boxOptions = { disableAutoPan: false
     ,maxWidth: 0
     ,pixelOffset: new google.maps.Size(-140, 0)
