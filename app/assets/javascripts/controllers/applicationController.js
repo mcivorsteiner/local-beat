@@ -12,6 +12,8 @@ ApplicationController.prototype= {
     this.setAjaxListeners()
     if (!this.userLoggedIn()) {
       this.getCurrentLocation()
+    } else {
+      this.getEventsForUserLocationPreference()
     }
   },
 
@@ -29,7 +31,6 @@ ApplicationController.prototype= {
   login: function(e, response) {
     this.sessionController.login(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    // this.mapController.view.setMap(locationCoords)
     var placeMarkersEvents = {events: response.events, location_coords: locationCoords }
     this.mapController.placeMarkers(null, placeMarkersEvents)
   },
@@ -41,6 +42,8 @@ ApplicationController.prototype= {
     this.mapController.placeMarkers(null, placeMarkersEvents)
   },
 
+
+
   getCurrentLocation: function() {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.locationReceived.bind(this))
@@ -50,6 +53,8 @@ ApplicationController.prototype= {
   locationReceived: function(position) {
     var positionCoords = position.coords
     var coordsObj = {lat: positionCoords.latitude, lng: positionCoords.longitude}
+
+    console.log("Firing Location AJAX")
 
     var ajaxRequest = $.ajax({
       url: '/locations',
@@ -65,10 +70,27 @@ ApplicationController.prototype= {
   },
 
   setCurrentLocation: function(response) {
-    if (this.userLoggedIn()) {
-    } else {
+    if (!this.userLoggedIn()) {
       this.mapController.placeMarkers(null,response)
     }
+  },
+
+  getEventsForUserLocationPreference: function() {
+    var songkickLocationId = userData.songkickLocationId
+
+    var ajaxRequest = $.ajax({
+        url: '/events/sk_location_id',
+        type: 'GET',
+        data: {songkickLocationId: songkickLocationId}
+    })
+
+    ajaxRequest.done(this.placeEventsForUserLocationPreference.bind(this))
+  },
+
+  placeEventsForUserLocationPreference: function(response) {
+    var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
+    this.mapController.placeMarkers(null,eventData)
   }
+
 
 }

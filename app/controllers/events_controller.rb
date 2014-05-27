@@ -9,6 +9,13 @@ class EventsController < ApplicationController
     render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events }
   end
 
+  def search_by_sk_location_id
+    songkick_location_id = params["songkickLocationId"]
+    events = Songkick.event_search({location: "sk:#{songkick_location_id}"})
+
+    render json: events
+  end
+
   private
 
   def format_event_query(params, location)
