@@ -5,7 +5,12 @@ class EventsController < ApplicationController
       @location.save
     end
     event_query = format_event_query(params, @location)
+    print "\n" *20
+    p "EVENT QUERY"
+    p event_query
     @events = Songkick.event_search(event_query)
+    p "EVENTS"
+    p @events
     render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events }
   end
 

@@ -12,6 +12,7 @@ function Event(eventData){
   this.eventType = eventData.event_type
   this.uri = eventData.uri
   this.headliner = eventData.headliner
+  this.headlinerId = eventData.headliner_id
   if (eventData.time) {
     this.time = this.timeFormatter(eventData.time)
   }
