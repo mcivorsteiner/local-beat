@@ -11,5 +11,6 @@ LocalBeat::Application.routes.draw do
   resources :users, only: [:new, :create, :edit, :destroy, :update]
 
   get '/locations', to: 'locations#search'
+  get '/artists/top_songs', to: 'artists#top_songs'
 
 end

@@ -12,6 +12,7 @@ MapController.prototype = {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
+    $(document).on('click', ".spotify-songs-link", this.getSpotifyPlayer.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -41,7 +42,28 @@ MapController.prototype = {
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
+  },
+
+  getSpotifyPlayer: function(){
+    event.preventDefault()
+
+    var ajaxRequest = $.ajax({
+      url: event.target.href,
+      type: "GET",
+      data: {sk_artist_id: $(event.target).data("sk-id")}
+    })
+
+    ajaxRequest.done(this.showSongs.bind(this))
+  },
+
+  showSongs: function(response){
+    // debugger
+    var source = { track_id: response.top_song_ids[0]}
+    var html = HandlebarsTemplates['events/spotify_embed'](source)
+    debugger
   }
+
+
 }
 
 

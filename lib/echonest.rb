@@ -19,10 +19,14 @@ module Echonest
   def get_tracks_list(songkick_artist_id)
     tracks = Array.new
     json = get_track_json(songkick_artist_id)
-    # pp json
-    for track in json["response"]["songs"]
-      spotify_id = track["tracks"].first["foreign_id"]
-      tracks << spotify_id.gsub(/spotify\-WW:track:/, "")
+    pp json
+    if results = json["response"]["songs"]
+      tracks = results.map do |track|
+        spotify_id = track["tracks"].first["foreign_id"]
+        spotify_id.gsub(/spotify\-WW:track:/, "")
+      end
+    else
+      tracks = []
     end
 
     return tracks

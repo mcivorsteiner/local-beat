@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   require 'user_presenter'
   require 'songkick'
+  require 'echonest'
 
   def current_user
     if session[:user_id]
