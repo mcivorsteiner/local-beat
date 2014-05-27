@@ -7,12 +7,11 @@ function MapController(view){
 MapController.prototype = {
   init: function(){
     this.view.drawMap()
-    debugger
     if (typeof userData != 'undefined') {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
-    $(document).on('click', '.spotify-songs-link', this.getSpotifyPlayer.bind(this))
+    $(document).on('click', this.getSpotifyPlayer.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -46,7 +45,7 @@ MapController.prototype = {
                        isHidden:                false,
                        pane:                     "floatPane",
                        alignBottom:             true,
-                       enableEventPropagation:  false
+                       enableEventPropagation:  true
                       };
 
     infoBox = new InfoBox(boxOptions);
@@ -65,7 +64,7 @@ MapController.prototype = {
 
   getSpotifyPlayer: function(){
     event.preventDefault()
-    debugger
+    // debugger
     var ajaxRequest = $.ajax({
       url: event.target.href,
       type: "GET",
