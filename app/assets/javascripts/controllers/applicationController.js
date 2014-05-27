@@ -10,12 +10,16 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
-    this.getCurrentLocation()
+    if (!this.userLoggedIn()) {
+      this.getCurrentLocation()
+    } else {
+      this.getEventsForUserLocationPreference()
+    }
   },
 
   setAjaxListeners: function() {
     $('.search').on('ajax:success', this.placeMarkers.bind(this))
-    $('.search').on('ajax:error', function(){console.log("we are in the error")}) //WIP
+    $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController)) //WIP
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
   },
@@ -27,13 +31,15 @@ ApplicationController.prototype= {
   login: function(e, response) {
     this.sessionController.login(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    this.mapController.view.setMap(locationCoords)
+    var placeMarkersEvents = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, placeMarkersEvents)
   },
 
   signUp: function(e, response) {
     this.sessionController.signUp(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    this.mapController.view.setMap(locationCoords)
+    var eventData = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, eventData)
   },
 
   getCurrentLocation: function() {
@@ -60,11 +66,27 @@ ApplicationController.prototype= {
   },
 
   setCurrentLocation: function(response) {
-    if (this.userLoggedIn()) {
-    } else {
-      var locationCoords = {lat: response.lat, lng: response.lng}
-      this.mapController.view.setMap(locationCoords)
+    if (!this.userLoggedIn()) {
+      this.mapController.placeMarkers(null,response)
     }
+  },
+
+  getEventsForUserLocationPreference: function() {
+    var songkickLocationId = userData.songkickLocationId
+
+    var ajaxRequest = $.ajax({
+        url: '/events/sk_location_id',
+        type: 'GET',
+        data: {songkickLocationId: songkickLocationId}
+    })
+
+    ajaxRequest.done(this.placeEventsForUserLocationPreference.bind(this))
+  },
+
+  placeEventsForUserLocationPreference: function(response) {
+    var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
+    this.mapController.placeMarkers(null,eventData)
   }
+
 
 }

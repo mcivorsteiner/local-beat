@@ -7,12 +7,12 @@ function MapController(view){
 MapController.prototype = {
   init: function(){
     this.view.drawMap()
-
+    debugger
     if (typeof userData != 'undefined') {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
-    $(document).on('click', ".spotify-songs-link", this.getSpotifyPlayer.bind(this))
+    $(document).on('click', '.spotify-songs-link', this.getSpotifyPlayer.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -30,23 +30,42 @@ MapController.prototype = {
   },
 
   showInfoWindow: function() {
-    if (typeof infoWindow != "undefined") {
-      infoWindow.close()
+
+    if (typeof infoBox == "object") {
+      infoBox.close()
     }
+    // var infoBox = null
+    var boxOptions = { disableAutoPan:          false,
+                       maxWidth:                0,
+                       pixelOffset:             new google.maps.Size(-140, 0),
+                       zIndex:                  null,
+                       boxStyle:                { opacity: 0.75 },
+                       closeBoxMargin:          "10px 2px 2px 2px",
+                       closeBoxURL:             "http://www.google.com/intl/en_us/mapfiles/close.gif",
+                       infoBoxClearance:        new google.maps.Size(1, 1),
+                       isHidden:                false,
+                       pane:                     "floatPane",
+                       alignBottom:             true,
+                       enableEventPropagation:  false
+                      };
+
+    infoBox = new InfoBox(boxOptions);
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
     } else {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
     }
-    infoWindow = new google.maps.InfoWindow()
-    infoWindow.setContent(html)
-    infoWindow.open(this.map, this)
+    // infoWindow = new google.maps.InfoWindow()
+    // infoWindow.setContent(html)
+    // infoWindow.open(this.map, this)
+    infoBox.setContent(html);
+    infoBox.open(this.map, this);
   },
 
   getSpotifyPlayer: function(){
     event.preventDefault()
-
+    debugger
     var ajaxRequest = $.ajax({
       url: event.target.href,
       type: "GET",
@@ -66,6 +85,5 @@ MapController.prototype = {
 
 
 }
-
 
 

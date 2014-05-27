@@ -3,6 +3,9 @@ function SearchView(){
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
   this.advOptionsIconSelector = '#more-options-icon'
+  this.searchStatusDiv = '.search-status'
+  this.searchStatusHeader = '.search-status h4'
+
 }
 
 SearchView.prototype = {
@@ -12,16 +15,15 @@ SearchView.prototype = {
     // $(this.advOptionsIconSelector).show()
     $('#user_input_location_name').val('')
     $('#artist_name').val('')
-   if ($(this.searchWindowSelector).is(':hidden')){
-    $('.pop-up').hide()
-    $(this.searchWindowSelector).slideDown("slow")
-    $(this.advOptionsIconSelector).show() 
-   }
-   else {
-    $(this.searchWindowSelector).hide(500)
-    $(this.advOptionsIconSelector).hide(500)
-   }
-
+    this.getSearchStatusHeader().innerText = ""
+    if ($(this.searchWindowSelector).is(':hidden')){
+      $('.pop-up').hide()
+      $(this.searchWindowSelector).slideDown("slow")
+      $(this.advOptionsIconSelector).show() 
+    } else {
+      $(this.searchWindowSelector).hide(500)
+      $(this.advOptionsIconSelector).hide(500)
+    }
   },
 
   renderAdvancedOptions:function(event){
@@ -33,11 +35,24 @@ SearchView.prototype = {
     }
   },
 
+  renderSearchErrorMessages: function(errors){
+    this.getSearchStatusDiv().classList.remove("hidden")
+    this.getSearchStatusHeader().innerText = errors
+  },
+
   getSearchIcon: function(){
     return document.querySelector(this.searchIconSelector)
   },
 
   getAdvOptionsIcon: function(){
     return document.querySelector(this.advOptionsIconSelector)
+  },
+
+  getSearchStatusHeader: function(){
+    return document.querySelector(this.searchStatusHeader)
+  },
+
+  getSearchStatusDiv: function(){
+    return document.querySelector(this.searchStatusDiv)
   }
 }
