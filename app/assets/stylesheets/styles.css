@@ -128,7 +128,7 @@ LOGIN/SIGNUP
   z-index: 1;
 }
 
-.sign-up-errors h4, .login-errors h4 {
+.search-status h4, .sign-up-errors h4, .login-errors h4 {
   color: red;
   font-weight: bold;
   margin: 0 5px;

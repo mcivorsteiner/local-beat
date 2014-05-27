@@ -3,6 +3,9 @@ function SearchView(){
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
   this.advOptionsIconSelector = '#more-options-icon'
+  this.searchStatusDiv = '.search-status'
+  this.searchStatusHeader = '.search-status h4'
+
 }
 
 SearchView.prototype = {
@@ -31,6 +34,12 @@ SearchView.prototype = {
     } else {
       $(this.advOptionsSelector).hide()
     }
+  },
+
+  renderSearchErrorMessages: function(errors){
+    document.querySelector(this.searchStatusDiv).classList.remove("hidden")
+    
+    document.querySelector(this.searchStatusHeader).innerText = errors
   },
 
   getSearchIcon: function(){
