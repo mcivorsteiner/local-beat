@@ -7,14 +7,21 @@ function SearchView(){
 
 SearchView.prototype = {
   renderSearchBar: function(event) {
-    $(".loc-submit").addClass("hide-submit")
-    $('.pop-up').hide()
-    $(this.advOptionsIconSelector).show()
+    // $(".loc-submit").addClass("hide-submit")
+    // $('.pop-up').hide()
+    // $(this.advOptionsIconSelector).show()
+    $('#user_input_location_name').val('')
+    $('#artist_name').val('')
    if ($(this.searchWindowSelector).is(':hidden')){
-    $(this.searchWindowSelector).slideDown("slow");
-   } else {
-    $(this.searchWindowSelector).hide(500)
+    $('.pop-up').hide()
+    $(this.searchWindowSelector).slideDown("slow")
+    $(this.advOptionsIconSelector).show() 
    }
+   else {
+    $(this.searchWindowSelector).hide(500)
+    $(this.advOptionsIconSelector).hide(500)
+   }
+
   },
 
   renderAdvancedOptions:function(event){
