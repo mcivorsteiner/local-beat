@@ -3,6 +3,7 @@ function SearchView(){
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
   this.advOptionsIconSelector = '#more-options-icon'
+  this.locationSearchTextField = '#user_input_location_name'
   this.artistSearchTextField = '#artist_name'
 }
 
@@ -46,6 +47,9 @@ SearchView.prototype = {
     return document.querySelector(this.artistSearchTextField)
   },
 
+  getLocationSearchTextField: function(){
+    return document.querySelector(this.locationSearchTextField)
+  },
 
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
