@@ -58,9 +58,10 @@ MapController.prototype = {
 
   showSongs: function(response){
     // debugger
-    var source = { track_id: response.top_song_ids[0]}
+    var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
+    var source = { href: href }
     var html = HandlebarsTemplates['events/spotify_embed'](source)
-    debugger
+    $('.container').append(html)
   }
 
 
