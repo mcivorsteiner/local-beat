@@ -51,18 +51,12 @@ SearchView.prototype = {
     return document.querySelector(this.locationSearchTextField)
   },
 
+// Suggest box for the artists
 
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
     if (textInput.length >= 3) {
         this.searchSuggestArtist(textInput)
-    }
-  },
-
-  limitLocationSearchQueryCharacters: function() {
-    var textInput = $(this.locationSearchTextField).val()
-    if (textInput.length >= 3) {
-        this.searchSuggest(textInput)
     }
   },
 
@@ -82,5 +76,37 @@ SearchView.prototype = {
       }
     }
       // $(this.artistSearchTextField).autocomplete({ source: artistArray })
+  },
+
+// Suggest box for the locations
+
+  limitLocationSearchQueryCharacters: function() {
+    var textInput = $(this.locationSearchTextField).val()
+    if (textInput.length >= 3) {
+        this.searchSuggestLocation(textInput)
+    }
+  },
+
+  searchSuggestLocation: function(textInput) {
+    $.ajax({url:"http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderLocationSearchSuggestionBox)
+  },
+
+  renderLocationSearchSuggestionBox: function(json) {
+    var locations = json.resultsPage.results.location
+    console.log('I am in the render location box')
+    console.log(locations)
+    // var resultsLength = json.resultsPage.results.length
+    // var artistArray = []
+
+    //   for (var i = 0; i < 5; i ++){
+    //     if(artists[i] !== undefined){
+    //     artistArray.push(artists[i].displayName)
+    //      $(this.artistSearchTextField).autocomplete({ source: artistArray })
+    //   }
+    // }
+      // $(this.artistSearchTextField).autocomplete({ source: artistArray })
   }
 }
+
+
+
