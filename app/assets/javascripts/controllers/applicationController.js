@@ -38,11 +38,9 @@ ApplicationController.prototype= {
   signUp: function(e, response) {
     this.sessionController.signUp(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    var placeMarkersEvents = {events: response.events, location_coords: locationCoords }
-    this.mapController.placeMarkers(null, placeMarkersEvents)
+    var eventData = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, eventData)
   },
-
-
 
   getCurrentLocation: function() {
     if(navigator.geolocation) {
