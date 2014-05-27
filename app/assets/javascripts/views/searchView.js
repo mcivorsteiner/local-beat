@@ -51,18 +51,26 @@ SearchView.prototype = {
     return document.querySelector(this.locationSearchTextField)
   },
 
+
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
+    if (textInput.length >= 3) {
+        this.searchSuggestArtist(textInput)
+    }
+  },
+
+  limitLocationSearchQueryCharacters: function() {
+    var textInput = $(this.locationSearchTextField).val()
     if (textInput.length >= 3) {
         this.searchSuggest(textInput)
     }
   },
 
-  searchSuggest: function(textInput) {
-    $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderSearchSuggestionBox)
+  searchSuggestArtist: function(textInput) {
+    $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderArtistSearchSuggestionBox)
   },
 
-  renderSearchSuggestionBox: function(json) {
+  renderArtistSearchSuggestionBox: function(json) {
     var artists = json.resultsPage.results.artist
     var resultsLength = json.resultsPage.results.length
     var artistArray = []
