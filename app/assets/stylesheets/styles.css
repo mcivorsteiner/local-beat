@@ -184,3 +184,15 @@ SEARCH
   position: absolute;
   visibility: hidden;
 }
+
+/*##########################################
+SMALL INFO BOX
+##########################################*/
+
+.small-info-box {
+  font-family: Avenir;
+  font-size: 1.2em;
+  padding: 4px;
+  background-color: #AAAAAD;
+  border-radius: 10px;
+}
