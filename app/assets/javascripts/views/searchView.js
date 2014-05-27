@@ -85,20 +85,20 @@ SearchView.prototype = {
     var resultsLength = json.resultsPage.results.length
     var artistArray = []
     // console.log(artists.displayName)
-      $("#search-suggest ul").html("")
+      // $("#search-suggest ul").html("")
       for (var i = 0; i < 5; i ++){
         if(artists[i] !== undefined){
       //   // debugger
-        // artistArray.push(artists[i].displayName)
+        artistArray.push(artists[i].displayName)
 
       // console.log(artistArray)
       //   console.log(artists)
-      //   $(this.artistSearchTextField).autocomplete({ source: artists[i].displayName })
-
-        $("#search-suggest ul").append("<li>"+ artists[i].displayName + "</li>")
+        // $(this.artistSearchTextField).autocomplete({ source: artists[i].displayName })
+         $(this.artistSearchTextField).autocomplete({ source: artistArray })
+        // $("#search-suggest ul").append("<li>"+ artists[i].displayName + "</li>")
       }
     }
-      // console.log(artistArray)
+      console.log(artistArray)
       // $(this.artistSearchTextField).autocomplete({ source: artistArray })
   }
 }
