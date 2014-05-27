@@ -38,7 +38,11 @@ MapView.prototype = {
 
   enlargeInfoWindow: function(e) {
     e.preventDefault()
-    $('.more-event-info').toggleClass('hidden')
+     if ($('.more-event-info').is(':hidden')){
+      $('.more-event-info').slideDown("slow");
+    } else {
+      $('.more-event-info').hide()
+    }
   }
 
 }
