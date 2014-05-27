@@ -10,7 +10,6 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
-
     if (!this.userLoggedIn()) {
       this.getCurrentLocation()
     }
@@ -30,7 +29,9 @@ ApplicationController.prototype= {
   login: function(e, response) {
     this.sessionController.login(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    this.mapController.view.setMap(locationCoords)
+    // this.mapController.view.setMap(locationCoords)
+    var placeMarkersEvents = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, placeMarkersEvents)
   },
 
   signUp: function(e, response) {
