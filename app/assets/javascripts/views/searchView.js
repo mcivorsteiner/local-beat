@@ -60,7 +60,7 @@ SearchView.prototype = {
     return document.querySelector(this.locationSearchTextField)
   },
 
-  getSearchStatusHeader: function(){
+   getSearchStatusHeader: function(){
     return document.querySelector(this.searchStatusHeader)
   },
 
