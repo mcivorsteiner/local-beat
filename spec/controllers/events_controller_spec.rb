@@ -42,6 +42,13 @@ describe EventsController do
       expect(response).to be_success
     end
 
+    it "responds with failure if id is no bueno" do
+      Songkick.stub(:event_search) {[]}
+      params = {songkickLocationID: 5287409}
+      get :search_by_sk_location_id, params
+      response.response_code.should == 422
+    end
+
   end
 
   # context "format_date private helper method" do

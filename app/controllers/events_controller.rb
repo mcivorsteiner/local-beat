@@ -14,9 +14,11 @@ class EventsController < ApplicationController
 
   def search_by_sk_location_id
     songkick_location_id = params["songkickLocationId"]
-    events = Songkick.event_search({location: "sk:#{songkick_location_id}"})
-
-    render json: events
+    unless events = Songkick.event_search({location: "sk:#{songkick_location_id}"}) == []
+      render json: events
+    else
+      render text: "Location not found, try again", status: :unprocessable_entity
+    end
   end
 
   private
