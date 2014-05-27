@@ -12,6 +12,7 @@ MapController.prototype = {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
+     $(document).on('click', '.more-info', this.enlargeInfoWindow.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -23,7 +24,6 @@ MapController.prototype = {
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
     }
-
     this.view.setMap(eventData.location_coords)
 
   },
@@ -57,10 +57,11 @@ MapController.prototype = {
     }
     infoBox.setContent(html);
     infoBox.open(this.map, this);
+ },
 
-
-
-
- }
+   enlargeInfoWindow: function() {
+    event.preventDefault()
+    console.log("in the large info window")
+  }
 }
 
