@@ -15,6 +15,7 @@ SearchView.prototype = {
     // $(this.advOptionsIconSelector).show()
     $('#user_input_location_name').val('')
     $('#artist_name').val('')
+    this.getSearchStatusHeader().innerText = ""
    if ($(this.searchWindowSelector).is(':hidden')){
     $('.pop-up').hide()
     $(this.searchWindowSelector).slideDown("slow")
@@ -38,7 +39,6 @@ SearchView.prototype = {
 
   renderSearchErrorMessages: function(errors){
     document.querySelector(this.searchStatusDiv).classList.remove("hidden")
-    
     document.querySelector(this.searchStatusHeader).innerText = errors
   },
 
@@ -48,5 +48,9 @@ SearchView.prototype = {
 
   getAdvOptionsIcon: function(){
     return document.querySelector(this.advOptionsIconSelector)
+  },
+
+  getSearchStatusHeader: function(){
+    return document.querySelector(this.searchStatusHeader)
   }
 }

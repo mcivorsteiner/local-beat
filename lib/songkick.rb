@@ -45,48 +45,6 @@ module Songkick
     }
   end
 
-  # def location_id_query(location_query)
-  #   url      = location_search_url(location_query)
-  #   response = request(url)
-
-  #   results = response["resultsPage"]["results"]
-
-  #   if results && results["location"].map do |location|
-  #     if metro_area = location["metroArea"]
-  #       sk_location_name = metro_area["displayName"] ? metro_area["displayName"] : nil
-  #       sk_location_id   = metro_area["id"]          ? metro_area["id"].to_i     : nil
-  #       lat              = metro_area["lat"]         ? metro_area["lat"].to_f    : nil
-  #       lng              = metro_area["lng"]         ? metro_area["lng"].to_f    : nil
-
-  #       if state = metro_area["state"]
-  #         state = state["displayName"]
-  #       else
-  #         state = nil
-  #       end
-
-  #       if country = metro_area["country"]
-  #         country = country["displayName"]
-  #       else
-  #         country = nil
-  #       end
-
-  #       Location.new({
-  #         user_input_location_name: location_query.downcase, 
-  #         sk_location_id:           sk_location_id, 
-  #         sk_location_name:         sk_location_name, 
-  #         state:                    state, 
-  #         country:                  country, 
-  #         lat:                      lat, 
-  #         lng:                      lng
-  #       })
-  #     else
-  #       []
-  #     end
-  #   else
-  #     []
-  #   end
-  # end
-
   def location_id_query(location_query)
     url = location_search_url(location_query)
     response = request(url)
