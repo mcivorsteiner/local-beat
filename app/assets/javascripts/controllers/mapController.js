@@ -33,21 +33,20 @@ MapController.prototype = {
     if (typeof infoBox == "object") {
       infoBox.close()
     }
-    // var infoBox = null
-    var boxOptions = { disableAutoPan: false
-    ,maxWidth: 0
-    ,pixelOffset: new google.maps.Size(-140, 0)
-    ,zIndex: null
-    ,boxStyle: { opacity: 0.75
-     }
-    ,closeBoxMargin: "10px 2px 2px 2px"
-    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-    ,infoBoxClearance: new google.maps.Size(1, 1)
-    ,isHidden: false
-    ,pane: "floatPane"
-    ,alignBottom: true
-    ,enableEventPropagation: false
-      };
+    // var boxOptions = { disableAutoPan: false
+    // ,maxWidth: 0
+    // ,pixelOffset: new google.maps.Size(-140, 0)
+    // ,zIndex: null
+    // ,boxStyle: { opacity: 0.75
+    //  }
+    // ,closeBoxMargin: "10px 2px 2px 2px"
+    // ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+    // ,infoBoxClearance: new google.maps.Size(1, 1)
+    // ,isHidden: false
+    // ,pane: "floatPane"
+    // ,alignBottom: true
+    // ,enableEventPropagation: true
+    //   };
     infoBox = new InfoBox(boxOptions);
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
@@ -59,9 +58,34 @@ MapController.prototype = {
     infoBox.open(this.map, this);
  },
 
-   enlargeInfoWindow: function() {
-    event.preventDefault()
-    console.log("in the large info window")
-  }
+   enlargeInfoWindow: function(e) {
+    e.preventDefault()
+    if (typeof infoBox == "object"){
+      infoBox.close()
+    }
+    // var boxOptions = { disableAutoPan: false
+    // ,maxWidth: 0
+    // ,pixelOffset: new google.maps.Size(-140, 0)
+    // ,zIndex: null
+    // ,boxStyle: { opacity: 0.75
+    //  }
+    // ,closeBoxMargin: "10px 2px 2px 2px"
+    // ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+    // ,infoBoxClearance: new google.maps.Size(1, 1)
+    // ,isHidden: false
+    // ,pane: "floatPane"
+    // ,alignBottom: true
+    // ,enableEventPropagation: true
+    //   };
+    infoBox = new InfoBox(boxOptions);
+    var eventDetails = this.eventInfo
+    if (eventDetails.isFestival()) {
+      var html = HandlebarsTemplates['events/large_festival_info_box'](eventDetails)
+    } else {
+      var html = HandlebarsTemplates['events/large_event_info_box'](eventDetails)
+    }
+    infoBox.setContent(html);
+    infoBox.open(this.map, this);
+   }
 }
 
