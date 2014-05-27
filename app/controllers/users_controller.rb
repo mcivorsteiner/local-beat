@@ -14,9 +14,7 @@ class UsersController < ApplicationController
     if @user && @user.save
       session[:user_id] = @user.id
       html = render_to_string partial: "shared/user_data", locals: {user: @user}
-
       render json: {userData: UserPresenter.create_json(@user), template: html}
-
     else
       render json: {errors: @user.errors.full_messages},
       status: :unprocessable_entity

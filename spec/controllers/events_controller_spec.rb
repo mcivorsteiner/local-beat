@@ -26,6 +26,12 @@ describe EventsController do
         get :search, event_search_params(location.user_input_location_name)
       }.to change { Location.count }.by(0)
     end
+
+    it "replies with response code 422 when api comes back with no location matches" do
+      Songkick.stub(:location_id_query){ [] }
+      get :search, event_search_params("sidj;en53")
+      response.response_code.should == 422
+    end
   end
 
   # context "format_date private helper method" do
