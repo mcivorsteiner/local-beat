@@ -29,36 +29,18 @@ MapController.prototype = {
   },
 
   showInfoWindow: function() {
-
-    if (typeof infoBox == "object") {
-      infoBox.close()
+    if (typeof infoWindow != "undefined") {
+      infoWindow.close()
     }
-    infoBox = new InfoBox(boxOptions);
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
     } else {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
     }
-    infoBox.setContent(html);
-    infoBox.open(this.map, this);
- },
-
-   // enlargeInfoWindow: function(e) {
-   //  debugger
-   //  e.preventDefault()
-   //  if (typeof infoBox == "object"){
-   //    infoBox.close()
-   //  }
-   //  infoBox = new InfoBox(boxOptions);
-   //  var eventDetails = this.eventInfo
-   //  if (eventDetails.isFestival()) {
-   //    var html = HandlebarsTemplates['events/large_festival_info_box'](eventDetails)
-   //  } else {
-   //    var html = HandlebarsTemplates['events/large_event_info_box'](eventDetails)
-   //  }
-   //  infoBox.setContent(html);
-   //  infoBox.open(this.map, this);
-   // }
+    infoWindow = new google.maps.InfoWindow()
+    infoWindow.setContent(html)
+    infoWindow.open(this.map, this)
+  }
 }
 
