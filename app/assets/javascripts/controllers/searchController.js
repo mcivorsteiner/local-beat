@@ -12,7 +12,7 @@ SearchController.prototype = {
     this.view.getAdvOptionsIcon().addEventListener('click', this.view.renderAdvancedOptions.bind(this.view))
   },
 
-  renderErrorMessages: function(){
+  renderErrorMessages: function(e, response, responseType, status){
     debugger
   }
 
