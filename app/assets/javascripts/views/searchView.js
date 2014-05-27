@@ -19,7 +19,7 @@ SearchView.prototype = {
     $('#artist_name').val('')
 
     this.getSearchStatusHeader().innerText = ""
-    
+
     if ($(this.searchWindowSelector).is(':hidden')){
       $('.pop-up').hide()
       $(this.searchWindowSelector).slideDown("slow")
@@ -52,7 +52,6 @@ SearchView.prototype = {
     return document.querySelector(this.advOptionsIconSelector)
   },
 
-<<<<<<< HEAD
   getArtistSearchTextField: function() {
     return document.querySelector(this.artistSearchTextField)
   },
@@ -118,6 +117,7 @@ SearchView.prototype = {
 
      $(this.locationSearchTextField).autocomplete({ source: utilities.uniq(locationArray) })
     }
+  }, 
 
   getSearchStatusHeader: function(){
     return document.querySelector(this.searchStatusHeader)
@@ -125,7 +125,6 @@ SearchView.prototype = {
 
   getSearchStatusDiv: function(){
     return document.querySelector(this.searchStatusDiv)
-
   }
 }
 
