@@ -52,8 +52,6 @@ ApplicationController.prototype= {
     var positionCoords = position.coords
     var coordsObj = {lat: positionCoords.latitude, lng: positionCoords.longitude}
 
-    console.log("Firing Location AJAX")
-
     var ajaxRequest = $.ajax({
       url: '/locations',
       type: 'GET',
@@ -86,7 +84,6 @@ ApplicationController.prototype= {
   },
 
   placeEventsForUserLocationPreference: function(response) {
-    debugger
     var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
     this.mapController.placeMarkers(null,eventData)
   }
