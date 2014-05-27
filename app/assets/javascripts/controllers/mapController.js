@@ -11,7 +11,6 @@ MapController.prototype = {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
-    $(document).on('click', this.getSpotifyPlayer.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -29,11 +28,9 @@ MapController.prototype = {
   },
 
   showInfoWindow: function() {
-
     if (typeof infoBox == "object") {
       infoBox.close()
     }
-    // var infoBox = null
     var boxOptions = { disableAutoPan:          false,
                        maxWidth:                0,
                        pixelOffset:             new google.maps.Size(-140, 0),
@@ -55,31 +52,8 @@ MapController.prototype = {
     } else {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
     }
-    // infoWindow = new google.maps.InfoWindow()
-    // infoWindow.setContent(html)
-    // infoWindow.open(this.map, this)
     infoBox.setContent(html);
     infoBox.open(this.map, this);
-  },
-
-  getSpotifyPlayer: function(){
-    event.preventDefault()
-    // debugger
-    var ajaxRequest = $.ajax({
-      url: event.target.href,
-      type: "GET",
-      data: {sk_artist_id: $(event.target).data("sk-id")}
-    })
-
-    ajaxRequest.done(this.showSongs.bind(this))
-  },
-
-  showSongs: function(response){
-    // debugger
-    var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
-    var source = { href: href }
-    var html = HandlebarsTemplates['events/spotify_embed'](source)
-    $('.container').append(html)
   }
 
 

@@ -10,6 +10,7 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
+    $(document).on('click', this.getSpotifyPlayer.bind(this))
     if (!this.userLoggedIn()) {
       this.getCurrentLocation()
     } else {
@@ -86,7 +87,23 @@ ApplicationController.prototype= {
   placeEventsForUserLocationPreference: function(response) {
     var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
     this.mapController.placeMarkers(null,eventData)
+  },
+
+  getSpotifyPlayer: function(){
+    event.preventDefault()
+    var ajaxRequest = $.ajax({
+      url: event.target.href,
+      type: "GET",
+      data: {sk_artist_id: $(event.target).data("sk-id")}
+    })
+
+    ajaxRequest.done(this.showSongs.bind(this))
+  },
+
+  showSongs: function(response){
+    var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
+    var source = { href: href }
+    var html = HandlebarsTemplates['events/spotify_embed'](source)
+    $('.container').append(html)
   }
-
-
 }

@@ -18,8 +18,6 @@ module Songkick
      "/search/locations.json?location=geo:#{coordsObj[:lat]},#{coordsObj[:lng]}&apikey=#{SONGKICK_KEY}"
   end
 
-
-
   def request(url, query = {})
     response = get(url, query: query)
     JSON.parse(response.body)
@@ -55,12 +53,12 @@ module Songkick
 
     if results && results["location"]
       locations = results["location"].map do |location|
-        location_name    = location["metroArea"]["displayName"] rescue nil
-        sk_location_id   = location["metroArea"]["id"].to_i rescue nil
-        state            = location["metroArea"]["state"]["displayName"] rescue nil
-        country          = location["metroArea"]["country"]["displayName"] rescue nil
-        lat              = location["metroArea"]["lat"].to_f rescue nil
-        lng              = location["metroArea"]["lng"].to_f rescue nil
+        location_name    = location["metroArea"]["displayName"]             rescue nil
+        sk_location_id   = location["metroArea"]["id"].to_i                 rescue nil
+        state            = location["metroArea"]["state"]["displayName"]    rescue nil
+        country          = location["metroArea"]["country"]["displayName"]  rescue nil
+        lat              = location["metroArea"]["lat"].to_f                rescue nil
+        lng              = location["metroArea"]["lng"].to_f                rescue nil
         Location.new(sk_location_id: sk_location_id, sk_location_name: location_name, user_input_location_name: location_query.downcase, state: state, country: country, lat: lat, lng: lng)
       end
       locations
@@ -103,24 +101,22 @@ module Songkick
     end
   end
 
-
-
   def extract_event_data(events)
     events_data = events.map do |event|
-      sk_event_id     = event["id"].to_i rescue nil
-      display_name    = event["displayName"] rescue nil
-      date            = event['start']['date'] rescue nil
-      time            = event['time'] rescue nil
+      sk_event_id     = event["id"].to_i              rescue nil
+      display_name    = event["displayName"]          rescue nil
+      date            = event['start']['date']        rescue nil
+      time            = event['time']                 rescue nil
       artists         = event["performance"].map { |performance| performance["artist"]["displayName"]} rescue nil
       headliner       = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["displayName"]} rescue nil
       headliner_id    = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["id"]} rescue nil
-      metro_area      = event["venue"]["metroArea"]["displayName"] rescue nil
+      metro_area      = event["venue"]["metroArea"]["displayName"]          rescue nil
       state           = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
       venue_name      = event["venue"]["displayName"] rescue nil
-      popularity      = event["popularity"].to_f rescue nil
+      popularity      = event["popularity"].to_f      rescue nil
       location        = [event["location"]["lat"].to_f, event["location"]["lng"].to_f] rescue nil
-      event_type      = event["type"] rescue nil
-      uri             = event["uri"] rescue nil
+      event_type      = event["type"]                 rescue nil
+      uri             = event["uri"]                  rescue nil
       { sk_event_id: sk_event_id, display_name: display_name, date: date, time: time, artists: artists, headliner: headliner, headliner_id: headliner_id.first, metro_area: metro_area, state: state, venue_name: venue_name, popularity: popularity, location: location, event_type: event_type, uri: uri }
     end
     events_data.reject { |event| event[:location][0] == 0 }
