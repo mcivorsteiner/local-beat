@@ -98,7 +98,6 @@ SearchView.prototype = {
         // $("#search-suggest ul").append("<li>"+ artists[i].displayName + "</li>")
       }
     }
-      console.log(artistArray)
       // $(this.artistSearchTextField).autocomplete({ source: artistArray })
   }
 }
