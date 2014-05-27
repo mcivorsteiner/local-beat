@@ -3,7 +3,7 @@ function SearchView(){
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
   this.advOptionsIconSelector = '#more-options-icon'
-  this.locationSearchTextField = '#user_input_location_name'
+  this.artistSearchTextField = '#artist_name'
 }
 
 SearchView.prototype = {
@@ -42,11 +42,31 @@ SearchView.prototype = {
     return document.querySelector(this.advOptionsIconSelector)
   },
 
-  getLocationSearchTextField: function() {
-    return document.querySelector(this.locationSearchTextField)
+  getArtistSearchTextField: function() {
+    return document.querySelector(this.artistSearchTextField)
   },
 
-  searchSuggest: function() {
-    console.log('hello')
+  // delayArtistSearchQuery: function() {
+  //   var delay = (function() {
+  //     var timer = 0
+  //   })
+  // },
+
+  limitArtistSearchQueryCharacters: function() {
+    var textInput = $(this.artistSearchTextField).val()
+    if (textInput.length >= 3) {
+      this.searchSuggest(textInput)
+    }
+  },
+
+  searchSuggest: function(textInput) {
+    console.log(textInput)
+
+    // $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderSearchSuggestionBox)
+    // $.ajax({url:"http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderSearchSuggestionBox)
+  },
+
+  renderSearchSuggestionBox: function(json) {
+    console.log(json)
   }
 }
