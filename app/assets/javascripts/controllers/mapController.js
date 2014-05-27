@@ -58,6 +58,8 @@ MapController.prototype = {
     infoBox.setContent(html);
     infoBox.open(this.map, this);
 
+    console.log(this.eventInfo)
+
 
 
 
