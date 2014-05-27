@@ -82,7 +82,7 @@ SearchView.prototype = {
 
   limitLocationSearchQueryCharacters: function() {
     var textInput = $(this.locationSearchTextField).val()
-    if (textInput.length >= 3) {
+    if (textInput.length >= 1) {
         this.searchSuggestLocation(textInput)
     }
   },
@@ -92,19 +92,19 @@ SearchView.prototype = {
   },
 
   renderLocationSearchSuggestionBox: function(json) {
+
     var locations = json.resultsPage.results.location
     console.log('I am in the render location box')
-    console.log(locations)
-    // var resultsLength = json.resultsPage.results.length
-    // var artistArray = []
+    // console.log(locations)
+    var resultsLength = json.resultsPage.results.length
+    var locationArray = []
 
-    //   for (var i = 0; i < 5; i ++){
-    //     if(artists[i] !== undefined){
-    //     artistArray.push(artists[i].displayName)
-    //      $(this.artistSearchTextField).autocomplete({ source: artistArray })
-    //   }
-    // }
-      // $(this.artistSearchTextField).autocomplete({ source: artistArray })
+      for (var i = 0; i < 5; i ++){
+        if(locations[i]!== undefined){
+        locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
+         $(this.locationSearchTextField).autocomplete({ source: locationArray })
+      }
+    }
   }
 }
 
