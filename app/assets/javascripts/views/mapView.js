@@ -34,6 +34,18 @@ MapView.prototype = {
     var center = new google.maps.LatLng(lat, lng)
     this.map.panTo(center)
     this.map.setZoom(12)
+  },
+
+  enlargeInfoWindow: function(e) {
+    e.preventDefault();
+    // $(".loc-submit").removeClass("hide-submit")
+    if ($('.more-event-info').is(':hidden')){
+      $('.more-event-info').slideDown("slow");
+    } else {
+      $('.more-event-info').hide()
+    }
+
   }
+
 }
 
