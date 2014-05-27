@@ -3,6 +3,7 @@ function SearchView(){
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
   this.advOptionsIconSelector = '#more-options-icon'
+  this.locationSearchTextField = '#user_input_location_name'
 }
 
 SearchView.prototype = {
@@ -15,7 +16,7 @@ SearchView.prototype = {
    if ($(this.searchWindowSelector).is(':hidden')){
     $('.pop-up').hide()
     $(this.searchWindowSelector).slideDown("slow")
-    $(this.advOptionsIconSelector).show() 
+    $(this.advOptionsIconSelector).show()
    }
    else {
     $(this.searchWindowSelector).hide(500)
@@ -39,5 +40,13 @@ SearchView.prototype = {
 
   getAdvOptionsIcon: function(){
     return document.querySelector(this.advOptionsIconSelector)
+  },
+
+  getLocationSearchTextField: function() {
+    return document.querySelector(this.locationSearchTextField)
+  },
+
+  searchSuggest: function() {
+    console.log('hello')
   }
 }

@@ -1,9 +1,10 @@
 <div id="search-window" class="hidden pop-up">
   <ul>
-  <%= form_tag('/events', :method=> :get, :class=>"search", remote: true) do %>
+  <%= form_tag('/events', :method=> :get, :class=>"search", remote: true, :html => {:autocomplete => 'off'}) do %>
     <li>
       <%= text_field_tag :user_input_location_name, nil, placeholder: "Location" %>
     </li>
+    <div id='search-suggest'></div>
     <li class="advanced-options hidden">
       <%= text_field_tag :artist_name, nil, placeholder: "Artist Name" %>
     </li>
