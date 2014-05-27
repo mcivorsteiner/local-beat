@@ -1,4 +1,5 @@
 function SearchView(){
+  // this.untilities = new Utility()
   this.searchWindowSelector = '#search-window'
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
