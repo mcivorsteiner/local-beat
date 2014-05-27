@@ -14,7 +14,13 @@ class UsersController < ApplicationController
     if @user && @user.save
       session[:user_id] = @user.id
       html = render_to_string partial: "shared/user_data", locals: {user: @user}
-      render json: {userData: UserPresenter.create_json(@user), template: html}
+
+      sk_location_id = @location.sk_location_id
+
+      events = Songkick.event_search({location: "sk:#{sk_location_id}"})
+
+      render json: {userData: UserPresenter.create_json(@user), template: html, events: events}
+
     else
       render json: {errors: @user.errors.full_messages},
       status: :unprocessable_entity

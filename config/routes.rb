@@ -8,6 +8,9 @@ LocalBeat::Application.routes.draw do
   delete '/session', to: 'session#destroy'
 
   get '/events', to: 'events#search'
+
+  get '/events/sk_location_id', to: 'events#search_by_sk_location_id'
+
   resources :users, only: [:new, :create, :edit, :destroy, :update]
 
   get '/locations', to: 'locations#search'

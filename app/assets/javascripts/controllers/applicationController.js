@@ -10,7 +10,11 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
-    this.getCurrentLocation()
+    if (!this.userLoggedIn()) {
+      this.getCurrentLocation()
+    } else {
+      this.getEventsForUserLocationPreference()
+    }
   },
 
   setAjaxListeners: function() {
@@ -20,8 +24,6 @@ ApplicationController.prototype= {
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
   },
 
-  // $.ajax("GET")
-
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
   },
@@ -29,13 +31,15 @@ ApplicationController.prototype= {
   login: function(e, response) {
     this.sessionController.login(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    this.mapController.view.setMap(locationCoords)
+    var placeMarkersEvents = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, placeMarkersEvents)
   },
 
   signUp: function(e, response) {
     this.sessionController.signUp(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    this.mapController.view.setMap(locationCoords)
+    var eventData = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, eventData)
   },
 
   getCurrentLocation: function() {
@@ -62,11 +66,27 @@ ApplicationController.prototype= {
   },
 
   setCurrentLocation: function(response) {
-    if (this.userLoggedIn()) {
-    } else {
-      var locationCoords = {lat: response.lat, lng: response.lng}
-      this.mapController.view.setMap(locationCoords)
+    if (!this.userLoggedIn()) {
+      this.mapController.placeMarkers(null,response)
     }
+  },
+
+  getEventsForUserLocationPreference: function() {
+    var songkickLocationId = userData.songkickLocationId
+
+    var ajaxRequest = $.ajax({
+        url: '/events/sk_location_id',
+        type: 'GET',
+        data: {songkickLocationId: songkickLocationId}
+    })
+
+    ajaxRequest.done(this.placeEventsForUserLocationPreference.bind(this))
+  },
+
+  placeEventsForUserLocationPreference: function(response) {
+    var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
+    this.mapController.placeMarkers(null,eventData)
   }
+
 
 }
