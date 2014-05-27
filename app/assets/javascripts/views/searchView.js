@@ -1,5 +1,5 @@
-function SearchView(){
-  // this.untilities = new Utility()
+function SearchView(utility){
+  this.utilities = new Utilities()
   this.searchWindowSelector = '#search-window'
   this.advOptionsSelector = '.advanced-options'
   this.searchIconSelector = '#magnify'
@@ -83,9 +83,9 @@ SearchView.prototype = {
         artistArray.push(artists[i].displayName)
          $(this.artistSearchTextField).autocomplete({ source: artistArray })
       }
-      var utilities = new Utilities()
+      // var utilities = new Utilities()
 
-     $(this.artistSearchTextField).autocomplete({ source: utilities.uniq(artistArray) })
+     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
     }
       // $(this.artistSearchTextField).autocomplete({ source: artistArray })
   },
@@ -113,9 +113,9 @@ SearchView.prototype = {
         locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
       }
 
-      var utilities = new Utilities()
+      // var utilities = new Utilities()
 
-     $(this.locationSearchTextField).autocomplete({ source: utilities.uniq(locationArray) })
+     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(locationArray) })
     }
   }, 
 
