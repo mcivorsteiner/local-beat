@@ -24,8 +24,6 @@ ApplicationController.prototype= {
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
   },
 
-  // $.ajax("GET")
-
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
   },
@@ -88,6 +86,7 @@ ApplicationController.prototype= {
   },
 
   placeEventsForUserLocationPreference: function(response) {
+    debugger
     var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
     this.mapController.placeMarkers(null,eventData)
   }
