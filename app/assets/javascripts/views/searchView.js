@@ -70,12 +70,12 @@ SearchView.prototype = {
 
 // Suggest box for the artists
 
-  // limitArtistSearchQueryCharacters: function() {
-  //   var textInput = $(this.artistSearchTextField).val()
-  //   if (textInput.length >= 3) {
-  //       this.searchSuggestArtist(textInput)
-  //   }
-  // },
+  limitArtistSearchQueryCharacters: function() {
+    var textInput = $(this.artistSearchTextField).val()
+    if (textInput.length >= 3) {
+        this.searchSuggestArtist(textInput)
+    }
+  },
 
   searchSuggestArtist: function(textInput) {
     $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderArtistSearchSuggestionBox)
