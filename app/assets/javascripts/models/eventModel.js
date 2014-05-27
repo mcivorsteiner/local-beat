@@ -12,7 +12,9 @@ function Event(eventData){
   this.eventType = eventData.event_type
   this.uri = eventData.uri
   this.headliner = eventData.headliner
-  this.time = eventData.time
+  if (eventData.time) {
+    this.time = this.timeFormatter(eventData.time)
+  }
 }
 
 Event.prototype = {
@@ -22,5 +24,22 @@ Event.prototype = {
     } else {
       return false
     }
+  },
+
+  timeFormatter: function(time) {
+    var parts = time.split(':'),
+        hour = parts[0],
+        minutes = parts[1];
+    if (hour > 12) {
+        return time = (hour - 12) + ':' + minutes + ' PM';
+    } else if (hour === 0) {
+        return time = 12 + ':' + minutes + ' AM';
+    } else if (hour == 12) {
+        return time += ' PM';
+    } else {
+        return time += ' AM';
+    }
   }
+
 }
+
