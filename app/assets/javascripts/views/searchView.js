@@ -51,12 +51,6 @@ SearchView.prototype = {
     return document.querySelector(this.locationSearchTextField)
   },
 
-  //filter for unique value
-
-  // uniqueResultsFromSearch: function(value, index, self){
-  //   return self.indexOf(value) === index
-  // },
-
 // Suggest box for the artists
 
   limitArtistSearchQueryCharacters: function() {
@@ -80,6 +74,9 @@ SearchView.prototype = {
         artistArray.push(artists[i].displayName)
          $(this.artistSearchTextField).autocomplete({ source: artistArray })
       }
+      var utilities = new Utilities()
+
+     $(this.artistSearchTextField).autocomplete({ source: utilities.uniq(artistArray) })
     }
       // $(this.artistSearchTextField).autocomplete({ source: artistArray })
   },
@@ -100,15 +97,11 @@ SearchView.prototype = {
   renderLocationSearchSuggestionBox: function(json) {
 
     var locations = json.resultsPage.results.location
-    // console.log('I am in the render location box')
-    // console.log(locations)
-    // var resultsLength = json.resultsPage.results.length
     var locationArray = []
 
       for (var i = 0; i < 5; i ++){
         if(locations[i]!== undefined){
         locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
-        // locationArray.filter(uniqueResultsFromSearch)
       }
 
       var utilities = new Utilities()
