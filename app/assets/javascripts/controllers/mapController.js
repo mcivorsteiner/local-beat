@@ -91,6 +91,21 @@ MapController.prototype = {
         var html = HandlebarsTemplates['events/spotify_embed'](source)
         $('.spotify-player').append(html)
       }
+
+      //append artist bio
+      if (response.artist_bio !== null) {
+        var link = document.createElement('a')
+        link.href = ''
+        link.innerText = '  Artist Bio'
+        $('.artist-bio-div').prepend(link)
+        $('.artist-bio-div a').on('click', function(){
+          event.preventDefault()
+          $('.artist-bio').toggle('hidden')
+        })
+        var source = response.artist_bio
+        $('.artist-bio').text(source)
+
+      }
     })
   },
 
