@@ -71,6 +71,7 @@ SearchView.prototype = {
 // Suggest box for the artists
 
   limitArtistSearchQueryCharacters: function() {
+    // console.log("I'm here")
     var textInput = $(this.artistSearchTextField).val()
     if (textInput.length >= 3) {
         this.searchSuggestArtist(textInput)
@@ -78,31 +79,41 @@ SearchView.prototype = {
   },
 
   searchSuggestArtist: function(textInput) {
-    $.getJSON("http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderArtistSearchSuggestionBox)
+    $.getJSON("http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput + "&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderArtistSearchSuggestionBox.bind(this))
     // $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderArtistSearchSuggestionBox)
   },
 
   renderArtistSearchSuggestionBox: function(data) {
-    console.log(data)
-    // var artists = json.resultsPage.results.artist
 
-    // var artistArray = []
+    var artists = data.resultsPage.results.artist
+    console.log(artists)
+    var artistArray = []
+    var length = artists.length
 
-    //   for (var i = 0; i < 5; i ++){
-    //     if(artists[i] !== undefined){
-    //     artistArray.push(artists[i].displayName)
-    //      $(this.artistSearchTextField).autocomplete({ source: artistArray })
-    //   }
+    for (var i = 0; i < 5; i ++){
+      if(artists[i] !== undefined){
+          artistArray.push(artists[i].displayName)
+      }
+     // $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
+    }
+    console.log(this.utilities.uniq(artistArray))
+    this.executeFunction(artistArray)
 
+    // console.log(artistArray.join(", "))
+    // window.setInterval(console.log("I'm here"), 5000)
+    // $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
+    
+  },
 
-    //  $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
-    // }
-
+  executeFunction: function(array){
+    // window.setInterval(console.log("I'm here"), 3000)
+    $(this.artistSearchTextField).autocomplete({ delay: 950, source: this.utilities.uniq(array) })
   },
 
 // Suggest box for the locations
 
   limitLocationSearchQueryCharacters: function() {
+    console.log("i'm here")
     var textInput = $(this.locationSearchTextField).val()
     if (textInput.length >= 1) {
         this.searchSuggestLocation(textInput)
@@ -119,18 +130,19 @@ SearchView.prototype = {
     // $.ajax({url:"http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderLocationSearchSuggestionBox)
   },
 
-  seeWhatItreturns: function(data) {
-    console.log(data)
-  },
+  // seeWhatItreturns: function(data) {
+  //   console.log(data)
+  // },
 
-  renderLocationSearchSuggestionBox: function(json) {
-
-    var locations = json.resultsPage.results.location
+  renderLocationSearchSuggestionBox: function(data) {
+    // console.log(data)
+    var locations = data.resultsPage.results.event
+    console.log(data.resultsPage.results.event)
     var locationArray = []
 
       for (var i = 0; i < 5; i ++){
         if(locations[i]!== undefined){
-        locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
+        locationArray.push(locations[i].location.city, locations[i].metroArea.displayName)
       }
 
      $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(locationArray) })
