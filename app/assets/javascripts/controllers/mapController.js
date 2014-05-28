@@ -64,7 +64,15 @@ MapController.prototype = {
     })
 
     ajaxRequest.done(function(response){
-      console.log(response)
+      var artist_img = document.createElement('img')
+      artist_img.src = response.artist_img
+      artist_img.classList.add('artist-img')
+      $('.large-info-box').append(artist_img)
+
+      var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
+      var source = { href: href }
+      var html = HandlebarsTemplates['events/spotify_embed'](source)
+      $('.large-info-box').append(html)
     })
   },
 

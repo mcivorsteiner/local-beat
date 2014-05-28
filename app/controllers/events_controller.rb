@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     artist_bio = Echonest.get_artist_bio(params[:sk_artist_id])
     artist_pic = Echonest.get_artist_image(params[:sk_artist_id])
 
-    render json: { top_song_ids: top_song_ids, ticket_info: ticket_info, artist_bio: artist_bio, artist_pic: artist_pic }
+    render json: { top_song_ids: top_song_ids, ticket_info: ticket_info, artist_bio: artist_bio, artist_img: artist_pic }
   end
 
   private
