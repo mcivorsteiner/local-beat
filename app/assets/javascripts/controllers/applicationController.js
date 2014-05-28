@@ -113,8 +113,6 @@ ApplicationController.prototype= {
   },
 
   userPreferenceUpdatesError: function(response) {
-    debugger
-
   }
 
 }
