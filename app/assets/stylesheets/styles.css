@@ -219,3 +219,9 @@ LARGE INFO BOX
   top: 10px;
   right: 10px;
 }
+
+.addthis_toolbox, .addthis_floating_style, .addthis_counter_style {
+  right:100px;
+  bottom:100px;
+  z-index:10001;
+}

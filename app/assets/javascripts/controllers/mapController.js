@@ -44,7 +44,6 @@ MapController.prototype = {
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
-  },
     $("body").append(largeInfoBox)
   },
 
@@ -53,7 +52,8 @@ MapController.prototype = {
     if (typeof infoWindow != "undefined") {
       infoWindow.close()
     }
-  $('.large-info-box').removeClass('hidden')
+    $('.large-info-box').removeClass('hidden')
+    document.getElementById('social-media').classList.toggle('hidden')
   },
 
   closeLargeInfoWindow: function(e) {
