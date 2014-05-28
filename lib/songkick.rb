@@ -103,14 +103,14 @@ module Songkick
 
   def extract_event_data(events)
     events_data = events.map do |event|
-      sk_event_id     = event["id"].to_i              rescue nil
-      display_name    = event["displayName"]          rescue nil
-      date            = event['start']['date']        rescue nil
-      time            = event['time']                 rescue nil
+      sk_event_id     = event["id"].to_i rescue nil
+      display_name    = event["displayName"] rescue nil
+      date            = event['start']['date'] rescue nil
+      time            = event['start']['time'] rescue nil
       artists         = event["performance"].map { |performance| performance["artist"]["displayName"]} rescue nil
       headliner       = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["displayName"]} rescue nil
       headliner_id    = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["id"]} rescue nil
-      metro_area      = event["venue"]["metroArea"]["displayName"]          rescue nil
+      metro_area      = event["venue"]["metroArea"]["displayName"] rescue nil
       state           = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
       venue_name      = event["venue"]["displayName"] rescue nil
       popularity      = event["popularity"].to_f      rescue nil

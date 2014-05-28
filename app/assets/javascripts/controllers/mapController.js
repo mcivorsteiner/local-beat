@@ -41,6 +41,7 @@ MapController.prototype = {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
       var largeInfoBox = HandlebarsTemplates['events/large_event_info_box'](eventDetails)
     }
+
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
