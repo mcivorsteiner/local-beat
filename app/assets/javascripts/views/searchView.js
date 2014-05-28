@@ -78,22 +78,6 @@ SearchView.prototype = {
   },
 
   searchSuggestArtist: function(textInput) {
-    this.executeFunctionForArtist(textInput);
-  },
-
-  renderArtistSearchSuggestionBox: function(data) {
-    var artists = data.resultsPage.results.artist
-    var artistArray = []
-
-    for (var i = 0; i < 5; i ++){
-      if(artists[i] !== undefined){
-          artistArray.push(artists[i].displayName)
-      }
-    }
-    this.executeFunctionForArtist(artistArray)
-  },
-
-  executeFunctionForArtist: function(textInput){
     var magicUrl = "http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput + "&apikey=pH29QOMdmJML48IO&jsoncallback=?";
 
     $(this.artistSearchTextField).autocomplete({
@@ -113,8 +97,7 @@ SearchView.prototype = {
     });
   },
 
-// Suggest box for the locations
-
+  // Suggest box for the locations
   limitLocationSearchQueryCharacters: function() {
     var textInput = $(this.locationSearchTextField).val()
     if (textInput.length >= 1) {
