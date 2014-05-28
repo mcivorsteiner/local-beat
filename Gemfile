@@ -24,6 +24,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec'
@@ -39,6 +40,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rake'
+  gem 'simplecov', '~> 0.7.1', :require => false
 end
 
 # To use ActiveModel has_secure_password
