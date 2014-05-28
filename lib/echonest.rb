@@ -45,7 +45,9 @@ module Echonest
     query_url = "http://developer.echonest.com/api/v4/artist/profile?api_key=#{ECHONEST_KEY}&id=songkick:artist:#{songkick_artist_id}&format=json&bucket=id:seatgeek"
 
     query_response = HTTParty.get(query_url).body
-    # formatted_response = MultiJson.load(query_response)
+    formatted_response = JSON.parse(query_response)
+    seatgeek_key = formatted_response["response"]["artist"]["foreign_ids"].first["foreign_id"]
+    seatgeek_id = seatgeek_key[/(?<=seatgeek:artist:).+/]
 
     # pp formatted_response
   end
