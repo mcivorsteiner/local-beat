@@ -32,8 +32,12 @@ module Echonest
     query_url = "http://developer.echonest.com/api/v4/artist/images?api_key=#{ECHONEST_KEY}&id=songkick:artist:#{songkick_artist_id}&format=json&results=1&start=0&license=unknown"
 
     query_response = HTTParty.get(query_url)
-    pp query_response
-    return query_response["response"]["images"][0]["url"]
+    artist_img = query_response["response"]["images"]
+    if artist_img && artist_img[0]
+      return artist_img[0]["url"]
+    else
+      nil
+    end
   end
 
   def get_tracks_list(songkick_artist_id)
@@ -57,8 +61,8 @@ module Echonest
     query_response = HTTParty.get(query_url).body
     formatted_response = JSON.parse(query_response)
     unless formatted_response["response"]["status"]["code"] == 5
-      seatgeek_key = formatted_response["response"]["artist"]["foreign_ids"].first["foreign_id"]
-      seatgeek_id = seatgeek_key[/(?<=seatgeek:artist:).+/]
+      seatgeek_key = formatted_response["response"]["artist"]["foreign_ids"] ? formatted_response["response"]["artist"]["foreign_ids"].first["foreign_id"] : nil
+      seatgeek_id = seatgeek_key[/(?<=seatgeek:artist:).+/] if seatgeek_key
     else
       nil
     end
