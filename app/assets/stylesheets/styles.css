@@ -188,11 +188,7 @@ SEARCH
   visibility: hidden;
 }
 
-iframe{
-  z-index: 10;
-  position: absolute;
-  top: 100px;
-}
+
 
 /*##########################################
 SMALL INFO BOX
@@ -215,6 +211,8 @@ LARGE INFO BOX
 .large-info-box {
   position: absolute;
   width: 85%;
+  max-height: 85%;
+  overflow: auto;
   top: 15px;
   left: 5%;
   z-index: 10000;
@@ -240,4 +238,10 @@ LARGE INFO BOX
 
 .artist-img {
   width: 60%;
+}
+
+.spotify-player{
+  /*z-index: 10;*/
+  /*position: absolute;*/
+  /*top: 100px;*/
 }

@@ -75,11 +75,13 @@ MapController.prototype = {
       //append ticket info
       var ticket_info = response.ticket_info
       if(ticket_info !== null && ticket_info.seatgeek_url !== null){
-        var seatgeek_link = document.createElement('a')
-        seatgeek_link.href = response.ticket_info.headliner_img_url
-        seatgeek_link.classList.add('seatgeek_link')
-        $('.seatgeek-link-div').append(seatgeek_link)
-        seatgeek_link.innerText = "Buy Tickets!!"
+        var source = { seatgeek_url:    ticket_info.seatgeek_url,
+                       average_price:   ticket_info.average_price,
+                       lowest_price:    ticket_info.lowest_price,
+                       listing_count:   ticket_info.listing_count
+                     }
+        var html = HandlebarsTemplates['events/ticket_info'](source)
+        $('.seatgeek-link-div').append(html)
       }
 
       //append spotify player
@@ -87,10 +89,8 @@ MapController.prototype = {
         var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
         var source = { href: href }
         var html = HandlebarsTemplates['events/spotify_embed'](source)
-        $('.large-info-box').append(html)
+        $('.spotify-player').append(html)
       }
-
-
     })
   },
 
