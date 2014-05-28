@@ -89,11 +89,13 @@ SearchView.prototype = {
             var data = $.map(data.resultsPage.results.artist, function(artist){
               return {label: artist.displayName, value: artist.displayName}
             });
+            console.log(response(data ))
             response(data );
           }
         });
       },
-      minLength: 0
+      minLength: 2,
+      delay: 0
     });
   },
 
@@ -106,26 +108,50 @@ SearchView.prototype = {
   },
 
   searchSuggestLocation: function(textInput) {
-    $.getJSON("http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderLocationSearchSuggestionBox.bind(this))
-  },
+    var magicUrl = "http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?";
 
-
-  renderLocationSearchSuggestionBox: function(data) {
-    var locations = data.resultsPage.results.location
-    var locationArray = []
-
-    for (var i = 0; i < 5; i ++){
-      if(locations[i]!== undefined){
-      locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
-      }
-    }
-    this.executeFunctionForLocation(locationArray)
-  },
-
-  executeFunctionForLocation: function(array){
-    window.setInterval(console.log("I'm there"), 1000)
-    $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+    $(this.locationSearchTextField).autocomplete({
+      source: function( request, response ){
+        $.ajax({
+          url: magicUrl,
+          dataType: "jsonp",
+          success: function(data){
+            var data = $.map(data.resultsPage.results.location, function(lokation){
+              return {label: lokation.city.displayName, value: lokation.city.displayName,
+                      label: lokation.metroArea.displayName, value: lokation.metroArea.displayName
+              }
+            });
+            console.log(response(data ))
+            response(data );
+          }
+        });
+      },
+      minLength: 2,
+      delay: 0
+    });
   }
+
+  // searchSuggestLocation: function(textInput) {
+  //   $.getJSON("http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderLocationSearchSuggestionBox.bind(this))
+  // },
+
+
+  // renderLocationSearchSuggestionBox: function(data) {
+  //   var locations = data.resultsPage.results.location
+  //   var locationArray = []
+
+  //   for (var i = 0; i < 5; i ++){
+  //     if(locations[i]!== undefined){
+  //     locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
+  //     }
+  //   }
+  //   this.executeFunctionForLocation(locationArray)
+  // },
+
+  // executeFunctionForLocation: function(array){
+  //   window.setInterval(console.log("I'm there"), 1000)
+  //   $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+  // }
 
 }
 
