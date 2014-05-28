@@ -113,6 +113,7 @@ module Songkick
       time            = event['start']['time'] rescue nil
       artists         = event["performance"].map { |performance| performance["artist"]["displayName"]} rescue nil
       headliner       = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["displayName"]} rescue nil
+      headliner_id    = event["performance"].select { |performance| performance["billingIndex"] == 1 }.map { |performance| performance["artist"]["id"]} rescue nil
       metro_area      = event["venue"]["metroArea"]["displayName"] rescue nil
       state           = event["venue"]["metroArea"]["state"]["displayName"] rescue nil
       venue_name      = event["venue"]["displayName"] rescue nil
