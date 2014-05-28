@@ -65,23 +65,31 @@ MapController.prototype = {
 
     ajaxRequest.done(function(response){
       //append photo
-      var artist_img = document.createElement('img')
-      artist_img.src = response.artist_img
-      artist_img.classList.add('artist-img')
-      $('.large-info-box').append(artist_img)
+      if (response.artist_img){
+        var artist_img = document.createElement('img')
+        artist_img.src = response.artist_img
+        artist_img.classList.add('artist-img')
+        $('.large-info-box').append(artist_img)
+      }
 
       //append ticket info
       ticket_info = response.ticket_info
-      if(ticket_info !== null && ticket_info.headliner_img_url !== undefined ){
-        headliner_img_url = response.ticket_info.headliner_img_url.huge
+      // console.log(ticket_info.headliner)
+      if(ticket_info !== null && ticket_info.headliner_img_url !== null){
+        headliner_img_url = response.ticket_info.headliner_img_url
+        $('.seatgeek-link').attr("href", response.ticket_info.seatgeek_url)
+      } else {
+        $('.seatgeek-link').remove()
       }
-      $('.seatgeek-link').attr("href", response.ticket_info.seatgeek_url)
       
+
       //append spotify player
-      var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
-      var source = { href: href }
-      var html = HandlebarsTemplates['events/spotify_embed'](source)
-      $('.large-info-box').append(html)
+      if ( response.top_song_ids.length > 0 ){
+        var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
+        var source = { href: href }
+        var html = HandlebarsTemplates['events/spotify_embed'](source)
+        $('.large-info-box').append(html)
+      }
 
 
     })
