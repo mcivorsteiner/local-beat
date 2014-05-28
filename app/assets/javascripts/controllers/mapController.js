@@ -53,12 +53,11 @@ MapController.prototype = {
       infoWindow.close()
     }
     $('.large-info-box').removeClass('hidden')
-    document.getElementById('social-media').classList.toggle('hidden')
   },
 
   closeLargeInfoWindow: function(e) {
     e.preventDefault();
-    $('.large-info-box').not('#social-media').remove()
+    $('.large-info-box').remove()
   }
 }
 

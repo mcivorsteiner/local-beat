@@ -220,7 +220,7 @@ LARGE INFO BOX
   right: 10px;
 }
 
-.addthis_toolbox, .addthis_default_style {
+#social-media{
   position:absolute;
   top:65px;
   right:10px;
