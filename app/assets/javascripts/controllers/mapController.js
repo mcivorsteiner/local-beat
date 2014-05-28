@@ -11,7 +11,7 @@ MapController.prototype = {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
-     $(document).on('click', '.more-info', this.enlargeInfoWindow.bind(this))
+     $(document).on('click', '.more-info', this.showLargeInfoWindow.bind(this))
      $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
   },
 
@@ -32,7 +32,7 @@ MapController.prototype = {
     if (typeof infoWindow != "undefined") {
       infoWindow.close()
     }
-
+    this.closeLargeInfoWindow()
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
@@ -45,19 +45,41 @@ MapController.prototype = {
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
     $("body").append(largeInfoBox)
+    this.view.appendLargeInfoBox(largeInfoBox)
+    this.getLargeInfoBoxData()
   },
 
-  enlargeInfoWindow: function(e) {
-    e.preventDefault();
+  showLargeInfoWindow: function() {
     if (typeof infoWindow != "undefined") {
       infoWindow.close()
     }
-  $('.large-info-box').removeClass('hidden')
+    $('.large-info-box').removeClass('hidden')
   },
 
-  closeLargeInfoWindow: function(e) {
-    e.preventDefault();
+  closeLargeInfoWindow: function() {
     $('.large-info-box').remove()
+  },
+
+  getLargeInfoBoxData: function(){
+    this.getSpotifySongs()
+  },
+
+  getSpotifySongs: function(){
+    event.preventDefault()
+    var ajaxRequest = $.ajax({
+      url: event.target.href,
+      type: "GET",
+      data: {sk_artist_id: $(event.target).data("sk-id")}
+    })
+
+    ajaxRequest.done(this.showSongs.bind(this))
+  },
+
+  showSongs: function(response){
+    var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
+    var source = { href: href }
+    var html = HandlebarsTemplates['events/spotify_embed'](source)
+    $('.container').append(html)
   }
 }
 
