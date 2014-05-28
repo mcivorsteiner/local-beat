@@ -82,21 +82,15 @@ SearchView.prototype = {
   },
 
   renderArtistSearchSuggestionBox: function(data) {
-
     var artists = data.resultsPage.results.artist
-    console.log(artists)
     var artistArray = []
-    // var length = artists.length
 
     for (var i = 0; i < 5; i ++){
       if(artists[i] !== undefined){
           artistArray.push(artists[i].displayName)
       }
-
     }
-    console.log(this.utilities.uniq(artistArray))
     this.executeFunctionForArtist(artistArray)
-    
   },
 
   executeFunctionForArtist: function(array){
@@ -107,7 +101,6 @@ SearchView.prototype = {
 // Suggest box for the locations
 
   limitLocationSearchQueryCharacters: function() {
-    console.log("i'm here")
     var textInput = $(this.locationSearchTextField).val()
     if (textInput.length >= 1) {
         this.searchSuggestLocation(textInput)
@@ -120,9 +113,7 @@ SearchView.prototype = {
 
 
   renderLocationSearchSuggestionBox: function(data) {
-
     var locations = data.resultsPage.results.location
-    console.log(locations)
     var locationArray = []
 
     for (var i = 0; i < 5; i ++){
@@ -130,9 +121,7 @@ SearchView.prototype = {
       locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
       }
     }
-    console.log(locationArray)
     this.executeFunctionForLocation(locationArray)
-
   },
 
   executeFunctionForLocation: function(array){
@@ -141,6 +130,4 @@ SearchView.prototype = {
   }
 
 }
-
-
 
