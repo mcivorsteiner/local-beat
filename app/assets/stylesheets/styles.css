@@ -238,7 +238,8 @@ LARGE INFO BOX
 
 .close {
   position: fixed;
-  
+  width: 85%;
+  z-index: 20000;
 }
 
 .artist-img {
