@@ -8,6 +8,8 @@ function SearchView(utility){
   this.artistSearchTextField = '#artist_name'
   this.searchStatusDiv = '.search-status'
   this.searchStatusHeader = '.search-status h4'
+
+  this.spinner = new Spinner()
 }
 
 SearchView.prototype = {
@@ -23,7 +25,7 @@ SearchView.prototype = {
     if ($(this.searchWindowSelector).is(':hidden')){
       $('.pop-up').hide()
       $(this.searchWindowSelector).slideDown("slow")
-      $(this.advOptionsIconSelector).show() 
+      $(this.advOptionsIconSelector).show()
     } else {
       $(this.searchWindowSelector).hide(500)
       $(this.advOptionsIconSelector).hide(500)
@@ -90,10 +92,13 @@ SearchView.prototype = {
           artistArray.push(artists[i].displayName)
       }
     }
+    this.spinner.spin()
+    $('body').apend(this.spinner.el)
     this.executeFunctionForArtist(artistArray)
   },
 
   executeFunctionForArtist: function(array){
+    this.spinner.stop()
     window.setInterval(console.log("I'm here"), 1000)
     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
   },
@@ -121,10 +126,12 @@ SearchView.prototype = {
       locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
       }
     }
+    this.spinner.spin()
     this.executeFunctionForLocation(locationArray)
   },
 
   executeFunctionForLocation: function(array){
+    this.spinner.stop()
     window.setInterval(console.log("I'm there"), 1000)
     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
   }
