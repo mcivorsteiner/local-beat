@@ -8,6 +8,7 @@ function SearchView(utility){
   this.artistSearchTextField = '#artist_name'
   this.searchStatusDiv = '.search-status'
   this.searchStatusHeader = '.search-status h4'
+  this.currentLocation = ""
 }
 
 SearchView.prototype = {
@@ -17,7 +18,6 @@ SearchView.prototype = {
     // $(this.advOptionsIconSelector).show()
     $('#user_input_location_name').val(this.currentLocation)
     $('#artist_name').val('')
-
 
     this.getSearchStatusHeader().innerText = ""
 
