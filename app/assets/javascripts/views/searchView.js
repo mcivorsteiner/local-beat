@@ -116,9 +116,12 @@ SearchView.prototype = {
           url: magicUrl,
           dataType: "jsonp",
           success: function(data){
-            var data = $.map(data.resultsPage.results.location, function(lokation){
-              return {label: lokation.city.displayName, value: lokation.city.displayName,
-                      label: lokation.metroArea.displayName, value: lokation.metroArea.displayName
+            console.log(data)
+            var utilities = new Utilities
+            var data = $.map(utilities.uniq(data.resultsPage.results.location), function(lokation){
+              return {
+                label:lokation.city.displayName, value: lokation.city.displayName
+                // label:lokation.metroArea.displayName, value: lokation.metroArea.displayName
               }
             });
             console.log(response(data ))

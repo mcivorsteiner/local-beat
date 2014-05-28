@@ -225,3 +225,9 @@ LARGE INFO BOX
   top: 10px;
   right: 10px;
 }
+
+
+/*##########################################
+AUTOCOMPLETE BOX
+##########################################*/
+.ui-autocomplete { max-height: 200px; overflow-y: auto; overflow-x: hidden;}
