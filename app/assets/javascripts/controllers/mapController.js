@@ -73,25 +73,39 @@ MapController.prototype = {
       }
 
       //append ticket info
-      ticket_info = response.ticket_info
-      // console.log(ticket_info.headliner)
-      if(ticket_info !== null && ticket_info.headliner_img_url !== null){
-        headliner_img_url = response.ticket_info.headliner_img_url
-        $('.seatgeek-link').attr("href", response.ticket_info.seatgeek_url)
-      } else {
-        $('.seatgeek-link').remove()
+      var ticket_info = response.ticket_info
+      if(ticket_info !== null && ticket_info.seatgeek_url !== null){
+        var source = { seatgeek_url:    ticket_info.seatgeek_url,
+                       average_price:   ticket_info.average_price,
+                       lowest_price:    ticket_info.lowest_price,
+                       listing_count:   ticket_info.listing_count
+                     }
+        var html = HandlebarsTemplates['events/ticket_info'](source)
+        $('.seatgeek-link-div').append(html)
       }
-      
 
       //append spotify player
       if ( response.top_song_ids.length > 0 ){
         var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
         var source = { href: href }
         var html = HandlebarsTemplates['events/spotify_embed'](source)
-        $('.large-info-box').append(html)
+        $('.spotify-player').append(html)
       }
 
+      //append artist bio
+      if (response.artist_bio !== null) {
+        var link = document.createElement('a')
+        link.href = ''
+        link.innerText = '  Artist Bio'
+        $('.artist-bio-div').prepend(link)
+        $('.artist-bio-div a').on('click', function(){
+          event.preventDefault()
+          $('.artist-bio').toggle('hidden')
+        })
+        var source = response.artist_bio
+        $('.artist-bio').text(source)
 
+      }
     })
   },
 
