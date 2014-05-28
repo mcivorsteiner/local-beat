@@ -6,7 +6,7 @@ describe "Users", :js => true do
   context "sign up" do
     before(:each) { visit root_path }
 
-    it "allow user user to sign up" do
+    xit "allow user user to sign up" do
       find('#login-menu-button').click
       find('#sign-up').click
       fill_in "Email", :with => "mia@mia.com"
