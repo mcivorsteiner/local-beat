@@ -26,19 +26,22 @@ label {
 
 button {
   padding: 5px;
-  width: 95px;
+  width: 110px;
   font-size: 1.15em;
-  background-color:#e3edd3;
+  background-color:#bdc3c7;
   margin: 5px auto;
+  font-family: Avenir;
+  margin: 0 auto;
 }
 
 form input[type='submit'] {
   padding: 5px;
   width: 100px;
   font-size: 1.15em;
-  background-color:#e3edd3;
+  background-color:#bdc3c7;
   padding: 5px;
   margin: 5px auto;
+  font-family: Avenir;
 }
 
 input[type='text'], input[type='password']{
@@ -199,7 +202,7 @@ SMALL INFO BOX
   font-family: Avenir;
   font-size: 1.2em;
   padding: 4px;
-  background-color: #AAAAAD;
+  /*background-color: #AAAAAD;*/
   border-radius: 10px;
 }
 
