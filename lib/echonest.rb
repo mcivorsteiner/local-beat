@@ -32,22 +32,17 @@ module Echonest
     return tracks
   end
 
-  def get_weezer
-    query_url = "http://developer.echonest.com/api/v4/artist/similar?api_key=#{ECHONEST_KEY}&artist_id=weezer&format=json&bucket=id:seatgeek&limit=true"
-
-    query_response = HTTParty.get(query_url).body
-    formatted_response = MultiJson.load(query_response)
-
-    pp formatted_response
-  end
-
   def get_seatgeek_id(songkick_artist_id)
     query_url = "http://developer.echonest.com/api/v4/artist/profile?api_key=#{ECHONEST_KEY}&id=songkick:artist:#{songkick_artist_id}&format=json&bucket=id:seatgeek"
 
     query_response = HTTParty.get(query_url).body
     formatted_response = JSON.parse(query_response)
-    seatgeek_key = formatted_response["response"]["artist"]["foreign_ids"].first["foreign_id"]
-    seatgeek_id = seatgeek_key[/(?<=seatgeek:artist:).+/]
+    unless formatted_response["response"]["status"]["code"] == 5
+      seatgeek_key = formatted_response["response"]["artist"]["foreign_ids"].first["foreign_id"]
+      seatgeek_id = seatgeek_key[/(?<=seatgeek:artist:).+/]
+    else
+      nil
+    end
 
     # pp formatted_response
   end
