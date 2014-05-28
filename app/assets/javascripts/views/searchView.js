@@ -78,7 +78,7 @@ SearchView.prototype = {
   },
 
   searchSuggestArtist: function(textInput) {
-    $.getJSON("http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput + "&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderArtistSearchSuggestionBox.bind(this))
+    this.executeFunctionForArtist(textInput);
   },
 
   renderArtistSearchSuggestionBox: function(data) {
@@ -93,12 +93,24 @@ SearchView.prototype = {
     this.executeFunctionForArtist(artistArray)
   },
 
-  executeFunctionForArtist: function(array){
-    // window.setInterval(console.log("I'm here"), 1000)
-    $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), minLength: 0,
-      search: function(event, ui){
-        console.log('trigger search!!!!!')
-      }})
+  executeFunctionForArtist: function(textInput){
+    var magicUrl = "http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput + "&apikey=pH29QOMdmJML48IO&jsoncallback=?";
+
+    $(this.artistSearchTextField).autocomplete({
+      source: function( request, response ){
+        $.ajax({
+          url: magicUrl,
+          dataType: "jsonp",
+          success: function(data){
+            var data = $.map(data.resultsPage.results.artist, function(artist){
+              return {label: artist.displayName, value: artist.displayName}
+            });
+            response(data );
+          }
+        });
+      },
+      minLength: 0
+    });
   },
 
 // Suggest box for the locations
