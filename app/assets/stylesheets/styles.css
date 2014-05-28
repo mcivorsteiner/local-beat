@@ -26,19 +26,22 @@ label {
 
 button {
   padding: 5px;
-  width: 95px;
+  width: 110px;
   font-size: 1.15em;
-  background-color:#e3edd3;
+  background-color:#bdc3c7;
   margin: 5px auto;
+  font-family: Avenir;
+  margin: 0 auto;
 }
 
 form input[type='submit'] {
   padding: 5px;
   width: 100px;
   font-size: 1.15em;
-  background-color:#e3edd3;
+  background-color:#bdc3c7;
   padding: 5px;
   margin: 5px auto;
+  font-family: Avenir;
 }
 
 input[type='text'], input[type='password']{
@@ -185,11 +188,7 @@ SEARCH
   visibility: hidden;
 }
 
-iframe{
-  z-index: 10;
-  position: absolute;
-  top: 100px;
-}
+
 
 /*##########################################
 SMALL INFO BOX
@@ -199,8 +198,10 @@ SMALL INFO BOX
   font-family: Avenir;
   font-size: 1.2em;
   padding: 4px;
-  background-color: #AAAAAD;
+  /*background-color: #AAAAAD;*/
   border-radius: 10px;
+  background-color:rgba(255,255,255,0.75);
+
 }
 
 /*##########################################
@@ -209,19 +210,38 @@ LARGE INFO BOX
 
 .large-info-box {
   position: absolute;
-  width: 90%;
+  width: 85%;
+  max-height: 85%;
+  overflow: auto;
   top: 15px;
   left: 5%;
   z-index: 10000;
-  background-color: #AAAAAD;
-  border-radius: 10px;
+  background-color:rgba(255,255,255,0.85);
+  border-radius: 5px;
+  border: 1px solid #bdc3c7;
+  opacity: 60%;
   font-family: Avenir;
   font-size: 1.2em;
-  padding: 4px;
+  padding: 12px;
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .close-infobox {
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  padding: 0;
+}
+
+.artist-img {
+  width: 60%;
+}
+
+.spotify-player{
+  /*z-index: 10;*/
+  /*position: absolute;*/
+  /*top: 100px;*/
 }
