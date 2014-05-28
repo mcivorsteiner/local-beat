@@ -12,6 +12,8 @@ MapController.prototype = {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
+     $(document).on('click', '.more-info', this.enlargeInfoWindow.bind(this))
+     $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -23,46 +25,40 @@ MapController.prototype = {
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
     }
-
     this.view.setMap(eventData.location_coords)
 
   },
 
   showInfoWindow: function() {
-
-    if (typeof infoBox == "object") {
-      infoBox.close()
+    if (typeof infoWindow != "undefined") {
+      infoWindow.close()
     }
-    // var infoBox = null
-    var boxOptions = { disableAutoPan: false
-    ,maxWidth: 0
-    ,pixelOffset: new google.maps.Size(-140, 0)
-    ,zIndex: null
-    ,boxStyle: { opacity: 0.75
-     }
-    ,closeBoxMargin: "10px 2px 2px 2px"
-    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-    ,infoBoxClearance: new google.maps.Size(1, 1)
-    ,isHidden: false
-    ,pane: "floatPane"
-    ,alignBottom: true
-    ,enableEventPropagation: false
-      };
-    infoBox = new InfoBox(boxOptions);
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
+      var largeInfoBox = HandlebarsTemplates['events/large_festival_info_box'](eventDetails)
     } else {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
+      var largeInfoBox = HandlebarsTemplates['events/large_event_info_box'](eventDetails)
     }
-    infoBox.setContent(html);
-    infoBox.open(this.map, this);
 
-    console.log(this.eventInfo)
+    infoWindow = new google.maps.InfoWindow()
+    infoWindow.setContent(html)
+    infoWindow.open(this.map, this)
+    $("body").append(largeInfoBox)
+  },
 
+  enlargeInfoWindow: function(e) {
+    e.preventDefault();
+    if (typeof infoWindow != "undefined") {
+      infoWindow.close()
+    }
+  $('.large-info-box').removeClass('hidden')
+  },
 
-
-
- }
+  closeLargeInfoWindow: function(e) {
+    e.preventDefault();
+    $('.large-info-box').remove()
+  }
 }
 

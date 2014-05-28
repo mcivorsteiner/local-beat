@@ -49,10 +49,7 @@ Event.prototype = {
       day = parts[2];
 
     var monthName = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
     return monthName[month]+ " " + day + ", " + year
-
-
   }
 
 }

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe SessionController do
   let!(:user) { FactoryGirl.create :user }
+  before(:each){ Songkick.stub(:event_search) { create_event_data } }
 
   context "create(login)" do
     it "assigns @user to correct user" do
