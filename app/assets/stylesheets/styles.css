@@ -220,9 +220,9 @@ LARGE INFO BOX
   right: 10px;
 }
 
-.addthis_toolbox, .addthis_floating_style, .addthis_counter_style {
+.addthis_toolbox, .addthis_default_style {
   position:absolute;
   top:65px;
-  right:15px;
+  right:10px;
   z-index:10001;
 }
