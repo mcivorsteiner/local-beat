@@ -23,6 +23,7 @@ MapController.prototype = {
     this.view.placeMarkers(this.markers)
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
+      google.maps.event.addListener(markers[i], 'click', this.getLargeInfoBoxData)
     }
     this.view.setMap(eventData.location_coords)
 
@@ -32,7 +33,7 @@ MapController.prototype = {
     if (typeof infoWindow != "undefined") {
       infoWindow.close()
     }
-    this.closeLargeInfoWindow()
+    $('.large-info-box').remove()
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
@@ -41,13 +42,10 @@ MapController.prototype = {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
       var largeInfoBox = HandlebarsTemplates['events/large_event_info_box'](eventDetails)
     }
-
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
-    // $("body").append(largeInfoBox)
-    this.view.appendLargeInfoBox(largeInfoBox)
-    this.getLargeInfoBoxData()
+    $('body').append(largeInfoBox)
   },
 
   showLargeInfoWindow: function() {
@@ -57,30 +55,29 @@ MapController.prototype = {
     $('.large-info-box').removeClass('hidden')
   },
 
-  closeLargeInfoWindow: function() {
+  getLargeInfoBoxData: function(){
+    eventObject = this.eventInfo
+    var ajaxRequest = $.ajax({
+      url: '/events/detailed_info',
+      type: "GET",
+      data: {sk_artist_id: eventObject.headlinerId, date: eventObject.date }
+    })
+
+    ajaxRequest.done(function(response){
+      console.log(response)
+    })
+  },
+
+  closeLargeInfoWindow: function(e) {
+    e.preventDefault();
     $('.large-info-box').remove()
   },
 
-  getLargeInfoBoxData: function(){
-    this.getSpotifySongs()
-  },
-
-  getSpotifySongs: function(){
-    event.preventDefault()
-    var ajaxRequest = $.ajax({
-      url: event.target.href,
-      type: "GET",
-      data: {sk_artist_id: $(event.target).data("sk-id")}
-    })
-
-    ajaxRequest.done(this.showSongs.bind(this))
-  },
-
-  showSongs: function(response){
-    var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
-    var source = { href: href }
-    var html = HandlebarsTemplates['events/spotify_embed'](source)
-    $('.container').append(html)
+  createLargeInfoBox: function(eventObject, response){
+    // var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
+    // var source = { href: href }
+    // var html = HandlebarsTemplates['events/spotify_embed'](source)
+    // $('.container').append(html)
   }
 }
 

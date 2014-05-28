@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   require 'user_presenter'
   require 'songkick'
   require 'echonest'
+  require 'seatgeek'
 
   def current_user
     if session[:user_id]
