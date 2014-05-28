@@ -22,6 +22,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def detailed_info
+    top_song_ids = Echonest.get_tracks_list(params[:sk_artist_id])
+    ticket_info = Seatgeek.find_event_with_songkick_artist_id_and_date(params[:sk_artist_id], params[:date] )
+    artist_bio = Echonest.get_artist_bio(params[:sk_artist_id])
+    artist_pic = Echonest.get_artist_image(params[:sk_artist_id])
+
+    render json: { top_song_ids: top_song_ids, ticket_info: ticket_info, artist_bio: artist_bio, artist_img: artist_pic }
+  end
+
   private
 
   def format_event_query(params, location)

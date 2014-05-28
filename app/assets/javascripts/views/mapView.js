@@ -43,6 +43,10 @@ MapView.prototype = {
     } else {
       $('.more-event-info').hide()
     }
+  },
+
+  appendLargeInfoBox: function(largeInfoBox){
+    $("body").append(largeInfoBox)
   }
 
 }

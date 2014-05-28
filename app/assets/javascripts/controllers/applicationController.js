@@ -10,6 +10,7 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
+    // $(document).on('click', this.getSpotifyPlayer.bind(this))
     if (!this.userLoggedIn()) {
       this.getCurrentLocation()
     } else {
@@ -87,6 +88,4 @@ ApplicationController.prototype= {
     var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
     this.mapController.placeMarkers(null,eventData)
   }
-
-
 }

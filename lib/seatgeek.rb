@@ -1,5 +1,5 @@
 require 'multi_json'
-require 'pp'
+require 'echonest'
 
 module Seatgeek
   extend self
