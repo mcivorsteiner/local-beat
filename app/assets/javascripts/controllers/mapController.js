@@ -41,6 +41,6 @@ MapController.prototype = {
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
-  }
+  },
 }
 
