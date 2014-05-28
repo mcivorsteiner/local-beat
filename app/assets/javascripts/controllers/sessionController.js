@@ -39,6 +39,8 @@ SessionController.prototype = {
     var loginMenuButton = this.view.getLoginMenuButton()
     loginMenuButton.src = '/assets/sign-out-icon.png'
     loginMenuButton.id = 'logout-button'
+
+    this.view.toggleSettingsButton()
   },
 
   signUp: function(e, response) {
@@ -52,6 +54,7 @@ SessionController.prototype = {
     loginMenuButton.src = '/assets/sign-out-icon.png'
     loginMenuButton.id = 'logout-button'
     this.view.clearForms()
+    this.view.toggleSettingsButton()
   },
 
   loginError: function(e, response, responseType, status) {
@@ -82,6 +85,7 @@ SessionController.prototype = {
     logOutButton = this.view.getLogOutButton()
     logOutButton.src = '/assets/login-icon.png'
     logOutButton.id = 'login-menu-button'
+    this.view.toggleSettingsButton()
     userData = undefined
     this.view.getCurrentUserData().innerText = ""
   }

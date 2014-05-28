@@ -96,6 +96,10 @@ LOGIN/SIGNUP
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
 
+#login-menu-button:hover, #logout-button:hover {
+  cursor: pointer;
+}
+
 #user-log-box {
   color: white;
   background-color:rgba(0,0,0,0.5);
@@ -150,6 +154,10 @@ SEARCH
   background-color: black;
   border-radius:5px;
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#magnify:hover {
+  cursor: pointer;
 }
 
 #more-options-icon {
@@ -243,6 +251,21 @@ LARGE INFO BOX
 /*##########################################
 UPDATE USER PREFERENCES
 ##########################################*/
+
+.settings-button {
+  position: absolute;
+  right: 65px;
+  top: 15px;
+  height: 30px;
+  width: 30px;
+  /*background-color: black;*/
+  /*border-radius:5px;*/
+  /*box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);*/
+}
+
+.settings-button:hover {
+  cursor: pointer;
+}
 
 .update-user-preferences {
   color: white;

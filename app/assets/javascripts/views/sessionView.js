@@ -12,7 +12,7 @@ SessionView = function() {
   this.logOutButtonSelector = '#logout-button'
   this.signUpErrorDivSelector = '.sign-up-errors h4'
   this.loginErrorDivSelector = '.login-errors h4'
-
+  this.settingsButtonSelector = '.settings-button'
 }
 
 SessionView.prototype = {
@@ -59,6 +59,12 @@ SessionView.prototype = {
       
     }
     // userWindow.classList.toggle('hidden')
+  },
+
+  toggleSettingsButton: function(){
+    var settingsButton = document.querySelector(this.settingsButtonSelector)
+    settingsButton.classList.toggle("hidden")
+    debugger
   },
 
   renderLoginErrorMessages: function(errors){
