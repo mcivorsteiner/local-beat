@@ -12,6 +12,8 @@ MapController.prototype = {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
+     $(document).on('click', '.more-info', this.enlargeInfoWindow.bind(this))
+     $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -23,7 +25,6 @@ MapController.prototype = {
     for(var i=0; i < markers.length; i++) {
       google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
     }
-
     this.view.setMap(eventData.location_coords)
 
   },
@@ -35,12 +36,29 @@ MapController.prototype = {
     var eventDetails = this.eventInfo
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
+      var largeInfoBox = HandlebarsTemplates['events/large_festival_info_box'](eventDetails)
     } else {
       var html = HandlebarsTemplates['events/small_event_info_box'](eventDetails)
+      var largeInfoBox = HandlebarsTemplates['events/large_event_info_box'](eventDetails)
     }
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
   },
+    $("body").append(largeInfoBox)
+  },
+
+  enlargeInfoWindow: function(e) {
+    e.preventDefault();
+    if (typeof infoWindow != "undefined") {
+      infoWindow.close()
+    }
+  $('.large-info-box').removeClass('hidden')
+  },
+
+  closeLargeInfoWindow: function(e) {
+    e.preventDefault();
+    $('.large-info-box').remove()
+  }
 }
 
