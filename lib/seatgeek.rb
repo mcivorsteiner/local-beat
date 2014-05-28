@@ -17,9 +17,9 @@ module Seatgeek
       seatgeek_url = event["url"]
       ticket_details = event["stats"]
       listing_count = ticket_details["listing_count"]
-      average_price = ticket_details["average_price"]
-      lowest_price = ticket_details["lowest_price"]
-      highest_price = ticket_details["highest_price"]
+      average_price = format_price(ticket_details["average_price"])
+      lowest_price = format_price(ticket_details["lowest_price"])
+      highest_price = format_price(ticket_details["highest_price"])
       performers = event["performers"]
       headliner = performers.first
       return seatgeek_info = { seatgeek_url: seatgeek_url,
@@ -50,4 +50,7 @@ module Seatgeek
     end
   end
 
+  def format_price(price)
+    "%.2f" % [price]
+  end
 end
