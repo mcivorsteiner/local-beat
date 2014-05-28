@@ -73,15 +73,14 @@ MapController.prototype = {
       }
 
       //append ticket info
-      ticket_info = response.ticket_info
-      // console.log(ticket_info.headliner)
-      if(ticket_info !== null && ticket_info.headliner_img_url !== null){
-        headliner_img_url = response.ticket_info.headliner_img_url
-        $('.seatgeek-link').attr("href", response.ticket_info.seatgeek_url)
-      } else {
-        $('.seatgeek-link').remove()
+      var ticket_info = response.ticket_info
+      if(ticket_info !== null && ticket_info.seatgeek_url !== null){
+        var seatgeek_link = document.createElement('a')
+        seatgeek_link.href = response.ticket_info.headliner_img_url
+        seatgeek_link.classList.add('seatgeek_link')
+        $('.seatgeek-link-div').append(seatgeek_link)
+        seatgeek_link.innerText = "Buy Tickets!!"
       }
-      
 
       //append spotify player
       if ( response.top_song_ids.length > 0 ){

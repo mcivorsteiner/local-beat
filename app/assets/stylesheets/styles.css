@@ -204,6 +204,8 @@ SMALL INFO BOX
   padding: 4px;
   /*background-color: #AAAAAD;*/
   border-radius: 10px;
+  background-color:rgba(255,255,255,0.75);
+
 }
 
 /*##########################################
@@ -212,19 +214,30 @@ LARGE INFO BOX
 
 .large-info-box {
   position: absolute;
-  width: 90%;
+  width: 85%;
   top: 15px;
   left: 5%;
   z-index: 10000;
-  background-color: #AAAAAD;
-  border-radius: 10px;
+  background-color:rgba(255,255,255,0.85);
+  border-radius: 5px;
+  border: 1px solid #bdc3c7;
+  opacity: 60%;
   font-family: Avenir;
   font-size: 1.2em;
-  padding: 4px;
+  padding: 12px;
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .close-infobox {
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  padding: 0;
+}
+
+.artist-img {
+  width: 60%;
 }
