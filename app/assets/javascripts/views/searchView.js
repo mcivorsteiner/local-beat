@@ -94,8 +94,11 @@ SearchView.prototype = {
   },
 
   executeFunctionForArtist: function(array){
-    window.setInterval(console.log("I'm here"), 1000)
-    $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+    // window.setInterval(console.log("I'm here"), 1000)
+    $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), minLength: 0,
+      search: function(event, ui){
+        console.log('trigger search!!!!!')
+      }})
   },
 
 // Suggest box for the locations
