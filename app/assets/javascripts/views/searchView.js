@@ -78,23 +78,25 @@ SearchView.prototype = {
   },
 
   searchSuggestArtist: function(textInput) {
-    $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderArtistSearchSuggestionBox)
+    $.getJSON("http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderArtistSearchSuggestionBox)
+    // $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderArtistSearchSuggestionBox)
   },
 
-  renderArtistSearchSuggestionBox: function(json) {
-    var artists = json.resultsPage.results.artist
+  renderArtistSearchSuggestionBox: function(data) {
+    console.log(data)
+    // var artists = json.resultsPage.results.artist
 
-    var artistArray = []
+    // var artistArray = []
 
-      for (var i = 0; i < 5; i ++){
-        if(artists[i] !== undefined){
-        artistArray.push(artists[i].displayName)
-         $(this.artistSearchTextField).autocomplete({ source: artistArray })
-      }
+    //   for (var i = 0; i < 5; i ++){
+    //     if(artists[i] !== undefined){
+    //     artistArray.push(artists[i].displayName)
+    //      $(this.artistSearchTextField).autocomplete({ source: artistArray })
+    //   }
 
 
-     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
-    }
+    //  $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
+    // }
 
   },
 
@@ -108,7 +110,17 @@ SearchView.prototype = {
   },
 
   searchSuggestLocation: function(textInput) {
-    $.ajax({url:"http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO", type: 'GET', context: this}).done(this.renderLocationSearchSuggestionBox)
+    $.getJSON("http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?",
+      function(data){
+        console.log(data)
+      // data is JSON response object
+      });
+    // $.ajax({url:'http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?', type: 'GET', context: this}).done(this.seeWhatItreturns)
+    // $.ajax({url:"http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderLocationSearchSuggestionBox)
+  },
+
+  seeWhatItreturns: function(data) {
+    console.log(data)
   },
 
   renderLocationSearchSuggestionBox: function(json) {
