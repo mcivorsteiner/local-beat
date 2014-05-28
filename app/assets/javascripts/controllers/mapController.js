@@ -34,7 +34,6 @@ MapController.prototype = {
       infoWindow.close()
     }
     var eventDetails = this.eventInfo
-    debugger
     if (eventDetails.isFestival()) {
       var html = HandlebarsTemplates['events/small_festival_info_box'](eventDetails)
       var largeInfoBox = HandlebarsTemplates['events/large_festival_info_box'](eventDetails)

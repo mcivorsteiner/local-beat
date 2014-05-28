@@ -55,7 +55,6 @@ SessionController.prototype = {
   },
 
   loginError: function(e, response, responseType, status) {
-    debugger
     var errorMessages = response.responseJSON.errors
     this.view.renderLoginErrorMessages(errorMessages[0])
   },
