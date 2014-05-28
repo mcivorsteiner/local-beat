@@ -71,7 +71,6 @@ SearchView.prototype = {
 // Suggest box for the artists
 
   limitArtistSearchQueryCharacters: function() {
-    // console.log("I'm here")
     var textInput = $(this.artistSearchTextField).val()
     if (textInput.length >= 3) {
         this.searchSuggestArtist(textInput)
@@ -80,7 +79,6 @@ SearchView.prototype = {
 
   searchSuggestArtist: function(textInput) {
     $.getJSON("http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput + "&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderArtistSearchSuggestionBox.bind(this))
-    // $.ajax({url:"http://api.songkick.com/api/3.0/search/artists.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderArtistSearchSuggestionBox)
   },
 
   renderArtistSearchSuggestionBox: function(data) {
@@ -88,26 +86,22 @@ SearchView.prototype = {
     var artists = data.resultsPage.results.artist
     console.log(artists)
     var artistArray = []
-    var length = artists.length
+    // var length = artists.length
 
     for (var i = 0; i < 5; i ++){
       if(artists[i] !== undefined){
           artistArray.push(artists[i].displayName)
       }
-     // $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
+
     }
     console.log(this.utilities.uniq(artistArray))
-    this.executeFunction(artistArray)
-
-    // console.log(artistArray.join(", "))
-    // window.setInterval(console.log("I'm here"), 5000)
-    // $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(artistArray) })
+    this.executeFunctionForArtist(artistArray)
     
   },
 
-  executeFunction: function(array){
-    // window.setInterval(console.log("I'm here"), 3000)
-    $(this.artistSearchTextField).autocomplete({ delay: 950, source: this.utilities.uniq(array) })
+  executeFunctionForArtist: function(array){
+    window.setInterval(console.log("I'm here"), 1000)
+    $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
   },
 
 // Suggest box for the locations
@@ -121,33 +115,31 @@ SearchView.prototype = {
   },
 
   searchSuggestLocation: function(textInput) {
-    $.getJSON("http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?",
-      function(data){
-        console.log(data)
-      // data is JSON response object
-      });
-    // $.ajax({url:'http://api.songkick.com/api/3.0/events.json?location=clientip&apikey=pH29QOMdmJML48IO&jsoncallback=?', type: 'GET', context: this}).done(this.seeWhatItreturns)
-    // $.ajax({url:"http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?", type: 'GET', context: this}).done(this.renderLocationSearchSuggestionBox)
+    $.getJSON("http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderLocationSearchSuggestionBox.bind(this))
   },
 
-  // seeWhatItreturns: function(data) {
-  //   console.log(data)
-  // },
 
   renderLocationSearchSuggestionBox: function(data) {
-    // console.log(data)
-    var locations = data.resultsPage.results.event
-    console.log(data.resultsPage.results.event)
+
+    var locations = data.resultsPage.results.location
+    console.log(locations)
     var locationArray = []
 
-      for (var i = 0; i < 5; i ++){
-        if(locations[i]!== undefined){
-        locationArray.push(locations[i].location.city, locations[i].metroArea.displayName)
+    for (var i = 0; i < 5; i ++){
+      if(locations[i]!== undefined){
+      locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
       }
-
-     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(locationArray) })
     }
+    console.log(locationArray)
+    this.executeFunctionForLocation(locationArray)
+
+  },
+
+  executeFunctionForLocation: function(array){
+    window.setInterval(console.log("I'm there"), 1000)
+    $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
   }
+
 }
 
 
