@@ -45,7 +45,7 @@ MapController.prototype = {
     infoWindow = new google.maps.InfoWindow()
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
-    $("body").append(largeInfoBox)
+    // $("body").append(largeInfoBox)
     this.view.appendLargeInfoBox(largeInfoBox)
     this.getLargeInfoBoxData()
   },
