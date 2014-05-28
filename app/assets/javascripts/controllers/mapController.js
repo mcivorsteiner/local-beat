@@ -58,7 +58,7 @@ MapController.prototype = {
 
   closeLargeInfoWindow: function(e) {
     e.preventDefault();
-    $('.large-info-box').remove()
+    $('.large-info-box').not('#social-media').remove()
   }
 }
 

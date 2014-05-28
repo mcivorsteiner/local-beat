@@ -221,7 +221,8 @@ LARGE INFO BOX
 }
 
 .addthis_toolbox, .addthis_floating_style, .addthis_counter_style {
-  right:100px;
-  bottom:100px;
+  position:absolute;
+  top:65px;
+  right:15px;
   z-index:10001;
 }
