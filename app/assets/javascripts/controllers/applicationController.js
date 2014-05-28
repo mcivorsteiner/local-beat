@@ -32,14 +32,14 @@ ApplicationController.prototype= {
   login: function(e, response) {
     this.sessionController.login(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    var placeMarkersEvents = {events: response.events, location_coords: locationCoords }
+    var placeMarkersEvents = {events: response.events, location_coords: locationCoords, location_name: userData.songkickLocationName }
     this.mapController.placeMarkers(null, placeMarkersEvents)
   },
 
   signUp: function(e, response) {
     this.sessionController.signUp(e, response)
     var locationCoords = {lat: userData.lat, lng: userData.lng}
-    var eventData = {events: response.events, location_coords: locationCoords }
+    var eventData = {events: response.events, location_coords: locationCoords, location_name: userData.songkickLocationName}
     this.mapController.placeMarkers(null, eventData)
   },
 
@@ -85,7 +85,7 @@ ApplicationController.prototype= {
   },
 
   placeEventsForUserLocationPreference: function(response) {
-    var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
+    var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}, location_name: userData.songkickLocationName}
     this.mapController.placeMarkers(null,eventData)
   }
 }

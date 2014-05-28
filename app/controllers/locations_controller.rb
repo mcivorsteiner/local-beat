@@ -9,6 +9,6 @@ class LocationsController < ApplicationController
       location_info = Songkick.location_coords_query(params)
     end
 
-    render json: {events: response[:events], location_coords: {lat: location_info[:lat], lng: location_info[:lng]}}
+    render json: {events: response[:events], location_coords: {lat: location_info[:lat], lng: location_info[:lng]}, location_name: location.sk_location_name}
   end
 end

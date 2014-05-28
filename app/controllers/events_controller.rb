@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     if @location && @location.save
       event_query = format_event_query(params, @location)
       @events = Songkick.event_search(event_query)
-      render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events }
+      render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events, location_name: @location.sk_location_name }
     else
       render text: "Location not found, try again", status: :unprocessable_entity
     end

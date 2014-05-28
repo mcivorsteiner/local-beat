@@ -1,5 +1,6 @@
-function MapController(view){
-  this.view = view
+function MapController(mapView, searchView){
+  this.view = mapView
+  this.searchView = searchView
   this.eventPresenter = new EventPresenter()
   this.markers = []
 }
@@ -18,7 +19,7 @@ MapController.prototype = {
   placeMarkers: function(event, eventData) {
     this.view.clearMarkers(this.markers)
     this.view.hideSearchBox() //WIP this should be calling search view method
-    
+
     this.markers = this.eventPresenter.createMarkers(eventData.events)
     this.view.placeMarkers(this.markers)
     for(var i=0; i < markers.length; i++) {
@@ -26,7 +27,8 @@ MapController.prototype = {
       google.maps.event.addListener(markers[i], 'click', this.getLargeInfoBoxData)
     }
     this.view.setMap(eventData.location_coords)
-
+    this.searchView.currentLocation = eventData.location_name
+    // debugger
   },
 
   showInfoWindow: function() {
@@ -114,12 +116,6 @@ MapController.prototype = {
     $('.large-info-box').remove()
   },
 
-  createLargeInfoBox: function(eventObject, response){
-    // var href = "https://embed.spotify.com/?uri=spotify:track:" + response.top_song_ids[0]
-    // var source = { href: href }
-    // var html = HandlebarsTemplates['events/spotify_embed'](source)
-    // $('.container').append(html)
-  }
 }
 
 
