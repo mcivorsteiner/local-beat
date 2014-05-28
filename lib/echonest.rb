@@ -34,7 +34,6 @@ module Echonest
 
   def get_seatgeek_id(songkick_artist_id)
     query_url = "http://developer.echonest.com/api/v4/artist/profile?api_key=#{ECHONEST_KEY}&id=songkick:artist:#{songkick_artist_id}&format=json&bucket=id:seatgeek"
-
     query_response = HTTParty.get(query_url).body
     formatted_response = JSON.parse(query_response)
     unless formatted_response["response"]["status"]["code"] == 5
@@ -43,7 +42,5 @@ module Echonest
     else
       nil
     end
-
-    # pp formatted_response
   end
 end
