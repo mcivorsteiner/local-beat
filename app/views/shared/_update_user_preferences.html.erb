@@ -1,0 +1,6 @@
+<div class = "update-user-preferences">
+  <%= form_tag '/users', method: 'PUT' do %>
+    <%= text_field_tag :location %>
+    <%= submit_tag %>
+  <% end %>
+</div>

@@ -87,5 +87,22 @@ ApplicationController.prototype= {
   placeEventsForUserLocationPreference: function(response) {
     var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}}
     this.mapController.placeMarkers(null,eventData)
+  },
+
+  updateUserPreferences: function() {
+    var userEmail = userData.email
+
+    var ajaxRequest = $.ajax({
+      url: '/users',
+      type: 'PUT',
+      data: {email: userEmail}
+    })
+
+    ajaxRequest.done(this.applyUserPreferenceUpdates)
+  },
+
+  applyUserPreferenceUpdates: function(response) {
+    debugger
   }
+
 }
