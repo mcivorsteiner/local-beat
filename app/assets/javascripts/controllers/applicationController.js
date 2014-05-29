@@ -23,7 +23,7 @@ ApplicationController.prototype= {
     $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController)) //WIP
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
-    $('.update-user-preferences form').on('submit', this.updateUserPreferences.bind(this))
+    $(this.sessionController.view.getUpdateLocationDiv()).on('submit', this.updateUserPreferences.bind(this))
   },
 
   placeMarkers:function(event, response){

@@ -279,14 +279,20 @@ UPDATE USER PREFERENCES
   width: 31px;
 }
 
-.update-user-preferences {
+#update-user-preferences {
   color: white;
   background-color:rgba(0,0,0,0.5);
   position: absolute;
   right: 10px;
   top: 55px;
   z-index: 1;
-  padding: 5px;
+  padding: 15px;
   border-radius:5px;
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#update-user-preferences p, 
+#update-user-preferences h2,
+#update-user-preferences h3 {
+  margin: 5px;
 }

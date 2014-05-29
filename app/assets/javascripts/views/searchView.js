@@ -32,11 +32,13 @@ SearchView.prototype = {
   },
 
   renderAdvancedOptions:function(event){
-    $(".loc-submit").removeClass("hide-submit")
+    // $(".loc-submit").removeClass("hide-submit")
     if ($(this.advOptionsSelector).is(':hidden')){
       $(this.advOptionsSelector).slideDown("slow");
+      $(".loc-submit").removeClass("hide-submit")
     } else {
       $(this.advOptionsSelector).hide()
+      $(".loc-submit").addClass("hide-submit")
     }
   },
 

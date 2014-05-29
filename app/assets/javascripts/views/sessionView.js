@@ -13,7 +13,7 @@ SessionView = function() {
   this.signUpErrorDivSelector = '.sign-up-errors h4'
   this.loginErrorDivSelector = '.login-errors h4'
   this.settingsButtonSelector = '.settings-button'
-  this.updateLocationDivSelector = '.update-user-preferences'
+  this.updateLocationDivSelector = '#update-user-preferences'
 }
 
 SessionView.prototype = {
@@ -62,11 +62,14 @@ SessionView.prototype = {
   },
 
   toggleSettingsButton: function(){
+    $('#location').val('')
     this.getSettingsButton().classList.toggle("hidden")
   },
 
   toggleUpdateLocationDiv: function(){
-    this.getUpdateLocationDiv().classList.toggle("hidden")
+    var currentLocation = userData.songkickLocationName
+    $('span.current-location').text(currentLocation)
+    $(this.getUpdateLocationDiv()).show()
   },
 
   renderLoginErrorMessages: function(errors){

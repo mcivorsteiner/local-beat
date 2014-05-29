@@ -90,6 +90,7 @@ SessionController.prototype = {
     logOutButton = this.view.getLogOutButton()
     logOutButton.src = '/assets/login-icon.png'
     logOutButton.id = 'login-menu-button'
+    this.view.clearForms()
     this.view.toggleSettingsButton()
     userData = undefined
     this.view.getCurrentUserData().innerText = ""
