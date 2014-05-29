@@ -65,6 +65,7 @@ ApplicationController.prototype= {
     $('body').append(this.spinner.el)
 
     ajaxRequest.done(this.setCurrentLocation.bind(this))
+    ajaxRequest.fail(this.locationNotFound.bind(this))
   },
 
   userLoggedIn: function() {
@@ -78,6 +79,10 @@ ApplicationController.prototype= {
 
       this.mapController.placeMarkers(null,response)
     }
+  },
+
+  locationNotFound: function() {
+    this.spinner.stop()
   },
 
   getEventsForUserLocationPreference: function() {
