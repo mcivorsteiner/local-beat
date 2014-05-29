@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-module TestHelpers
-  # extend self
-  def stub_current_user
-    ApplicationController.any_instance.stub(:current_user) { FactoryGirl.create :user }
-  end
-end
+# module TestHelpers
+#   # extend self
+#   def stub_current_user
+#     ApplicationController.any_instance.stub(:current_user) { FactoryGirl.create :user }
+#   end
+# end
 
 describe UsersController do
   User.destroy_all
   let!(:user) { FactoryGirl.create :user }
-  # let!(:location) {FactoryGirl.create :location}
+  let!(:location) {FactoryGirl.create :location}
 
   context "sign-up" do
     it "responds with success when passed valid attributes" do
@@ -46,12 +46,25 @@ describe UsersController do
       Songkick.stub(:location_id_query) { [FactoryGirl.create(:location)] }
       Songkick.stub(:event_search) { create_event_data }
 
-      stub_current_user
+      stub_current_user(user)
 
       params = {location: "washingtion dc"}
 
       put :update, params
       expect(response).to be_success
+    end
+
+    it "changes the location of user when passed valid attrubutes" do
+      Location.stub(:find_by_user_input_location_name) { location }
+      Songkick.stub(:location_id_query) { [FactoryGirl.create(:location)] }
+      Songkick.stub(:event_search) { create_event_data }
+
+      stub_current_user(user)
+
+      params = {location: location.sk_location_name }
+
+      put :update, params
+      expect(user.location).to eq(location)
     end
   end
 end
