@@ -69,17 +69,15 @@ SearchView.prototype = {
     var artistArray = []
 
     for (var i = 0; i < 5; i ++){
-      if(artists[i] !== undefined){
+      if(artists !== undefined && artists[i] !== undefined){
           artistArray.push(artists[i].displayName)
       }
     }
-    this.spinner.spin()
-    $('body').apend(this.spinner.el)
     this.executeFunctionForArtist(artistArray)
   },
 
   executeFunctionForArtist: function(array){
-    window.setInterval(console.log("I'm here"), 1000)
+    // window.setInterval(console.log("I'm here"), 1000)
     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
     this.spinner.stop()
   },
@@ -103,12 +101,10 @@ SearchView.prototype = {
     var locationArray = []
 
     for (var i = 0; i < 5; i ++){
-      if(locations[i]!== undefined){
+      if(locations && locations[i]!== undefined){
       locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
       }
     }
-    this.spinner.spin()
-    $('body').append(this.spinner.el)
 
     this.executeFunctionForLocation(locationArray)
   },

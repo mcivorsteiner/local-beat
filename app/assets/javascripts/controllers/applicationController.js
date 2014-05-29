@@ -19,8 +19,9 @@ ApplicationController.prototype= {
   },
 
   setAjaxListeners: function() {
+    $('.search').on('ajax:beforeSend', this.startSpinner.bind(this))
     $('.search').on('ajax:success', this.placeMarkers.bind(this))
-    $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController))
+    $('.search').on('ajax:error', this.renderSearchErrors.bind(this))
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
     $(this.sessionController.view.getUpdateLocationDiv()).on('submit', this.updateUserPreferences.bind(this))
@@ -32,6 +33,7 @@ ApplicationController.prototype= {
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
     this.searchController.view.hideSearchBox()
+    this.spinner.stop()
   },
 
 
@@ -56,6 +58,8 @@ ApplicationController.prototype= {
 
   getCurrentLocation: function() {
     if(navigator.geolocation) {
+      this.spinner.spin()
+      $('body').append(this.spinner.el)
       navigator.geolocation.getCurrentPosition(this.locationReceived.bind(this))
     }
   },
@@ -70,9 +74,6 @@ ApplicationController.prototype= {
       data: coordsObj
     })
 
-    this.spinner.spin()
-    $('body').append(this.spinner.el)
-
     ajaxRequest.done(this.setCurrentLocation.bind(this))
     ajaxRequest.fail(this.locationNotFound.bind(this))
   },
@@ -86,6 +87,11 @@ ApplicationController.prototype= {
 
   locationNotFound: function() {
     this.spinner.stop()
+  },
+
+  startSpinner: function(){
+    this.spinner.spin()
+    $('body').append(this.spinner.el)
   },
 
 
@@ -135,6 +141,10 @@ ApplicationController.prototype= {
   userPreferenceUpdatesError: function(response) {
   },
 
+  renderSearchErrors: function(e, response, responseType, status){
+    this.searchController.renderErrorMessages(e, response, responseType, status)
+    this.spinner.stop()
+  },
 
   // HELPER METHODS
 
