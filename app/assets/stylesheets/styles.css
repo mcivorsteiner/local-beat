@@ -236,6 +236,12 @@ LARGE INFO BOX
   padding: 0;
 }
 
+.close {
+  position: fixed;
+  width: 85%;
+  z-index: 20000;
+}
+
 .artist-img {
   width: 60%;
 }
