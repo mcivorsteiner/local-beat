@@ -98,9 +98,9 @@ SearchView.prototype = {
   },
 
   executeFunctionForArtist: function(array){
-    this.spinner.stop()
     window.setInterval(console.log("I'm here"), 1000)
     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+    this.spinner.stop()
   },
 
 // SUGGEST BOX FOR LOCATIONS
@@ -127,13 +127,15 @@ SearchView.prototype = {
       }
     }
     this.spinner.spin()
+    $('body').append(this.spinner.el)
+
     this.executeFunctionForLocation(locationArray)
   },
 
   executeFunctionForLocation: function(array){
-    this.spinner.stop()
     window.setInterval(console.log("I'm there"), 1000)
     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+    this.spinner.stop()
   }
 
 }
