@@ -32,6 +32,7 @@ SessionView.prototype = {
   toggleLoginForm: function() {
     // var loginForm = document.querySelector(this.loginFormDivSelector)
     // loginForm.classList.toggle('hidden')
+
     if ($(this.loginFormDivSelector).is(':hidden')){
       $(this.loginFormDivSelector).show("slow");
     } else {
@@ -67,9 +68,15 @@ SessionView.prototype = {
   },
 
   toggleUpdateLocationDiv: function(){
+    var updateForm = this.getUpdateLocationDiv()
     var currentLocation = userData.songkickLocationName
     $('span.current-location').text(currentLocation)
-    $(this.getUpdateLocationDiv()).show()
+    if ($(updateForm).is(':hidden')){
+      $('.pop-up').hide()
+      $(updateForm).slideDown("fast")
+    } else {
+      $(updateForm).hide()
+    }
   },
 
   renderLoginErrorMessages: function(errors){

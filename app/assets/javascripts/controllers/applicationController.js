@@ -2,7 +2,6 @@ ApplicationController = function(mapController, sessionController, searchControl
   this.mapController = mapController
   this.sessionController = sessionController
   this.searchController = searchController
-
   this.spinner = new Spinner()
 }
 
@@ -12,7 +11,6 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
-    // $(document).on('click', this.getSpotifyPlayer.bind(this))
     if (!this.userLoggedIn()) {
       this.getCurrentLocation()
     } else {

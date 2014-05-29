@@ -30,7 +30,7 @@ SessionController.prototype = {
   },
 
   toggleUpdateLocationDiv: function() {
-    this.view.clearForms()
+    // this.view.clearForms()
     this.view.toggleUpdateLocationDiv()
   },
 
