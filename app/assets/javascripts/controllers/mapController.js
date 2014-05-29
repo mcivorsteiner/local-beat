@@ -20,9 +20,9 @@ MapController.prototype = {
     this.view.clearMarkers(this.markers)
     this.markers = this.eventPresenter.createMarkers(eventData.events)
     this.view.placeMarkers(this.markers)
-    for(var i=0; i < markers.length; i++) {
-      google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
-      google.maps.event.addListener(markers[i], 'click', this.getLargeInfoBoxData)
+    for(var i=0; i < this.markers.length; i++) {
+      google.maps.event.addListener(this.markers[i], 'click', this.showInfoWindow)
+      google.maps.event.addListener(this.markers[i], 'click', this.getLargeInfoBoxData)
     }
     this.view.setMap(eventData.location_coords)
     this.searchView.currentLocation = eventData.location_name
