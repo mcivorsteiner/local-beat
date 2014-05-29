@@ -70,7 +70,7 @@ SearchView.prototype = {
     return document.querySelector(this.searchStatusDiv)
   },
 
-// Suggest box for the artists
+// SUGGEST BOX FOR ARTISTS
 
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
@@ -103,7 +103,7 @@ SearchView.prototype = {
     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
   },
 
-// Suggest box for the locations
+// SUGGEST BOX FOR LOCATIONS
 
   limitLocationSearchQueryCharacters: function() {
     var textInput = $(this.locationSearchTextField).val()
