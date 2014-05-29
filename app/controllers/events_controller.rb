@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def search
+    params[:user_input_location_name].gsub!(/"+|<+|`+|>+|{+|}+|\\+|\|+|\^+|%+/, '')
     unless @location = Location.find_by_user_input_location_name(params[:user_input_location_name])
         @location = Songkick.location_id_query(params[:user_input_location_name]).first
     end
