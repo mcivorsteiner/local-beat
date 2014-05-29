@@ -265,6 +265,8 @@ UPDATE USER PREFERENCES
 
 .settings-button:hover {
   cursor: pointer;
+  height: 31px;
+  width: 31px;
 }
 
 .update-user-preferences {

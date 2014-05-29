@@ -1,4 +1,4 @@
-<div class = "update-user-preferences">
+<div class = "update-user-preferences hidden">
   <%= form_tag '/users', method: 'PUT' do %>
     <%= text_field_tag :location, nil, placeholder:  "Location" %>
     <%= submit_tag "Update" %>

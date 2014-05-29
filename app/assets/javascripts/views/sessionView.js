@@ -13,6 +13,7 @@ SessionView = function() {
   this.signUpErrorDivSelector = '.sign-up-errors h4'
   this.loginErrorDivSelector = '.login-errors h4'
   this.settingsButtonSelector = '.settings-button'
+  this.updateLocationDivSelector = '.update-user-preferences'
 }
 
 SessionView.prototype = {
@@ -56,15 +57,16 @@ SessionView.prototype = {
       $(this.userLogWindowSelector).slideDown("fast")
     } else {
       $(this.userLogWindowSelector).hide()
-      
     }
     // userWindow.classList.toggle('hidden')
   },
 
   toggleSettingsButton: function(){
-    var settingsButton = document.querySelector(this.settingsButtonSelector)
-    settingsButton.classList.toggle("hidden")
-    debugger
+    this.getSettingsButton().classList.toggle("hidden")
+  },
+
+  toggleUpdateLocationDiv: function(){
+    this.getUpdateLocationDiv().classList.toggle("hidden")
   },
 
   renderLoginErrorMessages: function(errors){
@@ -75,6 +77,13 @@ SessionView.prototype = {
     document.querySelector(this.signUpErrorDivSelector).innerText = errors
   },
 
+  updateUserData: function(html) {
+    var currentUserData = this.getCurrentUserData()
+    currentUserData.innerHTML = html
+  },
+
+
+  // GET DOM ELEMENT METHODS
 
   getLoginForm: function() {
     return document.querySelector(this.loginFormSelector)
@@ -84,11 +93,9 @@ SessionView.prototype = {
     return document.querySelector(this.signUpFormSelector)
   },
 
-
   getCurrentUserData: function() {
     return document.querySelector(this.currentUserDataSelector)
   },
-
 
   getLoginMenuButton: function() {
     return document.querySelector(this.logInMenuSelector)
@@ -98,18 +105,19 @@ SessionView.prototype = {
     return document.querySelector(this.userLogWindowSelector)
   },
 
-  updateUserData: function(html) {
-    var currentUserData = this.getCurrentUserData()
-    currentUserData.innerHTML = html
-  },
-
   getSessionMenu: function() {
     return document.querySelector(this.sessionMenuSelector)
   },
 
   getLogOutButton: function() {
     return document.querySelector(this.logOutButtonSelector)
+  },
+
+  getSettingsButton: function() {
+    return document.querySelector(this.settingsButtonSelector)
+  },
+
+  getUpdateLocationDiv: function(){
+    return document.querySelector(this.updateLocationDivSelector)
   }
-
-
 }

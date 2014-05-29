@@ -10,7 +10,7 @@ SessionController.prototype = {
   setListeners: function() {
     this.view.getLoginToggleButton().addEventListener('click', this.toggleLogin.bind(this), false)
     this.view.getSignUpToggleButton().addEventListener('click', this.toggleSignUp.bind(this), false)
-
+    this.view.getSettingsButton().addEventListener('click', this.toggleUpdateLocationDiv.bind(this), false)
     $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
     $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
@@ -27,6 +27,11 @@ SessionController.prototype = {
   toggleSignUp: function() {
     this.view.clearForms()
     this.view.toggleSignUpForm()
+  },
+
+  toggleUpdateLocationDiv: function() {
+    this.view.clearForms()
+    this.view.toggleUpdateLocationDiv()
   },
 
   login: function(e, response) {
