@@ -11,7 +11,7 @@ ApplicationController.prototype= {
     this.sessionController.init()
     this.searchController.init()
     this.setAjaxListeners()
-    if (!this.userLoggedIn()) {
+    if (!this._userLoggedIn()) {
       this.getCurrentLocation()
     } else {
       this.getEventsForUserLocationPreference()
@@ -26,10 +26,16 @@ ApplicationController.prototype= {
     $(this.sessionController.view.getUpdateLocationDiv()).on('submit', this.updateUserPreferences.bind(this))
   },
 
+
+  // MAPS RELATED
+
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
     this.searchController.view.hideSearchBox()
   },
+
+
+  // SESSION RELATED
 
   login: function(e, response) {
     this.sessionController.login(e, response)
@@ -44,6 +50,9 @@ ApplicationController.prototype= {
     var eventData = {events: response.events, location_coords: locationCoords, location_name: userData.songkickLocationName}
     this.mapController.placeMarkers(null, eventData)
   },
+
+
+  // GEOLOCATION
 
   getCurrentLocation: function() {
     if(navigator.geolocation) {
@@ -68,15 +77,9 @@ ApplicationController.prototype= {
     ajaxRequest.fail(this.locationNotFound.bind(this))
   },
 
-  userLoggedIn: function() {
-    return typeof userData != 'undefined'
-  },
-
   setCurrentLocation: function(response) {
     this.spinner.stop()
-
-    if (!this.userLoggedIn()) {
-
+    if (!this._userLoggedIn()) {
       this.mapController.placeMarkers(null,response)
     }
   },
@@ -84,6 +87,9 @@ ApplicationController.prototype= {
   locationNotFound: function() {
     this.spinner.stop()
   },
+
+
+  // LOGGED IN USER INITIALIZATION PROCESS
 
   getEventsForUserLocationPreference: function() {
     var songkickLocationId = userData.songkickLocationId
@@ -102,6 +108,9 @@ ApplicationController.prototype= {
     this.mapController.placeMarkers(null,eventData)
   },
 
+
+  // UPDATE USER PREFERENCES
+
   updateUserPreferences: function(e) {
     e.preventDefault()
     var form = e.target
@@ -113,7 +122,6 @@ ApplicationController.prototype= {
     })
 
     ajaxRequest.done(this.applyUserPreferenceUpdates.bind(this))
-
     ajaxRequest.fail(this.userPreferenceUpdatesError.bind(this))
   },
 
@@ -125,6 +133,13 @@ ApplicationController.prototype= {
   },
 
   userPreferenceUpdatesError: function(response) {
-  }
+  },
+
+
+  // HELPER METHODS
+
+  _userLoggedIn: function() {
+    return typeof userData != 'undefined'
+  },
 
 }
