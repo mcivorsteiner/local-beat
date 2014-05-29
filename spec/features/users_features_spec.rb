@@ -1,21 +1,26 @@
 require 'spec_helper'
 
 describe "Users", :js => true do
-  let!(:user) {FactoryGirl.create :user}
+  let!(:user) { FactoryGirl.create :user }
+  let!(:location) { FactoryGirl.create(:location) }
 
   context "sign up" do
-    before(:each) { visit root_path }
+    before(:each) do
+      Songkick.stub(:location_id_query) { [location] }
+      Songkick.stub(:event_search) { create_event_data }
+      visit root_path
+    end
 
-    xit "allow user user to sign up" do
+    it "allow user user to sign up" do
       find('#login-menu-button').click
       find('#sign-up').click
+      test_user_attributes = FactoryGirl.attributes_for :user
       fill_in "Email", :with => "mia@mia.com"
       fill_in "Password", :with => "mia"
       fill_in "City", :with => "San Francisco"
       fill_in "State", :with => "CA"
       find("#new_user input[type='submit']").click
       expect(page).to have_selector('#logout-button')
-      # expect(page.body).to have_selector('#user-data')
     end
 
     it "allows user to sign in" do
@@ -26,7 +31,5 @@ describe "Users", :js => true do
       find("form input[type='submit']").click
       expect(page).to have_selector('#logout-button')
     end
-
-
   end
 end

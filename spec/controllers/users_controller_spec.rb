@@ -15,6 +15,7 @@ describe UsersController do
   context "sign-up" do
     it "responds with success when passed valid attributes" do
       Songkick.stub(:location_id_query) { [FactoryGirl.create(:location)] }
+      Songkick.stub(:event_search) { create_event_data }
       params = {user: {email: "notreal@fake.com" },
                 password: "password"}
       post :create, params
