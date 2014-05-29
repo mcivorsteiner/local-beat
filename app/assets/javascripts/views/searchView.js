@@ -8,6 +8,7 @@ function SearchView(utility){
   this.artistSearchTextField = '#artist_name'
   this.searchStatusDiv = '.search-status'
   this.searchStatusHeader = '.search-status h4'
+  this.currentLocation = ""
 }
 
 SearchView.prototype = {
@@ -15,7 +16,7 @@ SearchView.prototype = {
     // $(".loc-submit").addClass("hide-submit")
     // $('.pop-up').hide()
     // $(this.advOptionsIconSelector).show()
-    $('#user_input_location_name').val('')
+    $('#user_input_location_name').val(this.currentLocation)
     $('#artist_name').val('')
 
     this.getSearchStatusHeader().innerText = ""
@@ -23,7 +24,7 @@ SearchView.prototype = {
     if ($(this.searchWindowSelector).is(':hidden')){
       $('.pop-up').hide()
       $(this.searchWindowSelector).slideDown("slow")
-      $(this.advOptionsIconSelector).show() 
+      $(this.advOptionsIconSelector).show()
     } else {
       $(this.searchWindowSelector).hide(500)
       $(this.advOptionsIconSelector).hide(500)
@@ -60,7 +61,7 @@ SearchView.prototype = {
     return document.querySelector(this.locationSearchTextField)
   },
 
-   getSearchStatusHeader: function(){
+  getSearchStatusHeader: function(){
     return document.querySelector(this.searchStatusHeader)
   },
 
