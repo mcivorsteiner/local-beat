@@ -1,16 +1,17 @@
 function SearchView(utility){
   this.utilities = new Utilities()
-  this.searchWindowSelector = '#search-window'
-  this.advOptionsSelector = '.advanced-options'
-  this.searchIconSelector = '#magnify'
-  this.advOptionsIconSelector = '#more-options-icon'
-  this.locationSearchTextField = '#user_input_location_name'
-  this.artistSearchTextField = '#artist_name'
-  this.searchStatusDiv = '.search-status'
-  this.searchStatusHeader = '.search-status h4'
-  this.spinner = new Spinner()
-  this.currentLocation = ""
+  this.searchWindowSelector     = '#search-window'
+  this.advOptionsSelector       = '.advanced-options'
+  this.searchIconSelector       = '#magnify'
+  this.advOptionsIconSelector   = '#more-options-icon'
+  this.locationSearchTextField  = '#user_input_location_name'
+  this.artistSearchTextField    = '#artist_name'
+  this.searchStatusDiv          = '.search-status'
+  this.searchStatusHeader       = '.search-status h4'
+  this.currentLocation          = ""
+  this.spinner                  = new Spinner()
 }
+
 
 SearchView.prototype = {
   renderSearchBar: function(event) {

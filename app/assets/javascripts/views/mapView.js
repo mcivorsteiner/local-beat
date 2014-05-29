@@ -1,5 +1,5 @@
 function MapView(){
-  this.mapSelector = "map-canvas"
+  this.mapSelector          = "map-canvas"
   this.searchWindowSelector = "#search-window"
 }
 
