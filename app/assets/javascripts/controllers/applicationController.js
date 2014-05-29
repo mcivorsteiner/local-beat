@@ -2,6 +2,8 @@ ApplicationController = function(mapController, sessionController, searchControl
   this.mapController = mapController
   this.sessionController = sessionController
   this.searchController = searchController
+
+  this.spinner = new Spinner()
 }
 
 ApplicationController.prototype= {
@@ -60,7 +62,11 @@ ApplicationController.prototype= {
       data: coordsObj
     })
 
+    this.spinner.spin()
+    $('body').append(this.spinner.el)
+
     ajaxRequest.done(this.setCurrentLocation.bind(this))
+    ajaxRequest.fail(this.locationNotFound.bind(this))
   },
 
   userLoggedIn: function() {
@@ -68,9 +74,16 @@ ApplicationController.prototype= {
   },
 
   setCurrentLocation: function(response) {
+    this.spinner.stop()
+
     if (!this.userLoggedIn()) {
+
       this.mapController.placeMarkers(null,response)
     }
+  },
+
+  locationNotFound: function() {
+    this.spinner.stop()
   },
 
   getEventsForUserLocationPreference: function() {

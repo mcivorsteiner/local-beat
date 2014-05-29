@@ -8,6 +8,7 @@ function SearchView(utility){
   this.artistSearchTextField = '#artist_name'
   this.searchStatusDiv = '.search-status'
   this.searchStatusHeader = '.search-status h4'
+  this.spinner = new Spinner()
   this.currentLocation = ""
 }
 
@@ -93,12 +94,15 @@ SearchView.prototype = {
           artistArray.push(artists[i].displayName)
       }
     }
+    this.spinner.spin()
+    $('body').apend(this.spinner.el)
     this.executeFunctionForArtist(artistArray)
   },
 
   executeFunctionForArtist: function(array){
     window.setInterval(console.log("I'm here"), 1000)
     $(this.artistSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+    this.spinner.stop()
   },
 
 // SUGGEST BOX FOR LOCATIONS
@@ -124,12 +128,16 @@ SearchView.prototype = {
       locationArray.push(locations[i].city.displayName, locations[i].metroArea.displayName)
       }
     }
+    this.spinner.spin()
+    $('body').append(this.spinner.el)
+
     this.executeFunctionForLocation(locationArray)
   },
 
   executeFunctionForLocation: function(array){
     window.setInterval(console.log("I'm there"), 1000)
     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
+    this.spinner.stop()
   }
 
 }
