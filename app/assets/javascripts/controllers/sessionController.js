@@ -11,27 +11,12 @@ SessionController.prototype = {
     this.view.getLoginToggleButton().addEventListener('click', this.toggleLogin.bind(this), false)
     this.view.getSignUpToggleButton().addEventListener('click', this.toggleSignUp.bind(this), false)
     this.view.getSettingsButton().addEventListener('click', this.toggleUpdateLocationDiv.bind(this), false)
+    
     $(this.view.getSessionMenu()).on('click', '#login-menu-button', this.toggleSessionBox.bind(this))
     $(this.view.getSessionMenu()).on('click', '#logout-button', this.logOut.bind(this))
 
     $(this.view.getLoginForm()).on('ajax:error', this.loginError.bind(this))
     $(this.view.getSignUpForm()).on('ajax:error', this.signUpError.bind(this))
-
-  },
-
-  toggleLogin: function() {
-    this.view.clearForms()
-    this.view.toggleLoginForm()
-  },
-
-  toggleSignUp: function() {
-    this.view.clearForms()
-    this.view.toggleSignUpForm()
-  },
-
-  toggleUpdateLocationDiv: function() {
-    // this.view.clearForms()
-    this.view.toggleUpdateLocationDiv()
   },
 
   login: function(e, response) {
@@ -62,21 +47,6 @@ SessionController.prototype = {
     this.view.toggleSettingsButton()
   },
 
-  loginError: function(e, response, responseType, status) {
-    var errorMessages = response.responseJSON.errors
-    this.view.renderLoginErrorMessages(errorMessages[0])
-  },
-
-  signUpError: function(e, response, responseType, status) {
-    var errorMessages = response.responseJSON.errors
-    this.view.renderSignUpErrorMessages(errorMessages[0])
-  },
-
-  toggleSessionBox: function() {
-    // this.view.clearForms()
-    this.view.toggleSessionBox()
-  },
-
   logOut: function() {
     var ajaxRequest = $.ajax({
       url: '/session',
@@ -94,5 +64,39 @@ SessionController.prototype = {
     this.view.toggleSettingsButton()
     userData = undefined
     this.view.getCurrentUserData().innerText = ""
+  },
+
+
+  // ERROR MESSAGES
+
+  loginError: function(e, response, responseType, status) {
+    var errorMessages = response.responseJSON.errors
+    this.view.renderLoginErrorMessages(errorMessages[0])
+  },
+
+  signUpError: function(e, response, responseType, status) {
+    var errorMessages = response.responseJSON.errors
+    this.view.renderSignUpErrorMessages(errorMessages[0])
+  },
+  
+
+  // TOGGLE FORMS
+
+  toggleLogin: function() {
+    this.view.clearForms()
+    this.view.toggleLoginForm()
+  },
+
+  toggleSignUp: function() {
+    this.view.clearForms()
+    this.view.toggleSignUpForm()
+  },
+
+  toggleUpdateLocationDiv: function() {
+    this.view.toggleUpdateLocationDiv()
+  },
+
+  toggleSessionBox: function() {
+    this.view.toggleSessionBox()
   }
 }

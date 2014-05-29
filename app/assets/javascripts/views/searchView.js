@@ -14,9 +14,6 @@ function SearchView(utility){
 
 SearchView.prototype = {
   renderSearchBar: function(event) {
-    // $(".loc-submit").addClass("hide-submit")
-    // $('.pop-up').hide()
-    // $(this.advOptionsIconSelector).show()
     $('#user_input_location_name').val(this.currentLocation)
     $('#artist_name').val('')
 
@@ -33,7 +30,6 @@ SearchView.prototype = {
   },
 
   renderAdvancedOptions:function(event){
-    // $(".loc-submit").removeClass("hide-submit")
     if ($(this.advOptionsSelector).is(':hidden')){
       $(this.advOptionsSelector).slideDown("slow");
       $(".loc-submit").removeClass("hide-submit")
@@ -48,15 +44,13 @@ SearchView.prototype = {
     this.getSearchStatusHeader().innerText = errors
   },
 
-  hideSearchBox: function(){ //WIP this should not be in mapview
-    // var searchWindow = document.getElementById(this.searchWindowSelector)
-    // searchWindow.classList.toggle('hidden')
+  hideSearchBox: function(){
     $(this.searchWindowSelector).hide(500)
-    // $('.advanced-options').hide()
     $('.pop-up').hide()
   },
 
-  // SUGGEST BOX FOR ARTISTS
+
+  // AUTOCOMPLETE FOR ARTISTS
 
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
@@ -89,7 +83,8 @@ SearchView.prototype = {
     this.spinner.stop()
   },
 
-// SUGGEST BOX FOR LOCATIONS
+
+  // AUTOCOMPLETE FOR LOCATIONS
 
   limitLocationSearchQueryCharacters: function() {
     var textInput = $(this.locationSearchTextField).val()
@@ -101,7 +96,6 @@ SearchView.prototype = {
   searchSuggestLocation: function(textInput) {
     $.getJSON("http://api.songkick.com/api/3.0/search/locations.json?query=" + textInput +"&apikey=pH29QOMdmJML48IO&jsoncallback=?").done(this.renderLocationSearchSuggestionBox.bind(this))
   },
-
 
   renderLocationSearchSuggestionBox: function(data) {
     var locations = data.resultsPage.results.location
@@ -119,11 +113,9 @@ SearchView.prototype = {
   },
 
   executeFunctionForLocation: function(array){
-    window.setInterval(console.log("I'm there"), 1000)
     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
     this.spinner.stop()
   },
-
 
 
   // GET DOM ELEMENTS

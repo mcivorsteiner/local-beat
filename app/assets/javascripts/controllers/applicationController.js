@@ -20,7 +20,7 @@ ApplicationController.prototype= {
 
   setAjaxListeners: function() {
     $('.search').on('ajax:success', this.placeMarkers.bind(this))
-    $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController)) //WIP
+    $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController))
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
     $(this.sessionController.view.getUpdateLocationDiv()).on('submit', this.updateUserPreferences.bind(this))

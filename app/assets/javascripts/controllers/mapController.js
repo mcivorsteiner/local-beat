@@ -8,12 +8,12 @@ function MapController(mapView, searchView){
 MapController.prototype = {
   init: function(){
     this.view.drawMap()
+    $(document).on('click', '.more-info', this.showLargeInfoWindow.bind(this))
+    $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
     if (typeof userData != 'undefined') {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
-     $(document).on('click', '.more-info', this.showLargeInfoWindow.bind(this))
-     $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
@@ -27,6 +27,9 @@ MapController.prototype = {
     this.view.setMap(eventData.location_coords)
     this.searchView.currentLocation = eventData.location_name
   },
+
+
+  // INFO WINDOWS
 
   showInfoWindow: function() {
     if (typeof infoWindow != "undefined") {
@@ -111,7 +114,7 @@ MapController.prototype = {
   closeLargeInfoWindow: function(e) {
     e.preventDefault();
     $('.large-info-box').remove()
-  },
+  }
 
 }
 
