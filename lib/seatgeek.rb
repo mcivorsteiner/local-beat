@@ -38,7 +38,7 @@ module Seatgeek
 
   def performer_event_on_date(artist_id, event_date)
     date = Date.parse(event_date).strftime('%Y-%m-%d')
-    query_url = "http://api.seatgeek.com/2/events?performers.id=#{artist_id}&datetime_utc=#{date}"
+    query_url = "http://api.seatgeek.com/2/events?performers.id=#{artist_id}&datetime_local=#{date}"
     query_response = HTTParty.get(query_url).body
 
     formatted_query_response = JSON.parse(query_response)
