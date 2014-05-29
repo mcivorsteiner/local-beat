@@ -19,6 +19,7 @@ ApplicationController.prototype= {
   },
 
   setAjaxListeners: function() {
+    $('.search').on('ajax:beforeSend', this.startSpinner.bind(this))
     $('.search').on('ajax:success', this.placeMarkers.bind(this))
     $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController))
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
@@ -32,6 +33,7 @@ ApplicationController.prototype= {
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
     this.searchController.view.hideSearchBox()
+    this.spinner.stop()
   },
 
 
@@ -85,6 +87,11 @@ ApplicationController.prototype= {
 
   locationNotFound: function() {
     this.spinner.stop()
+  },
+
+  startSpinner: function(){
+    this.spinner.spin()
+    $('body').append(this.spinner.el)
   },
 
 

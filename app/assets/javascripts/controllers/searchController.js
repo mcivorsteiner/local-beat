@@ -18,5 +18,6 @@ SearchController.prototype = {
   renderErrorMessages: function(e, response, responseType, status){
     var errorMessages = response.responseText
     this.view.renderSearchErrorMessages(errorMessages)
+    this.spinner.stop()
   }
 }
