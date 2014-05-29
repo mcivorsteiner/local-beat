@@ -14,13 +14,7 @@ MapView.prototype = {
     }
   },
 
-  hideSearchBox: function(){ //WIP this should not be in mapview
-    // var searchWindow = document.getElementById(this.searchWindowSelector)
-    // searchWindow.classList.toggle('hidden')
-    $(this.searchWindowSelector).hide(500)
-    // $('.advanced-options').hide()
-    $('.pop-up').hide()
-  },
+  
 
   clearMarkers: function(markers){
     for (var i = 0; i < markers.length; i++) {

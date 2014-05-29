@@ -18,8 +18,6 @@ MapController.prototype = {
 
   placeMarkers: function(event, eventData) {
     this.view.clearMarkers(this.markers)
-    this.view.hideSearchBox() //WIP this should be calling search view method
-
     this.markers = this.eventPresenter.createMarkers(eventData.events)
     this.view.placeMarkers(this.markers)
     for(var i=0; i < markers.length; i++) {
@@ -28,7 +26,6 @@ MapController.prototype = {
     }
     this.view.setMap(eventData.location_coords)
     this.searchView.currentLocation = eventData.location_name
-    // debugger
   },
 
   showInfoWindow: function() {

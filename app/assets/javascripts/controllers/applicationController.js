@@ -28,6 +28,7 @@ ApplicationController.prototype= {
 
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
+    this.searchController.view.hideSearchBox()
   },
 
   login: function(e, response) {

@@ -48,31 +48,15 @@ SearchView.prototype = {
     this.getSearchStatusHeader().innerText = errors
   },
 
-  getSearchIcon: function(){
-    return document.querySelector(this.searchIconSelector)
+  hideSearchBox: function(){ //WIP this should not be in mapview
+    // var searchWindow = document.getElementById(this.searchWindowSelector)
+    // searchWindow.classList.toggle('hidden')
+    $(this.searchWindowSelector).hide(500)
+    // $('.advanced-options').hide()
+    $('.pop-up').hide()
   },
 
-  getAdvOptionsIcon: function(){
-    return document.querySelector(this.advOptionsIconSelector)
-  },
-
-  getArtistSearchTextField: function() {
-    return document.querySelector(this.artistSearchTextField)
-  },
-
-  getLocationSearchTextField: function(){
-    return document.querySelector(this.locationSearchTextField)
-  },
-
-  getSearchStatusHeader: function(){
-    return document.querySelector(this.searchStatusHeader)
-  },
-
-  getSearchStatusDiv: function(){
-    return document.querySelector(this.searchStatusDiv)
-  },
-
-// SUGGEST BOX FOR ARTISTS
+  // SUGGEST BOX FOR ARTISTS
 
   limitArtistSearchQueryCharacters: function() {
     var textInput = $(this.artistSearchTextField).val()
@@ -138,6 +122,34 @@ SearchView.prototype = {
     window.setInterval(console.log("I'm there"), 1000)
     $(this.locationSearchTextField).autocomplete({ source: this.utilities.uniq(array), delay: 1500})
     this.spinner.stop()
+  },
+
+
+
+  // GET DOM ELEMENTS
+
+  getSearchIcon: function(){
+    return document.querySelector(this.searchIconSelector)
+  },
+
+  getAdvOptionsIcon: function(){
+    return document.querySelector(this.advOptionsIconSelector)
+  },
+
+  getArtistSearchTextField: function() {
+    return document.querySelector(this.artistSearchTextField)
+  },
+
+  getLocationSearchTextField: function(){
+    return document.querySelector(this.locationSearchTextField)
+  },
+
+  getSearchStatusHeader: function(){
+    return document.querySelector(this.searchStatusHeader)
+  },
+
+  getSearchStatusDiv: function(){
+    return document.querySelector(this.searchStatusDiv)
   }
 
 }
