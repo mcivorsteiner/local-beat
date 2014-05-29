@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def search
-    params[:user_input_location_name].gsub!(/"+|<+|`+|>+|{+|}+|\\+|\|+|\^+|%+/, '')
-    unless @location = Location.find_by_user_input_location_name(params[:user_input_location_name])
+    clean_user_input = sanitize_user_input(params[:user_input_location_name])
+    unless @location = Location.find_by_user_input_location_name(clean_user_input)
         @location = Songkick.location_id_query(params[:user_input_location_name]).first
     end
     if @location && @location.save
@@ -41,11 +41,7 @@ class EventsController < ApplicationController
     return {location: location, artist_name: params[:artist_name], min_date: min_date, max_date: max_date}
   end
 
-  def format_date(date)
-    return "" if date == ""
-    year = date["(1i)"]
-    month = date["(2i)"]
-    day = date["(3i)"]
-    formatted_date = '%04d-%02d-%02d' % [year, month, day]
+  def sanitize_user_input(user_input)
+    user_input.gsub!(/"+|<+|`+|>+|{+|}+|\\+|\|+|\^+|%+/, '')
   end
 end
