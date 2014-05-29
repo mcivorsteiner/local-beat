@@ -56,6 +56,8 @@ ApplicationController.prototype= {
 
   getCurrentLocation: function() {
     if(navigator.geolocation) {
+      this.spinner.spin()
+      $('body').append(this.spinner.el)
       navigator.geolocation.getCurrentPosition(this.locationReceived.bind(this))
     }
   },
@@ -69,9 +71,6 @@ ApplicationController.prototype= {
       type: 'GET',
       data: coordsObj
     })
-
-    this.spinner.spin()
-    $('body').append(this.spinner.el)
 
     ajaxRequest.done(this.setCurrentLocation.bind(this))
     ajaxRequest.fail(this.locationNotFound.bind(this))
