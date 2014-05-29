@@ -8,28 +8,28 @@ function MapController(mapView, searchView){
 MapController.prototype = {
   init: function(){
     this.view.drawMap()
+    $(document).on('click', '.more-info', this.showLargeInfoWindow.bind(this))
+    $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
     if (typeof userData != 'undefined') {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
     }
-     $(document).on('click', '.more-info', this.showLargeInfoWindow.bind(this))
-     $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
   },
 
   placeMarkers: function(event, eventData) {
     this.view.clearMarkers(this.markers)
-    this.view.hideSearchBox() //WIP this should be calling search view method
-
     this.markers = this.eventPresenter.createMarkers(eventData.events)
     this.view.placeMarkers(this.markers)
-    for(var i=0; i < markers.length; i++) {
-      google.maps.event.addListener(markers[i], 'click', this.showInfoWindow)
-      google.maps.event.addListener(markers[i], 'click', this.getLargeInfoBoxData)
+    for(var i=0; i < this.markers.length; i++) {
+      google.maps.event.addListener(this.markers[i], 'click', this.showInfoWindow)
+      google.maps.event.addListener(this.markers[i], 'click', this.getLargeInfoBoxData)
     }
     this.view.setMap(eventData.location_coords)
     this.searchView.currentLocation = eventData.location_name
-    // debugger
   },
+
+
+  // INFO WINDOWS
 
   showInfoWindow: function() {
     if (typeof infoWindow != "undefined") {
@@ -114,7 +114,7 @@ MapController.prototype = {
   closeLargeInfoWindow: function(e) {
     e.preventDefault();
     $('.large-info-box').remove()
-  },
+  }
 
 }
 

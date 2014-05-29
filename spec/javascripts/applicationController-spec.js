@@ -34,7 +34,7 @@ describe("Application controller", function(){
     });
 
     it("should always have a user logged in method", function(){
-      expect(appController.userLoggedIn).toBeDefined()
+      expect(appController._userLoggedIn).toBeDefined()
     });
 
     it("should always have a set current location method", function(){

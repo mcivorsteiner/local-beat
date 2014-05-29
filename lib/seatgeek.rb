@@ -51,6 +51,6 @@ module Seatgeek
   end
 
   def format_price(price)
-    "%.2f" % [price]
+    "%.2f" % [price] if price
   end
 end

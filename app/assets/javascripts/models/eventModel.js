@@ -1,18 +1,17 @@
 function Event(eventData){
-  this.constructor.count++
-  this.skEventId = eventData.sk_event_id
-  this.displayName = eventData.display_name
-  this.date = this.dateFormatter(eventData.date)
-  this.artists = eventData.artists
-  this.latLng = eventData.location
-  this.metroArea = eventData.metro_area
-  this.state = eventData.state
-  this.venueName = eventData.venue_name
-  this.popularity = eventData.popularity
-  this.eventType = eventData.event_type
-  this.uri = eventData.uri
-  this.headliner = eventData.headliner
-  this.headlinerId = eventData.headliner_id
+  this.skEventId      = eventData.sk_event_id
+  this.displayName    = eventData.display_name
+  this.date           = this.dateFormatter(eventData.date)
+  this.artists        = eventData.artists
+  this.latLng         = eventData.location
+  this.metroArea      = eventData.metro_area
+  this.state          = eventData.state
+  this.venueName      = eventData.venue_name
+  this.popularity     = eventData.popularity
+  this.eventType      = eventData.event_type
+  this.uri            = eventData.uri
+  this.headliner      = eventData.headliner
+  this.headlinerId    = eventData.headliner_id
   if (eventData.time) {
     this.time = this.timeFormatter(eventData.time)
   }
@@ -20,11 +19,7 @@ function Event(eventData){
 
 Event.prototype = {
   isFestival: function() {
-    if (this.eventType === "Festival") {
-      return true
-    } else {
-      return false
-    }
+    return (this.eventType === "Festival");
   },
 
   timeFormatter: function(time) {
