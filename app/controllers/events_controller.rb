@@ -1,12 +1,13 @@
 class EventsController < ApplicationController
   def search
+    params[:user_input_location_name].gsub!(/"+|<+|`+|>+|{+|}+|\\+|\|+|\^+|%+/, '')
     unless @location = Location.find_by_user_input_location_name(params[:user_input_location_name])
         @location = Songkick.location_id_query(params[:user_input_location_name]).first
     end
     if @location && @location.save
       event_query = format_event_query(params, @location)
       @events = Songkick.event_search(event_query)
-      render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events }
+      render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events, location_name: @location.sk_location_name }
     else
       render text: "Location not found, try again", status: :unprocessable_entity
     end
