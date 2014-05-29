@@ -216,7 +216,7 @@ LARGE INFO BOX
 .large-info-box {
   position: absolute;
   width: 85%;
-  max-height: 85%;
+  max-height: 75%;
   overflow: auto;
   top: 15px;
   left: 5%;
@@ -227,14 +227,16 @@ LARGE INFO BOX
   opacity: 60%;
   font-family: Avenir;
   font-size: 1.2em;
-  padding-right: 2.5%;
-  padding-left: 2.5%;
+  padding: 10px 2.5% 0;
+  margin-top: 40px;
   box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .close-infobox {
   position: absolute;
-  top: 10px;
+  opacity: 0.7;
+  border-radius: 2px;
+  /*top: 10px;*/
   right: 10px;
   width: 18px;
   height: 18px;
