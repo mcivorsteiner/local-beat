@@ -21,7 +21,7 @@ ApplicationController.prototype= {
   setAjaxListeners: function() {
     $('.search').on('ajax:beforeSend', this.startSpinner.bind(this))
     $('.search').on('ajax:success', this.placeMarkers.bind(this))
-    $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController))
+    $('.search').on('ajax:error', this.renderSearchErrors.bind(this))
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
     $(this.sessionController.view.getUpdateLocationDiv()).on('submit', this.updateUserPreferences.bind(this))
@@ -141,6 +141,10 @@ ApplicationController.prototype= {
   userPreferenceUpdatesError: function(response) {
   },
 
+  renderSearchErrors: function(e, response, responseType, status){
+    this.searchController.renderErrorMessages(e, response, responseType, status)
+    this.spinner.stop()
+  },
 
   // HELPER METHODS
 
