@@ -161,6 +161,8 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -207,4 +209,5 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   simplecov (~> 0.7.1)
+  simplecov-rcov
   uglifier (>= 1.0.3)

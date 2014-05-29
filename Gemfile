@@ -41,6 +41,7 @@ group :test do
   gem 'faker'
   gem 'rake'
   gem 'simplecov', '~> 0.7.1', :require => false
+
 end
 
 # To use ActiveModel has_secure_password
