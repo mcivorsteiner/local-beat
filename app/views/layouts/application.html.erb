@@ -16,10 +16,12 @@
   <div id="session-menu">
     <img id="magnify" src="/assets/search-icon.png">
     <img id="more-options-icon" class= "hidden pop-up" src="/assets/more-options-icon.png">
-    <% unless logged_in? %>
-    <img id="login-menu-button" src="/assets/login-icon.png">
+    <% if logged_in? %>
+      <img id="logout-button" src="/assets/sign-out-icon.png">
+      <img class="settings-button" src="/assets/settings-icon.png">
     <% else %>
-    <img id="logout-button" src="/assets/sign-out-icon.png">
+      <img id="login-menu-button" src="/assets/login-icon.png">
+      <img class="settings-button hidden" src="/assets/settings-icon.png">
     <% end %>
   </div>
   <div id='logo'>

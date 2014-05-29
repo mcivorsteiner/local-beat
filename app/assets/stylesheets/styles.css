@@ -79,7 +79,6 @@ LOGIN/SIGNUP
 
 #session-menu {
   width: 100%;
-  /*height: 7%;*/
   margin: 0;
   position: absolute;
   z-index: 1;
@@ -94,6 +93,10 @@ LOGIN/SIGNUP
   background-color: black;
   border-radius:5px;
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#login-menu-button:hover, #logout-button:hover {
+  cursor: pointer;
 }
 
 #user-log-box {
@@ -152,6 +155,10 @@ SEARCH
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
 
+#magnify:hover {
+  cursor: pointer;
+}
+
 #more-options-icon {
   position: absolute;
   top: 60px;
@@ -180,7 +187,6 @@ SEARCH
 #search-window ul {
   margin-top: 3px;
   margin-bottom: 3px;
-
 }
 
 .hide-submit {
@@ -201,7 +207,6 @@ SMALL INFO BOX
   /*background-color: #AAAAAD;*/
   border-radius: 10px;
   background-color:rgba(255,255,255,0.75);
-
 }
 
 /*##########################################
@@ -236,6 +241,10 @@ LARGE INFO BOX
   padding: 0;
 }
 
+.close-infobox:hover {
+  cursor: pointer;
+}
+
 .close {
   position: fixed;
   width: 85%;
@@ -246,11 +255,43 @@ LARGE INFO BOX
   width: 60%;
 }
 
-.spotify-player{
-  /*z-index: 10;*/
-  /*position: absolute;*/
-  /*top: 100px;*/
+
+/*##########################################
+UPDATE USER PREFERENCES
+##########################################*/
+
+.settings-button {
+  position: absolute;
+  right: 65px;
+  top: 15px;
+  height: 30px;
+  width: 30px;
 }
+
+.settings-button:hover {
+  cursor: pointer;
+  height: 31px;
+  width: 31px;
+}
+
+#update-user-preferences {
+  color: white;
+  background-color:rgba(0,0,0,0.5);
+  position: absolute;
+  right: 10px;
+  top: 55px;
+  z-index: 1;
+  padding: 15px;
+  border-radius:5px;
+  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+#update-user-preferences p, 
+#update-user-preferences h2,
+#update-user-preferences h3 {
+  margin: 5px;
+}
+
 
 /*##########################################
 SPINNER
@@ -259,3 +300,4 @@ SPINNER
 .spinner {
   opacity:0.3;
 }
+

@@ -11,7 +11,11 @@ LocalBeat::Application.routes.draw do
 
   get '/events/sk_location_id', to: 'events#search_by_sk_location_id'
 
-  resources :users, only: [:new, :create, :edit, :destroy, :update]
+  resources :users, only: [:create]
+
+  put '/users', to: 'users#update'
+
+  # resources :users, only: [:create, :edit, :destroy, :update]
 
   get '/locations', to: 'locations#search'
   get '/events/detailed_info', to: 'events#detailed_info'

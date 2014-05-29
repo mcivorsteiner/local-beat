@@ -1,0 +1,9 @@
+<div id="update-user-preferences" class="hidden pop-up">
+  <h2>User Settings</h2>
+  <p><strong>Current User Location: </strong><span class="current-location"></span></p>
+  <h3>Update User Location:</h3>
+  <%= form_tag '/users', method: 'PUT' do %>
+    <%= text_field_tag :location, nil, placeholder:  "Location" %>
+    <%= submit_tag "Update" %>
+  <% end %>
+</div>

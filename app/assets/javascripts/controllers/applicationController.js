@@ -25,6 +25,7 @@ ApplicationController.prototype= {
     $('.search').on('ajax:error', this.searchController.renderErrorMessages.bind(this.searchController)) //WIP
     $(this.sessionController.view.getLoginForm()).on('ajax:success', this.login.bind(this))
     $(this.sessionController.view.getSignUpForm()).on('ajax:success', this.signUp.bind(this))
+    $(this.sessionController.view.getUpdateLocationDiv()).on('submit', this.updateUserPreferences.bind(this))
   },
 
   placeMarkers:function(event, response){
@@ -100,5 +101,31 @@ ApplicationController.prototype= {
   placeEventsForUserLocationPreference: function(response) {
     var eventData = {events: response, location_coords: {lat: userData.lat, lng: userData.lng}, location_name: userData.songkickLocationName}
     this.mapController.placeMarkers(null,eventData)
+  },
+
+  updateUserPreferences: function(e) {
+    e.preventDefault()
+    var form = e.target
+
+    var ajaxRequest = $.ajax({
+      url: '/users',
+      type: 'PUT',
+      data: $(form).serialize()
+    })
+
+    ajaxRequest.done(this.applyUserPreferenceUpdates.bind(this))
+
+    ajaxRequest.fail(this.userPreferenceUpdatesError.bind(this))
+  },
+
+  applyUserPreferenceUpdates: function(response) {
+    userData = JSON.parse(response.userData)
+    var locationCoords = {lat: userData.lat, lng: userData.lng}
+    var eventData = {events: response.events, location_coords: locationCoords }
+    this.mapController.placeMarkers(null, eventData)
+  },
+
+  userPreferenceUpdatesError: function(response) {
   }
+
 }

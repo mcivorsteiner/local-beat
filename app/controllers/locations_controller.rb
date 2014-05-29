@@ -11,4 +11,5 @@ class LocationsController < ApplicationController
 
     render json: {events: response[:events], location_coords: {lat: location_info[:lat], lng: location_info[:lng]}, location_name: location.sk_location_name}
   end
+
 end
