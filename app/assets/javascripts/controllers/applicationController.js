@@ -3,11 +3,7 @@ ApplicationController = function(mapController, sessionController, searchControl
   this.sessionController = sessionController
   this.searchController = searchController
 
-  // Spinner Test
-  // this.spinner = new Spinner(spinnerOptions)
   this.spinner = new Spinner()
-
-
 }
 
 ApplicationController.prototype= {
