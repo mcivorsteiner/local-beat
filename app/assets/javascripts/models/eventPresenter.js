@@ -3,8 +3,9 @@ function EventPresenter(){
 
 EventPresenter.prototype = {
   createMarkers: function(eventData){
-    markers = []
-    for (var i = 0; i < eventData.length; i++) {
+    var markers = []
+    var length = eventData.length
+    for (var i = 0; i < length; i++) {
       var latLng = new google.maps.LatLng(eventData[i].location[0], eventData[i].location[1]);
       var image = '/assets/new-marker-icon.png'
       var markerPic = new google.maps.MarkerImage(image)
