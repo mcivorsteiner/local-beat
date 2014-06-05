@@ -32,6 +32,16 @@ describe EventsController do
       get :search, event_search_params("sidj;en53")
       response.response_code.should == 422
     end
+
+    it "replies with response code 422 when user error in date range" do
+      Songkick.stub(:location_id_query){ [location] }
+      get :search, { "user_input_location_name" => "San Francisco",
+                     "artist_name" => "",
+                     "min_date" => "2014-06-12",
+                     "max_date" => "2014-06-11"
+                   }
+      response.response_code.should == 422
+    end
   end
 
   context "search by sk location id" do

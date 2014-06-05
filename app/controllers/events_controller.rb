@@ -4,7 +4,10 @@ class EventsController < ApplicationController
     unless @location = Location.find_by_user_input_location_name(clean_user_input)
         @location = Songkick.location_id_query(params[:user_input_location_name]).first
     end
-    if @location && @location.save
+    
+    if params[:min_date] > params[:max_date]
+      render text: "Please fix your date range", status: :unprocessable_entity
+    elsif @location && @location.save
       event_query = format_event_query(params, @location)
       @events = Songkick.event_search(event_query)
       render json: { location_coords: { lat: @location.lat, lng: @location.lng }, events: @events, location_name: @location.sk_location_name }
@@ -35,10 +38,10 @@ class EventsController < ApplicationController
   private
 
   def format_event_query(params, location)
-    location = "sk:#{location.sk_location_id}"
+    location_query = "sk:#{location.sk_location_id}"
     min_date = params[:min_date]
     max_date = params[:max_date]
-    return {location: location, artist_name: params[:artist_name], min_date: min_date, max_date: max_date}
+    return {location: location_query, artist_name: params[:artist_name], min_date: min_date, max_date: max_date}
   end
 
   def sanitize_user_input(user_input)
