@@ -33,6 +33,7 @@ ApplicationController.prototype= {
   placeMarkers:function(event, response){
     this.mapController.placeMarkers(event, response)
     this.searchController.view.hideSearchBox()
+    this.searchController.view.hideKeyboard()
     this.spinner.stop()
   },
 
