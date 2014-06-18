@@ -34,6 +34,7 @@ ApplicationController.prototype= {
     this.mapController.placeMarkers(event, response)
     this.searchController.view.hideSearchBox()
     this.searchController.view.hideKeyboard()
+    this.searchController.view.currentLocation = response.location_name
     this.spinner.stop()
   },
 
@@ -82,7 +83,7 @@ ApplicationController.prototype= {
   setCurrentLocation: function(response) {
     this.spinner.stop()
     if (!this._userLoggedIn()) {
-      this.mapController.placeMarkers(null,response)
+      this.placeMarkers(null,response)
     }
   },
 
