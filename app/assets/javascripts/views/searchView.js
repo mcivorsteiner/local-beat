@@ -50,6 +50,10 @@ SearchView.prototype = {
     $('.pop-up').hide()
   },
 
+  hideKeyboard: function(){
+    $(this.locationSearchTextField).blur()
+  },
+
 
   // AUTOCOMPLETE FOR ARTISTS
 

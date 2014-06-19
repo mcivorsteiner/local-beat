@@ -1,6 +1,5 @@
-function MapController(mapView, searchView){
+function MapController(mapView){
   this.view = mapView
-  this.searchView = searchView
   this.eventPresenter = new EventPresenter()
   this.markers = []
 }
@@ -25,7 +24,6 @@ MapController.prototype = {
       google.maps.event.addListener(this.markers[i], 'click', this.getLargeInfoBoxData)
     }
     this.view.setMap(eventData.location_coords)
-    this.searchView.currentLocation = eventData.location_name
   },
 
 
