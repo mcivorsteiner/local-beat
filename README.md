@@ -5,7 +5,7 @@ LocalBeat is a mobile-first web app that lets you visually search for concerts o
 
 LocalBeat is a client heavy, one-page app using a custom MVC JavaScript framework, and a Ruby on Rails back-end.
 
-<a href="http://localbeat.herokuapp.com/" target="_blank">localbeat.herokuapp.com</a>
+<a href="http://www.thelocalbeat.com/" target="_blank">www.thelocalbeat.com</a>
 
 ##### APIs Being Used:
 Google Maps JavaScript API v3  
