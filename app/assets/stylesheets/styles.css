@@ -67,6 +67,7 @@ MAP/LOGO
 
 #logo {
   width: 60%;
+  max-width: 600px;
   position:fixed;
   left:15px;
   bottom:2%;
