@@ -61,6 +61,13 @@ var mapOptions = (function(){
       "stylers": [
       {"lightness":20}
       ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "labels",
+      "stylers": [
+        { "visibility": "off" }
+      ]
     }];
 
   var googleMapOptions = {
