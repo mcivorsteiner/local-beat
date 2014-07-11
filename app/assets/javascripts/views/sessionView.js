@@ -14,6 +14,7 @@ SessionView = function() {
   this.loginErrorDivSelector      = '.login-errors h4'
   this.settingsButtonSelector     = '.settings-button'
   this.updateLocationDivSelector  = '#update-user-preferences'
+  this.popUpSelector              = '.pop-up'
 }
 
 SessionView.prototype = {
@@ -24,7 +25,7 @@ SessionView.prototype = {
   },
 
   clearForms: function(){
-    $('.pop-up').hide()
+    $(this.popUpSelector).hide()
   },
 
 
@@ -48,7 +49,7 @@ SessionView.prototype = {
 
   toggleSessionBox: function() {
     if ($(this.userLogWindowSelector).is(':hidden')){
-      $('.pop-up').hide()
+      $(this.popUpSelector).hide()
       $(this.userLogWindowSelector).slideDown("fast")
     } else {
       $(this.userLogWindowSelector).hide()
@@ -65,7 +66,7 @@ SessionView.prototype = {
     var currentLocation = userData.songkickLocationName
     $('span.current-location').text(currentLocation)
     if ($(updateForm).is(':hidden')){
-      $('.pop-up').hide()
+      $(this.popUpSelector).hide()
       $(updateForm).slideDown("fast")
     } else {
       $(updateForm).hide()

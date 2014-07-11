@@ -8,6 +8,7 @@ function SearchView(utility){
   this.artistSearchTextField    = '#artist_name'
   this.searchStatusDiv          = '.search-status'
   this.searchStatusHeader       = '.search-status h4'
+  this.popUpSelector            = '.pop-up'
   this.currentLocation          = ""
   this.spinner                  = new Spinner()
 }
@@ -21,7 +22,7 @@ SearchView.prototype = {
     this.getSearchStatusHeader().innerText = ""
 
     if ($(this.searchWindowSelector).is(':hidden')){
-      $('.pop-up').hide()
+      $(this.popUpSelector).hide()
       $(this.searchWindowSelector).slideDown("slow")
       $(this.advOptionsIconSelector).show()
     } else {
@@ -47,7 +48,7 @@ SearchView.prototype = {
 
   hideSearchBox: function(){
     $(this.searchWindowSelector).hide(500)
-    $('.pop-up').hide()
+    $(this.popUpSelector).hide()
   },
 
   hideKeyboard: function(){
