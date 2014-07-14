@@ -20,8 +20,8 @@ MapController.prototype = {
     this.markers = this.eventPresenter.createMarkers(eventData.events)
     this.view.placeMarkers(this.markers)
     for(var i=0; i < this.markers.length; i++) {
-      google.maps.event.addListener(this.markers[i], 'mouseover', this.showInfoWindow)
-      google.maps.event.addListener(this.markers[i], 'mouseover', this.getLargeInfoBoxData)
+      google.maps.event.addListener(this.markers[i], 'click', this.showInfoWindow)
+      google.maps.event.addListener(this.markers[i], 'click', this.getLargeInfoBoxData)
     }
     this.view.setMap(eventData.location_coords)
   },
