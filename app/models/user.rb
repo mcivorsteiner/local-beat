@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :location
   attr_accessible :location
 
-  attr_accessible :email
+  attr_accessible :email, :spotify_user_id, :spotify_refresh_token
 
   EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX

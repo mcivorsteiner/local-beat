@@ -21,4 +21,15 @@ class SpotifyAuth
     'https://accounts.spotify.com/authorize?' + query_hash.to_query
   end
 
+  def request_tokens(auth_code)
+    query_hash = {
+      grant_type: 'authorization_code',
+      code: auth_code,
+      redirect_uri: @redirect_uri,
+      client_id: @client_id,
+      client_secret: @client_secret
+    }
+
+    self.class.post('/api/token', query: query_hash)
+  end
 end

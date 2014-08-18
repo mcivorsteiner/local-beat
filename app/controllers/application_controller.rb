@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   require 'echonest'
   require 'seatgeek'
   require 'spotify_auth'
+  require 'spotify_client'
 
   def current_user
     if session[:user_id]

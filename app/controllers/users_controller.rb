@@ -56,6 +56,24 @@ class UsersController < ApplicationController
   end
 
   def callback
+    @user = current_user
+    auth_client = SpotifyAuth.new
 
+    if params[:state] == session[:spotify_auth_state]
+      session[:spotify_auth_state] = nil
+      response = auth_client.request_tokens(params[:code])
+
+      if response.code.to_i == 200
+        token_data = JSON.parse(response.body)
+        spotify_client = SpotifyClient.new(access_token: token_data["access_token"])
+        profile_data = spotify_client.get_profile_data
+        @user.update_attributes(spotify_user_id: profile_data["id"], spotify_refresh_token: token_data["refresh_token"])
+        session[:access_token] = token_data["access_token"]
+        redirect_to root_path
+      end
+
+    else
+      redirect_to root_path
+    end
   end
 end
