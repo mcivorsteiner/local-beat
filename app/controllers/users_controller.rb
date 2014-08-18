@@ -47,4 +47,15 @@ class UsersController < ApplicationController
       status: :unprocessable_entity
     end
   end
+
+  def spotify
+    auth_client = SpotifyAuth.new
+    state = SecureRandom.urlsafe_base64
+    session[:spotify_auth_state] = state
+    redirect_to auth_client.spotify_auth_url(state)
+  end
+
+  def callback
+
+  end
 end

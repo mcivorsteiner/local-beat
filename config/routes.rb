@@ -5,7 +5,9 @@ LocalBeat::Application.routes.draw do
 
   resources :users, only: [:create]
 
-  put     '/users',         to: 'users#update'
+  put     '/users',                   to: 'users#update'
+  get     '/users/spotify',           to: 'users#spotify'
+  get     '/users/spotify/callback',  to: 'users#callback'
 
   get     '/session/new',   to: 'session#new',    as: 'new_session'
   post    '/session',       to: 'session#create', as: 'create_session'
