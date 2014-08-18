@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     auth_client = SpotifyAuth.new
     state = SecureRandom.urlsafe_base64
     session[:spotify_auth_state] = state
-    redirect_to auth_client.spotify_auth_url(state)
+    redirect_to auth_client.spotify_auth_url(state, request.host)
   end
 
   def callback
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
     if params[:state] == session[:spotify_auth_state]
       session[:spotify_auth_state] = nil
-      response = auth_client.request_tokens(params[:code])
+      response = auth_client.request_tokens(params[:code], request.host)
 
       if response.code.to_i == 200
         token_data = JSON.parse(response.body)
