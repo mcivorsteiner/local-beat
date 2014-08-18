@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140523045051) do
+ActiveRecord::Schema.define(:version => 20140818063307) do
 
   create_table "artists", :force => true do |t|
     t.integer "sk_artist_id"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20140523045051) do
     t.integer "location_id"
     t.string  "email"
     t.string  "password_digest"
+    t.integer "spotify_user_id"
+    t.string  "spotify_refresh_token"
   end
 
 end
