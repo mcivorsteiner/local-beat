@@ -204,10 +204,14 @@ SMALL INFO BOX
 .small-info-box {
   font-family: Avenir;
   font-size: 1.2em;
-  padding: 4px;
-  /*background-color: #AAAAAD;*/
-  border-radius: 10px;
-  background-color:rgba(255,255,255,0.75);
+  padding: 4px 12px 4px 4px;
+  width: 180px;
+}
+
+.scrollFix {
+  line-height: 1.35;
+  overflow: hidden;
+  /*white-space: nowrap;*/
 }
 
 /*##########################################
