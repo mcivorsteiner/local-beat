@@ -4,7 +4,7 @@ function MapView(){
 }
 
 MapView.prototype = {
-  
+
   drawMap: function(){
     this.map = new google.maps.Map(document.getElementById(this.mapSelector), mapOptions);
   },
@@ -21,12 +21,14 @@ MapView.prototype = {
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(this.map);
     }
+    $(document).trigger('markersPlaced')
   },
 
   clearMarkers: function(markers){
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
     }
+    $(document).trigger('markersCleared')
   },
 
   enlargeInfoWindow: function(e) {
@@ -40,6 +42,10 @@ MapView.prototype = {
 
   appendLargeInfoBox: function(largeInfoBox){
     $("body").append(largeInfoBox)
+  },
+
+  removePopularityBox: function() {
+    $('#popularity-box').remove()
   }
 }
 

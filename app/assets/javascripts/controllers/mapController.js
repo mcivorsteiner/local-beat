@@ -9,6 +9,8 @@ MapController.prototype = {
     this.view.drawMap()
     $(document).on('click', '.more-info', this.showLargeInfoWindow.bind(this))
     $(document).on('click', '.close-infobox', this.closeLargeInfoWindow.bind(this))
+    $(document).on('click', '#popularity-button', this.togglePopularityBox.bind(this))
+    $(document).on('click', '.close-popularity-box', this.view.removePopularityBox.bind(this.view))
     if (typeof userData != 'undefined') {
       var locationCoords = {lat: userData.lat, lng: userData.lng}
       this.view.setMap(locationCoords)
@@ -46,6 +48,23 @@ MapController.prototype = {
     infoWindow.setContent(html)
     infoWindow.open(this.map, this)
     $('body').append(largeInfoBox)
+  },
+
+  togglePopularityBox: function() {
+    if($('#popularity-box').is(':visible')) {
+      this.view.removePopularityBox()
+    } else {
+      this.showPopularityBox()
+    }
+  },
+
+  showPopularityBox: function() {
+    this.sortMarkersByEventPopularity()
+
+    var events = this.eventsArray(),
+        html = HandlebarsTemplates['events/popularity'](events)
+
+    $('body').append(html)
   },
 
   showLargeInfoWindow: function() {
@@ -112,6 +131,43 @@ MapController.prototype = {
   closeLargeInfoWindow: function(e) {
     e.preventDefault();
     $('.large-info-box').remove()
+  },
+
+  sortMarkersByEventPopularity: function() {
+    this.markers.sort(function(a, b) {
+      var event1Popularity = a.eventInfo.popularity,
+          event2Popularity = b.eventInfo.popularity
+      if (event1Popularity > event2Popularity) {
+        return -1
+      } else if (event1Popularity < event2Popularity ) {
+        return 1
+      }
+      return 0
+    })
+  },
+
+  // for development purposes
+  logEventPopularity: function() {
+    for(var i=0; i<this.markers.length; i++) {
+      var eventInfo = this.markers[i].eventInfo
+      console.log(eventInfo.artists)
+      console.log(eventInfo.date)
+      console.log(eventInfo.popularity)
+      console.log('--------------')
+    }
+  },
+
+  eventsArray: function() {
+    var events = [],
+        eventLength = this.markers.length
+
+    for(var i=0; i<eventLength; i++) {
+      var eventObject = this.markers[i].eventInfo
+      eventObject.ordinal = i+1
+      events.push(eventObject)
+    }
+
+    return events
   }
 
 }

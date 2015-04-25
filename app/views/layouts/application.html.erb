@@ -13,15 +13,17 @@
 </head>
 
 <body>
-  <div id="session-menu">
+  <div id="session-menu" class='<%= 'logged-in' if logged_in? %>'>
     <img id="magnify" src="/assets/search-icon.png">
     <img id="more-options-icon" class= "hidden pop-up" src="/assets/more-options-icon.png">
     <% if logged_in? %>
       <img id="logout-button" src="/assets/sign-out-icon.png">
-      <img class="settings-button" src="/assets/settings-icon.png">
+      <img id="settings-button" src="/assets/settings-icon.png">
+      <img id="popularity-button" src="/assets/star-icon.png">
     <% else %>
       <img id="login-menu-button" src="/assets/login-icon.png">
-      <img class="settings-button hidden" src="/assets/settings-icon.png">
+      <img id='settings-button' class="hidden" src="/assets/settings-icon.png">
+      <img id="popularity-button" src="/assets/star-icon.png">
     <% end %>
   </div>
   <div id='logo'>

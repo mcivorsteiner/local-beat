@@ -12,13 +12,13 @@ SessionView = function() {
   this.logOutButtonSelector       = '#logout-button'
   this.signUpErrorDivSelector     = '.sign-up-errors h4'
   this.loginErrorDivSelector      = '.login-errors h4'
-  this.settingsButtonSelector     = '.settings-button'
+  this.settingsButtonSelector     = '#settings-button'
   this.updateLocationDivSelector  = '#update-user-preferences'
   this.popUpSelector              = '.pop-up'
 }
 
 SessionView.prototype = {
-  
+
   updateUserData: function(html) {
     var currentUserData = this.getCurrentUserData()
     currentUserData.innerHTML = html
@@ -28,6 +28,21 @@ SessionView.prototype = {
     $(this.popUpSelector).hide()
   },
 
+  setLoggedIn: function() {
+    $(this.sessionMenuSelector).addClass('logged-in')
+  },
+
+  setLoggedOut: function() {
+    $(this.sessionMenuSelector).removeClass('logged-in')
+  },
+
+  setMarkersPresent: function() {
+    $(this.sessionMenuSelector).addClass('markers-present')
+  },
+
+  setMarkersCleared: function() {
+    $(this.sessionMenuSelector).removeClass('markers-present')
+  },
 
   // TOGGLE FORMS
 

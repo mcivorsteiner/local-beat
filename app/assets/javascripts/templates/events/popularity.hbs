@@ -1,0 +1,30 @@
+<div id="popularity-box">
+  <div class="close">
+    <img src="/assets/close_grey.png" class="close-popularity-box">
+  </div>
+  <table>
+    <thead>
+      <th>#</th>
+      <th>Artist</th>
+      <th>Venue</th>
+      <th class='pull-right'>Date</th>
+      <th class='pull-right'>Start Time</th>
+    </thead>
+
+    <tbody>
+    {{#each this}}
+    <tr>
+      <td>{{ordinal}}</td>
+      <td>{{headliner}}</td>
+      <td>{{venueName}} </td>
+      <td class='pull-right nowrap'>{{date}}</td>
+      <td class='pull-right'>
+      {{#if time}}
+        {{time}}
+      {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
