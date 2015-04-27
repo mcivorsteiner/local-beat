@@ -1,6 +1,7 @@
 function MapView(){
   this.mapSelector          = "map-canvas"
   this.searchWindowSelector = "#search-window"
+  this.popupSelector        = ".pop-up"
 }
 
 MapView.prototype = {
@@ -46,6 +47,10 @@ MapView.prototype = {
 
   removePopularityBox: function() {
     $('#popularity-box').remove()
+  },
+
+  hidePopups: function() {
+    $(this.popupSelector).hide()
   }
 }
 

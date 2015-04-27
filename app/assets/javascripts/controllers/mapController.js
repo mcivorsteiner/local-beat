@@ -64,6 +64,7 @@ MapController.prototype = {
     var events = this.eventsArray(),
         html = HandlebarsTemplates['events/popularity'](events)
 
+    this.view.hidePopups()
     $('body').append(html)
   },
 
