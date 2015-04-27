@@ -1,6 +1,7 @@
 $(document).ready(function(){
-  
+
   applicationController = new ApplicationController(new MapController(new MapView()),
                                                     new SessionController(new SessionView()),
-                                                    new SearchController(new SearchView())).init();
+                                                    new SearchController(new SearchView()))
+  applicationController.init();
 })

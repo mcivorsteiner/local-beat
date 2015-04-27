@@ -83,21 +83,53 @@ LOGIN/SIGNUP
   margin: 0;
   position: absolute;
   z-index: 1;
-}
+  &.logged-in {
+    #settings-button {
+      display: inline-block;
+      position: absolute;
+      right: 65px;
+      top: 15px;
+      height: 30px;
+      width: 30px;
+    }
+  }
+  &.markers-present {
+    #popularity-button {
+      display: inline-block;
+      position: absolute;
+      right: 65px;
+      top: 10px;
+    }
+    #settings-button {
+      right: 115px;
+    }
+  }
+  #login-menu-button, #logout-button, #popularity-button {
+    &:hover {
+      cursor: pointer;
+    }
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: black;
+    border-radius:5px;
+    box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
+  }
+  #settings-button {
+    display: none;
+  }
 
-#login-menu-button, #logout-button {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  height: 40px;
-  width: 40px;
-  background-color: black;
-  border-radius:5px;
-  box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
-}
+  #popularity-button {
+    display: none;
+  }
 
-#login-menu-button:hover, #logout-button:hover {
-  cursor: pointer;
+  #settings-button:hover {
+    cursor: pointer;
+    height: 31px;
+    width: 31px;
+  }
 }
 
 #user-log-box {
@@ -218,7 +250,8 @@ SMALL INFO BOX
 LARGE INFO BOX
 ##########################################*/
 
-.large-info-box {
+.large-info-box,
+#popularity-box {
   position: absolute;
   width: 85%;
   max-height: 75%;
@@ -237,19 +270,36 @@ LARGE INFO BOX
   box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
-.close-infobox {
+#popularity-box table {
+  width: 100%;
+  margin-top: 12px;
+  .nowrap {
+    white-space: nowrap;
+  }
+  .pull-right {
+    text-align: right;
+  }
+  tbody td {
+    vertical-align: top;
+  }
+  thead th {
+    text-align: left;
+  }
+}
+
+.close-infobox,
+.close-popularity-box {
+  &:hover {
+    cursor: pointer;
+    width: 13px;
+    height: 13px;
+  }
   position: absolute;
   border-radius: 2px;
   right: 10px;
   width: 12px;
   height: 12px;
   padding: 0;
-}
-
-.close-infobox:hover {
-  cursor: pointer;
-  width: 13px;
-  height: 13px;
 }
 
 .close {
@@ -267,20 +317,6 @@ LARGE INFO BOX
 UPDATE USER PREFERENCES
 ##########################################*/
 
-.settings-button {
-  position: absolute;
-  right: 65px;
-  top: 15px;
-  height: 30px;
-  width: 30px;
-}
-
-.settings-button:hover {
-  cursor: pointer;
-  height: 31px;
-  width: 31px;
-}
-
 #update-user-preferences {
   color: white;
   background-color:rgba(0,0,0,0.5);
@@ -293,7 +329,7 @@ UPDATE USER PREFERENCES
   box-shadow: 5px 8px 5px 0px rgba(0,0,0,0.75);
 }
 
-#update-user-preferences p, 
+#update-user-preferences p,
 #update-user-preferences h2,
 #update-user-preferences h3 {
   margin: 5px;
